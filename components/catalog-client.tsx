@@ -4,10 +4,10 @@ import { useEffect, useMemo, useState } from "react";
 import { baseProducts, pdfGroups } from "../lib/catalog";
 import { type Product, type ProductStatus, statusLabels } from "../lib/product-model";
 
-function SiteHeader() {
+function SiteHeader({ showPdf }: { showPdf: () => void }) {
   return <header className="site-header">
     <a className="brand" href="/" aria-label="Waku Waku, inicio"><span className="brand-mark">わく<br/>わく</span><span className="brand-name">waku waku<span>store</span></span></a>
-    <nav className="site-nav" aria-label="Principal"><a className="active" href="/">Catálogo</a><a href="#preventas">Preventas</a><a href="/admin">Gestionar</a></nav>
+    <nav className="site-nav" aria-label="Principal"><a className="active" href="/">Catálogo</a><button type="button" onClick={showPdf}>Preventas</button><a href="/admin">Gestionar</a></nav>
     <a className="header-contact" href="https://wa.me/51937809466" target="_blank" rel="noreferrer">Escríbenos ↗</a>
   </header>;
 }
@@ -35,7 +35,7 @@ export default function CatalogClient() {
   const visible = useMemo(() => products.filter((product) => product.visible && (filter === "todos" || product.status === filter) && `${product.title} ${product.detail} ${product.series}`.toLocaleLowerCase("es").includes(query.toLocaleLowerCase("es").trim())), [products, filter, query]);
 
   return <main className="shell">
-    <SiteHeader />
+    <SiteHeader showPdf={() => { setView("pdf"); document.getElementById("catalog-title")?.scrollIntoView({ behavior: "smooth" }); }} />
     <section className="catalog-heading"><div><div className="eyebrow"><span className="sparkle">✳</span> FIGURAS, PREVENTAS Y MÁS</div><h1>Encuentra tu próxima <em>pieza favorita.</em></h1><p>Explora las figuras de Waku Waku y consulta cada producto por WhatsApp.</p></div><div className="heading-illustration" aria-hidden="true"><span>W</span><span className="orbit orbit-a">✦</span><span className="orbit orbit-b">✳</span></div></section>
     <section className="catalog-section" aria-labelledby="catalog-title">
       <div className="section-top"><div><span className="eyebrow">COLECCIÓN WAKU</span><h2 id="catalog-title">Explora el catálogo <span>↘</span></h2></div><p>Precios de las publicaciones originales. Confirma precio y disponibilidad antes de reservar.</p></div>
