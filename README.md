@@ -3,7 +3,7 @@
 
 ## Levantar el frontend en tu computadora
 
-Instalar Git y Node.js 22 LTS (versión mínima: 22.13.0). Node.js incluye npm. El repositorio es privado: necesitas acceso para clonarlo.
+Instalar Git y Node.js 22 LTS (versión mínima: 22.13.0). Node.js incluye npm.
 
 La primera vez, ejecutar:
 
