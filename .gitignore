@@ -30,12 +30,14 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
 
 # typescript
 next-env.d.ts
+*.tsbuildinfo
 /dist/
 /.wrangler/
 # Checkout-local execution profile and tool state; never publish them.
@@ -44,3 +46,19 @@ next-env.d.ts
 /.codex/
 /outputs/
 /work/
+
+# Local exports and review images; originals remain on disk.
+/exports/
+/*.png
+/design/**/*.png
+/design/**/*.jpg
+
+# Local documentation and design tools excluded from the frontend repository.
+/docs/
+/design/
+/scripts/*
+!/scripts/test-catalog.cjs
+/design-qa.md
+/bakugo-gallery-assets.md
+/AGENTS.md
+/CLAUDE.md

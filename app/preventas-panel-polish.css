@@ -1,0 +1,401 @@
+/* Finishing layer for the Preventas information panel and footer. */
+.storefront:has(.store-preorders) .store-pdf-info {
+  min-width: 0;
+  padding: clamp(20px, 2vw, 30px) clamp(18px, 1.8vw, 28px) 22px;
+  border-color: #f0e0e8;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 13px 34px rgba(82, 30, 55, .055);
+}
+
+.storefront:has(.store-preorders) .store-pdf-info-heading {
+  margin: 0 4px 20px;
+}
+
+.storefront:has(.store-preorders) .store-pdf-info h2 {
+  margin: 0 0 5px;
+  color: #101a3e;
+  font-size: clamp(27px, 2.35vw, 35px);
+  font-weight: 800;
+  letter-spacing: -.055em;
+  line-height: 1.08;
+}
+
+.storefront:has(.store-preorders) .store-pdf-info-heading p {
+  color: #475c86;
+  font-size: clamp(14px, 1.18vw, 17px);
+  line-height: 1.3;
+}
+
+.storefront:has(.store-preorders) .store-pdf-advice {
+  gap: 14px;
+  padding: 17px 16px;
+  border: 1px solid #ffe9f0;
+  border-radius: 11px;
+  background: #fff0f6;
+  color: #203158;
+  font-size: clamp(12px, .95vw, 14px);
+  line-height: 1.48;
+}
+
+.storefront:has(.store-preorders) .store-pdf-advice svg {
+  width: 27px;
+  height: 27px;
+  margin-top: 1px;
+  color: #ff2879;
+}
+
+.storefront:has(.store-preorders) .store-pdf-info > a {
+  min-height: 51px;
+  font-size: clamp(11px, .96vw, 13px);
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.storefront:has(.store-preorders) .store-pdf-info > a:focus-visible {
+  outline: 3px solid #ff94ba;
+  outline-offset: 3px;
+}
+
+.storefront:has(.store-preorders) .store-pdf-wa {
+  margin-top: 16px;
+  border-color: #ff2879;
+  background: #ff2879;
+  box-shadow: 0 8px 18px rgba(255, 40, 121, .16);
+}
+
+.storefront:has(.store-preorders) .store-pdf-wa:hover {
+  background: #eb1668;
+  border-color: #eb1668;
+  box-shadow: 0 10px 22px rgba(255, 40, 121, .23);
+  transform: translateY(-1px);
+}
+
+.storefront:has(.store-preorders) .store-pdf-file {
+  margin-top: 10px;
+  border-color: #ff4b8e;
+  background: #fff;
+}
+
+.storefront:has(.store-preorders) .store-pdf-file:hover {
+  background: #fff3f8;
+  border-color: #ff2879;
+}
+
+.storefront:has(.store-preorders) .store-pdf-help {
+  margin-top: 16px;
+  padding: 13px 16px 14px;
+  border-color: #f4e6ec;
+  background: #fffbfd;
+}
+
+.storefront:has(.store-preorders) .store-pdf-help h3 {
+  margin-bottom: 7px;
+  color: #18234b;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.storefront:has(.store-preorders) .store-pdf-help ol {
+  padding-left: 20px;
+  color: #536481;
+  font-size: 11px;
+  line-height: 1.58;
+}
+
+.storefront:has(.store-preorders) .store-handnote {
+  margin-top: auto;
+  padding-top: 18px;
+  color: #a56d88;
+  font-size: clamp(16px, 1.4vw, 21px);
+  letter-spacing: .01em;
+  line-height: 1.25;
+  text-align: center;
+  transform: rotate(-5deg);
+}
+
+/* The existing raster artwork keeps the atmosphere outside the content grid. */
+.storefront:has(.store-preorders) .store-preorders-petals {
+  top: 48px;
+  left: max(-154px, calc((100vw - 1680px) / 2 - 170px));
+  width: 325px;
+  height: 520px;
+  opacity: .31;
+}
+
+.storefront:has(.store-preorders) .store-preorders-character {
+  top: 18px;
+  right: max(-42px, calc((100vw - 1720px) / 2 - 75px));
+  width: 315px;
+  height: 510px;
+  opacity: .18;
+}
+
+.storefront:has(.store-preorders) .store-footer {
+  align-items: flex-start;
+  gap: clamp(28px, 5vw, 90px);
+  min-height: 134px;
+  padding-top: 21px;
+  padding-bottom: 23px;
+  border-top: 1px solid #f7dce7;
+}
+
+.storefront:has(.store-preorders) .store-footer > div:first-child {
+  min-width: 235px;
+}
+
+.storefront:has(.store-preorders) .store-footer > div:first-child p {
+  margin-top: 3px;
+  color: #7485a5;
+  font-size: 11px;
+}
+
+.storefront:has(.store-preorders) .store-footer nav {
+  gap: 4px;
+  padding-top: 4px;
+  color: #536784;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.storefront:has(.store-preorders) .store-footer nav a:hover,
+.storefront:has(.store-preorders) .store-footer nav a:focus-visible {
+  color: #ff2879;
+  text-decoration: underline;
+}
+
+.storefront:has(.store-preorders) .store-footer-end {
+  margin-left: auto;
+  padding-top: 3px;
+  color: #7888a4;
+  font-size: 11px;
+}
+
+.storefront:has(.store-preorders) .store-footer-socials {
+  display: flex;
+  justify-content: flex-end;
+  gap: 18px;
+  margin-bottom: 6px;
+  color: #101a3e;
+}
+
+.storefront:has(.store-preorders) .store-footer-socials a {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 24px;
+}
+
+.storefront:has(.store-preorders) .store-footer-socials svg {
+  width: 19px;
+  height: 19px;
+}
+
+.storefront:has(.store-preorders) .store-footer-socials a:hover,
+.storefront:has(.store-preorders) .store-footer-socials a:focus-visible {
+  color: #ff2879;
+}
+
+.storefront:has(.store-preorders) .store-footer-end p {
+  margin: 3px 0;
+  color: #7888a4;
+  font-size: 11px;
+}
+
+@media (min-width: 1051px) {
+  .storefront:has(.store-preorders) .store-pdf-info {
+    padding-top: 24px;
+    padding-bottom: 18px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-info-heading {
+    margin-bottom: 15px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-advice {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    line-height: 1.44;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-info > a {
+    min-height: 48px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-wa {
+    margin-top: 13px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-file {
+    margin-top: 8px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-help {
+    margin-top: 13px;
+    padding-top: 11px;
+    padding-bottom: 12px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-help h3 {
+    margin-bottom: 5px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-help ol {
+    line-height: 1.5;
+  }
+
+  .storefront:has(.store-preorders) .store-handnote {
+    padding-top: 13px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .storefront:has(.store-preorders) .store-pdf-info {
+    padding: 20px 16px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-info-heading {
+    margin-bottom: 16px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-advice {
+    gap: 10px;
+    padding: 13px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-help {
+    padding: 12px 13px;
+  }
+
+  .storefront:has(.store-preorders) .store-footer {
+    gap: 26px;
+  }
+}
+
+@media (max-width: 860px) and (min-width: 721px) {
+  .storefront:has(.store-preorders) .store-footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 16px 28px;
+  }
+
+  .storefront:has(.store-preorders) .store-footer-end {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding-top: 0;
+    text-align: left;
+  }
+
+  .storefront:has(.store-preorders) .store-footer-socials {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  .storefront:has(.store-preorders) .store-preorders-petals {
+    top: 85px;
+    left: -190px;
+    width: 300px;
+    height: 410px;
+    opacity: .16;
+  }
+
+  .storefront:has(.store-preorders) .store-preorders-character {
+    top: 24px;
+    right: -120px;
+    width: 260px;
+    height: 360px;
+    opacity: .11;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-info {
+    margin-top: 12px;
+    padding: 20px 17px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-info-heading {
+    margin: 0 2px 15px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-info h2 {
+    font-size: 27px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-advice {
+    font-size: 12px;
+    line-height: 1.46;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-advice svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-info > a {
+    min-height: 48px;
+    font-size: 12px;
+  }
+
+  .storefront:has(.store-preorders) .store-pdf-help ol {
+    font-size: 11px;
+  }
+
+  .storefront:has(.store-preorders) .store-handnote {
+    padding-top: 16px;
+    font-size: 18px;
+  }
+
+  .storefront:has(.store-preorders) .store-footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 22px 14px;
+    min-height: 0;
+    padding: 26px 18px 84px;
+    text-align: left;
+  }
+
+  .storefront:has(.store-preorders) .store-footer > div:first-child {
+    min-width: 0;
+  }
+
+  .storefront:has(.store-preorders) .store-footer .store-brand {
+    display: flex;
+    margin: 0;
+  }
+
+  .storefront:has(.store-preorders) .store-footer .store-brand-symbol {
+    width: 48px;
+    height: 35px;
+  }
+
+  .storefront:has(.store-preorders) .store-footer .store-brand-words {
+    font-size: 18px;
+  }
+
+  .storefront:has(.store-preorders) .store-footer .store-brand-words small {
+    font-size: 7px;
+    padding: 3px 8px 3px 10px;
+  }
+
+  .storefront:has(.store-preorders) .store-footer nav {
+    display: grid;
+    margin: 0;
+    padding-top: 0;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .storefront:has(.store-preorders) .store-footer-end {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  .storefront:has(.store-preorders) .store-footer-socials {
+    justify-content: flex-start;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+}

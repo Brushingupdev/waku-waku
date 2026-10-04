@@ -1,52 +1,73 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { baseProducts, pdfGroups } from "../lib/catalog";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Package, Search, X } from "lucide-react";
 import { type Product, type ProductStatus, statusLabels } from "../lib/product-model";
-
-function SiteHeader({ showPdf }: { showPdf: () => void }) {
-  return <header className="site-header">
-    <a className="brand" href="/" aria-label="Waku Waku, inicio"><span className="brand-mark">わく<br/>わく</span><span className="brand-name">waku waku<span>store</span></span></a>
-    <nav className="site-nav" aria-label="Principal"><a className="active" href="/">Catálogo</a><button type="button" onClick={showPdf}>Preventas</button><a href="/admin">Gestionar</a></nav>
-    <a className="header-contact" href="https://wa.me/51937809466" target="_blank" rel="noreferrer">Escríbenos ↗</a>
-  </header>;
-}
-
-function whatsAppUrl(product: Product) {
-  const message = `Hola, vi ${product.title} (${product.detail}) en el catálogo Waku Waku. ¿Me confirman su disponibilidad y precio?`;
-  return `https://wa.me/51937809466?text=${encodeURIComponent(message)}`;
-}
+import { sidebarSeries, showcaseArt, showcaseImage, sideCaptionImage, seriesImages } from "../lib/catalog-presentation";
+import { selectFeaturedProducts, selectHomeSeries } from "../lib/catalog-selectors";
+import { wa, money } from "../lib/product-format";
+import { useCatalogProducts } from "../hooks/use-catalog-products";
+import StorefrontShell from "./storefront-shell";
+import CollectorCommunity from "./collector-community";
+import { WhatsAppIcon } from "./whatsapp-icon";
+import { ProductDetailModal } from "./catalog/product-detail-modal";
+import { Figure } from "./catalog/product-card";
+import { SeriesGallery } from "./catalog/series-gallery";
+import { SeriesCarousel } from "./catalog/series-carousel";
+import { AnimeLogoMarquee } from "./catalog/anime-logo-marquee";
 
 export default function CatalogClient() {
-  const [products, setProducts] = useState<Product[]>(baseProducts);
+  const { products, error: loadError } = useCatalogProducts();
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState<"todos" | ProductStatus>("todos");
-  const [view, setView] = useState<"figuras" | "pdf">("figuras");
-  const [notice, setNotice] = useState("");
-
   useEffect(() => {
-    fetch("/api/products", { cache: "no-store" }).then(async (response) => {
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "No se pudieron cargar los cambios.");
-      setProducts(data.products);
-    }).catch(() => setNotice("No se pudieron cargar las actualizaciones. Se muestra el catálogo de referencia."));
+    const initialQuery = new URLSearchParams(window.location.search).get("q");
+    // Read browser-only search params after hydration so the server and first client render agree.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (initialQuery) setQuery(initialQuery);
   }, []);
+  const [status, setStatus] = useState<"todos" | ProductStatus>("todos");
+  const [series, setSeries] = useState<string | null>(null);
+  const [heroIndex, setHeroIndex] = useState(1);
+  const [selected, setSelected] = useState<Product | null>(null);
+  const notice = loadError ? "Mostramos el catálogo de referencia. Consulta las actualizaciones por WhatsApp." : "";
+  const touchStart = useRef(0);
 
-  const visible = useMemo(() => products.filter((product) => product.visible && (filter === "todos" || product.status === filter) && `${product.title} ${product.detail} ${product.series}`.toLocaleLowerCase("es").includes(query.toLocaleLowerCase("es").trim())), [products, filter, query]);
+  const visible = useMemo(() => products.filter(p => p.visible), [products]);
+  const allSeries = useMemo(() => [...new Set(visible.map(p => p.series))].sort((a,b) => a.localeCompare(b,"es")), [visible]);
+  const orderedSidebarSeries = [...sidebarSeries.filter(name => allSeries.includes(name)), ...allSeries.filter(name => !sidebarSeries.includes(name))];
+  const featured = selectFeaturedProducts(visible);
+  const matches = visible.filter(p => (series === null || p.series === series) && (status === "todos" || p.status === status) && `${p.title} ${p.series} ${p.detail}`.toLocaleLowerCase("es").includes(query.toLocaleLowerCase("es").trim()));
+  const filtered = !!query.trim() || status !== "todos" || series !== null;
+  useEffect(() => {
+    if (featured.length < 2 || selected) return;
+    const timer = window.setInterval(() => {
+      if (!document.hidden) setHeroIndex(index => (index + 1) % featured.length);
+    }, 5000);
+    return () => window.clearInterval(timer);
+  }, [featured.length, heroIndex, selected]);
+  const moveHero = (step: number) => setHeroIndex(i => (i + step + featured.length) % featured.length);
+  const heroAt = (offset: number) => featured[(heroIndex + offset + featured.length) % featured.length];
+  const clear = () => { setQuery(""); setStatus("todos"); setSeries(null); };
+  const selectSeries = (name: string | null) => { setSeries(name); setStatus("todos"); };
 
-  return <main className="shell">
-    <SiteHeader showPdf={() => { setView("pdf"); document.getElementById("catalog-title")?.scrollIntoView({ behavior: "smooth" }); }} />
-    <section className="catalog-heading"><div><div className="eyebrow"><span className="sparkle">✳</span> FIGURAS, PREVENTAS Y MÁS</div><h1>Encuentra tu próxima <em>pieza favorita.</em></h1><p>Explora las figuras de Waku Waku y consulta cada producto por WhatsApp.</p></div><div className="heading-illustration" aria-hidden="true"><span>W</span><span className="orbit orbit-a">✦</span><span className="orbit orbit-b">✳</span></div></section>
-    <section className="catalog-section" aria-labelledby="catalog-title">
-      <div className="section-top"><div><span className="eyebrow">COLECCIÓN WAKU</span><h2 id="catalog-title">Explora el catálogo <span>↘</span></h2></div><p>Precios de las publicaciones originales. Confirma precio y disponibilidad antes de reservar.</p></div>
-      <div className="view-tabs" role="tablist" aria-label="Tipo de catálogo"><button type="button" role="tab" aria-selected={view === "figuras"} className={view === "figuras" ? "selected" : ""} onClick={() => setView("figuras")}>Figuras individuales</button><button type="button" role="tab" aria-selected={view === "pdf"} className={view === "pdf" ? "selected" : ""} onClick={() => setView("pdf")}>Catálogo de preventas · PDF</button></div>
-      {notice && <p className="notice" role="status">{notice}</p>}
-      {view === "figuras" ? <>
-        <div className="catalog-toolbar"><label className="search-box"><span aria-hidden="true">⌕</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar personaje, serie o figura" aria-label="Buscar productos" /></label><div className="chips" aria-label="Filtrar por estado">{(["todos", "disponible", "preventa", "separado", "agotado", "por_confirmar"] as const).map((item) => <button type="button" key={item} className={`chip ${filter === item ? "selected" : ""}`} onClick={() => setFilter(item)}>{item === "todos" ? "Todos" : statusLabels[item]}</button>)}</div></div>
-        <p className="result-count">{visible.length} {visible.length === 1 ? "figura" : "figuras"}</p>
-        {visible.length ? <div className="product-grid">{visible.map((product) => <article className="product-card" key={product.id}><div className="product-image">{product.image ? <img src={product.image} alt={product.title} loading="lazy" /> : <div className="image-empty">Waku Waku</div>}<span className={`status-pill status-${product.status}`}>{statusLabels[product.status]}</span></div><div className="product-copy"><div><p className="product-series">{product.series}</p><h3>{product.title}</h3><p>{product.detail}</p></div><div className="product-bottom"><div><strong>{product.price === null ? "Consultar" : `S/ ${product.price}`}</strong>{product.quantity !== null && <small>{product.quantity} {product.quantity === 1 ? "unidad" : "unidades"}</small>}</div><a href={whatsAppUrl(product)} target="_blank" rel="noreferrer" aria-label={`Consultar ${product.title} por WhatsApp`}>Consultar ↗</a></div></div></article>)}</div> : <div className="empty-state">No encontramos figuras con esos filtros.</div>}
-      </> : <div id="preventas" className="pdf-catalog"><p className="pdf-intro">Estas son las páginas del PDF original. Los precios y marcas de «Separado» se ven en cada imagen; el estado actual se gestiona en las fichas individuales.</p>{pdfGroups.map((group) => <section className="pdf-group" key={group.month}><h3>{group.month}</h3><div className="pdf-grid">{group.pages.map((page) => <a href={`/catalogo/pdf/pagina-${String(page).padStart(2, "0")}.jpg`} target="_blank" rel="noreferrer" key={page}><img src={`/catalogo/pdf/pagina-${String(page).padStart(2, "0")}.jpg`} alt={`Catálogo ${group.month}, página ${page}`} loading="lazy"/><span>Ver página {page} ↗</span></a>)}</div></section>)}</div>}
-    </section>
-    <footer className="site-footer"><span>waku waku store</span><p>Figuras y coleccionables · Perú</p><a href="https://www.instagram.com/wakuwaku.pe/" target="_blank" rel="noreferrer">Instagram ↗</a></footer>
-  </main>;
+  return <StorefrontShell active="catalogo" search={<label className="store-catalog-search" id="buscar"><Search size={20}/><input type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="Buscar personaje, serie o figura..." aria-label="Buscar figuras"/>{query && <button type="button" onClick={() => setQuery("")} aria-label="Limpiar búsqueda"><X size={16}/></button>}</label>}><main className="store-catalog-page">
+    <h1 className="sr-only">Catálogo de figuras Waku Waku</h1>
+    {notice && <p className="store-load-notice" role="status">{notice}</p>}
+    <div className="store-catalog-layout">
+    <div className="store-catalog-content">
+    {!series && <section className="store-catalog-top">
+      {featured.length > 1 && <div className="store-featured-wrap"><div className="store-featured" onTouchStart={e => { touchStart.current = e.touches[0].clientX; }} onTouchEnd={e => { const delta = e.changedTouches[0].clientX - touchStart.current; if (Math.abs(delta) > 50) moveHero(delta < 0 ? 1 : -1); }}>
+        {([-1,0,1] as const).map(offset => { const p = heroAt(offset); return <article key={`${p.id}-${offset}`} style={{ "--manga-accent": showcaseArt[p.id]?.accent } as React.CSSProperties} className={`store-feature-card store-showcase-card ${offset === 0 ? "center" : "side"} showcase-theme-${(heroIndex + offset + featured.length) % featured.length % 4}`}><button type="button" className="store-feature-photo" onClick={() => setSelected(p)} aria-label={`Ver detalle de ${p.title}`}><img src={showcaseImage(p, offset === 0)} alt={offset === 0 ? `${p.title}, ${money(p.price)}, ${statusLabels[p.status]}, ${p.detail}` : p.title}/></button><img className="store-showcase-brand" src="/illustrations/waku-logo.png" alt="Waku Waku"/><div className="store-feature-copy">{offset !== 0 && sideCaptionImage(p) && <img className="store-side-lettering" src={sideCaptionImage(p)} alt="" aria-hidden="true" width={900} height={450}/ >}{offset === 0 && seriesImages[p.series] && <img className="store-feature-series-logo" src={`/illustrations/${seriesImages[p.series]}`} alt=""/>}<h2>{p.title}</h2><div className="store-feature-price"><strong>{p.price === null ? "Consultar" : <><span>S/</span> {p.price}</>}</strong><small className={`store-status status-${p.status}`}>{statusLabels[p.status]}</small></div>{offset === 0 && <><div className="store-feature-actions"><a href={wa(p)} aria-label={`Consultar por WhatsApp sobre ${p.title}`} target="_blank" rel="noreferrer"><WhatsAppIcon size={19}/>Consultar por WhatsApp<ArrowUpRight className="store-hero-cta-arrow" size={21}/></a></div><p><Package size={17}/>{p.detail}</p></>}</div></article>; })}
+      </div><div className="store-feature-controls"><button type="button" onClick={() => moveHero(-1)} aria-label="Destacados anteriores"><ChevronLeft/></button><span>{featured.map((p,i) => <button type="button" key={p.id} className={heroIndex === i ? "active" : ""} onClick={() => setHeroIndex(i)} aria-label={`Ver destacado ${i+1}`} aria-pressed={heroIndex === i}/>)}</span><button type="button" onClick={() => moveHero(1)} aria-label="Destacados siguientes"><ChevronRight/></button></div></div>}
+
+    </section>}
+    {!series && <AnimeLogoMarquee names={orderedSidebarSeries} selected={series} onSelect={selectSeries}/>}
+    {series ? <SeriesGallery name={series} items={matches} onOpen={setSelected} onBack={clear}/> : filtered ? <section className="store-results"><div className="store-section-heading"><div><span className="store-kicker">EXPLORA WAKU WAKU</span><h1>{series || "Resultados"}</h1><p>{matches.length} {matches.length === 1 ? "figura" : "figuras"}</p></div><button type="button" onClick={clear}>Mostrar todo ×</button></div>{matches.length ? <div className="store-results-grid">{matches.map(p => <Figure key={p.id} product={p} onOpen={setSelected}/>)}</div> : <div className="store-no-results"><h2>No encontramos figuras</h2><p>Prueba con otra serie, personaje o estado.</p><button type="button" onClick={clear}>Ver todo el catálogo</button></div>}</section> : <div className="store-home-content">
+      {selectHomeSeries(allSeries).map(name => <SeriesCarousel key={name} name={name} items={visible.filter(p => p.series === name)} onOpen={setSelected} onSeeAll={() => { setSeries(name); window.scrollTo({top:0,behavior:"smooth"}); }}/>) }
+      <CollectorCommunity whatsappIcon={<WhatsAppIcon size={29}/>}/>
+    </div>}
+    </div>
+    </div>
+    <p className="store-fineprint">Confirma precio y disponibilidad actual por WhatsApp antes de separar una figura.</p>
+  </main>{selected && <ProductDetailModal key={selected.id} selected={selected} onClose={() => setSelected(null)}/>}</StorefrontShell>;
 }

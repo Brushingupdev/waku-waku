@@ -1,0 +1,3 @@
+# Preserve the original bytes of catalog assets on Windows and Linux.
+public/** -text
+*.pdf binary

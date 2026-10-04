@@ -1,0 +1,24 @@
+@font-face {
+ font-family: "Waku Navigation";
+ src: url("/fonts/exo2-italic.ttf") format("truetype");
+ font-style: italic;
+ font-weight: 100 900;
+ font-display: swap;
+}
+.storefront .store-header .store-nav a,
+.storefront .store-mobile-nav a {
+ font-family: "Waku Navigation", Arial, sans-serif;
+ font-weight: 900;
+ font-style: italic;
+ font-size: 17px;
+ letter-spacing: -.025em;
+ line-height: 1.2;
+}
+@media(max-width:1150px) {
+ .storefront .store-header .store-nav a { font-size:17px; }
+}
+@media(max-width:720px) {
+ .storefront .store-mobile-nav a { font-size:15px; }
+}
+
+.storefront .store-header .store-nav { flex-shrink:0; }

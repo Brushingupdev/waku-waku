@@ -1,0 +1,76 @@
+.buy-guide{color:#08213f;overflow:clip}
+.buy-guide h1,.buy-guide h2,.buy-guide h3,.buy-guide-step-number{font-family:'Waku Navigation',Arial,sans-serif;font-style:italic;font-weight:950;letter-spacing:-.035em}
+.buy-guide h1 span,.buy-guide h2 span{color:#ff0878}
+.buy-guide-hero{position:relative;isolation:isolate;max-width:2080px;width:94%;min-height:clamp(480px,38vw,670px);margin:auto;display:flex;align-items:center}
+.buy-guide-hero-copy{position:relative;z-index:1;width:43%;margin-left:7%;padding:35px 0}
+.buy-guide-hero h1{font-size:clamp(42px,4.35vw,86px);line-height:1.03;margin:0 0 24px}
+.buy-guide-hero h1 span{display:block}
+.buy-guide-hero-copy>p{max-width:440px;font-size:17px;line-height:1.5;margin:0 0 21px}
+.buy-guide-contact{display:inline-flex;justify-content:center;align-items:center;gap:10px;padding:15px 23px;min-height:54px;border-radius:99px;background:#ff0878;color:#fff;font-size:15px;font-weight:800}
+.buy-guide-contact>svg:first-child{width:25px;height:25px}.buy-guide-contact:hover{background:#e6006a}
+.buy-guide-catalog{display:flex;align-items:center;gap:12px;width:max-content;font-size:15px;font-weight:800;margin-top:17px;text-decoration:underline;text-underline-offset:6px}
+.buy-guide-hero-art{position:absolute;z-index:0;right:-2%;bottom:0;width:67%;height:100%;object-fit:contain;object-position:right bottom}
+.buy-guide-steps{max-width:2080px;width:94%;margin:auto;background:#ffffffd9;padding:18px 24px 0}
+.buy-guide-steps>header{text-align:center;padding:4px 16px 30px}
+.buy-guide-eyebrow{color:#ff0878;letter-spacing:.28em;font-size:12px;font-weight:800;margin:0 0 12px}
+.buy-guide-steps h2{font-size:clamp(29px,3.3vw,59px);line-height:1.12;margin:0 0 9px}
+.buy-guide-steps>header>p:last-child{font-size:15px;line-height:1.5;margin:0}
+.buy-guide-steps ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;padding:0;margin:0}
+.buy-guide-steps li{min-width:0;padding:0 23px;border-right:1px solid #f0dfe6;display:flex;flex-direction:column}.buy-guide-steps li:last-child{border-right:0}
+.buy-guide-step-copy{display:flex;gap:19px;min-height:105px}.buy-guide-step-number{color:#ff0878;font-size:clamp(60px,6.5vw,112px);line-height:1;flex:none}
+.buy-guide-step-copy h3{font-size:clamp(18px,1.7vw,29px);line-height:1.2;margin:4px 0 9px}.buy-guide-step-copy p{font-size:14px;line-height:1.5;margin:0;color:#536987}
+.buy-guide-step-art{display:block;height:clamp(280px,25vw,445px);margin-top:13px;overflow:hidden}.buy-guide-step-art img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom}.buy-guide-step-art.step-02 img{height:145%;object-position:center top}
+.buy-guide-support{position:relative;background:#041c34;color:#fff}.buy-guide-support-inner{display:flex;position:relative;max-width:2080px;width:94%;min-height:clamp(215px,17vw,300px);margin:auto;overflow:hidden;padding:27px 4%}
+.buy-guide-support-copy{width:46%;position:relative;z-index:1}.buy-guide-support h2{font-size:clamp(30px,3.6vw,62px);line-height:1.03;margin:0 0 14px}.buy-guide-support h2 span{display:block}.buy-guide-support-copy p{max-width:530px;font-size:16px;line-height:1.5;margin:0;color:#e1e7ef}
+.buy-guide-support-chat{position:absolute;left:46%;top:-25px;width:36%;height:150%;transform:rotate(13deg)}.buy-guide-support-chat img{display:block;width:100%;height:auto}
+.buy-guide-support-note{position:relative;z-index:1;margin-left:auto;align-self:center;font-family:'Waku Navigation',Arial,sans-serif;font-weight:900;font-style:italic;font-size:clamp(19px,2vw,34px);text-transform:uppercase;line-height:1.15;transform:rotate(-8deg)}.buy-guide-support-note svg{display:block;color:#ff0878;margin-top:12px;transform:rotate(150deg)}
+.buy-guide-faq{display:grid;grid-template-columns:40% 60%;max-width:2080px;width:94%;margin:auto;align-items:center;background:#ffffffed;min-height:280px}.buy-guide-faq-art{width:100%;height:100%;max-height:350px;object-fit:cover;object-position:center}.buy-guide-faq-copy{padding:26px 32px}
+.buy-guide-faq h2{font-size:clamp(26px,2.2vw,39px);line-height:1.15;margin:0 0 8px}.buy-guide-faq-copy>p{font-size:13px;line-height:1.5;margin:0 0 14px;color:#74809b}
+.buy-guide-faq details{border:1px solid #e7e8ef;background:#fff;border-radius:9px;margin-top:9px;padding:12px 15px}.buy-guide-faq summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;font-size:14px;font-weight:800}.buy-guide-faq summary::-webkit-details-marker{display:none}.buy-guide-faq summary>svg:first-child{color:#ff0878;flex:none}.buy-guide-faq summary>svg:last-child{margin-left:auto;color:#ff0878;flex:none;transition:transform .15s ease}.buy-guide-faq details[open] summary>svg:last-child{transform:rotate(180deg)}.buy-guide-faq details>p{font-size:13px;color:#536987;line-height:1.4;margin:4px 26px 0 36px}
+.buy-guide a:focus-visible,.buy-guide summary:focus-visible{outline:3px solid #ff0878;outline-offset:4px}
+@media(min-width:1800px){.buy-guide-hero-copy>p{font-size:21px;max-width:600px}.buy-guide-contact{font-size:18px}.buy-guide-step-copy p{font-size:17px}.buy-guide-steps>header>p:last-child{font-size:18px}.buy-guide-step-copy{min-height:125px}.buy-guide-support-copy p{font-size:19px}.buy-guide-faq-copy>p,.buy-guide-faq details>p{font-size:16px}.buy-guide-faq summary{font-size:18px}}
+@media(max-width:1100px){.buy-guide-hero-copy{margin-left:3%;width:46%}.buy-guide-hero-copy>p{font-size:15px}.buy-guide-steps li{padding:0 12px}.buy-guide-step-copy{gap:10px;min-height:125px}.buy-guide-step-number{font-size:65px}.buy-guide-step-copy p{font-size:12px}.buy-guide-support-copy{width:47%}.buy-guide-support-copy p{font-size:14px}.buy-guide-faq-copy{padding:22px}}
+@media(max-width:720px){.buy-guide-hero{display:flex;flex-direction:column;width:100%;min-height:0}.buy-guide-hero-copy{width:100%;margin:0;padding:28px 23px 8px;text-align:center}.buy-guide-hero h1{font-size:39px;line-height:1.06;margin-bottom:17px}.buy-guide-hero-copy>p{font-size:14px;margin:0 auto 18px;max-width:360px}.buy-guide-contact{font-size:13px;min-height:48px;padding:12px 18px;gap:8px}.buy-guide-catalog{margin:15px auto 0;font-size:13px}.buy-guide-hero-art{position:relative;right:auto;width:100%;height:340px;object-position:center bottom}.buy-guide-steps{width:calc(100% - 28px);padding:22px 13px 0}.buy-guide-steps>header{padding:0 0 24px}.buy-guide-eyebrow{font-size:10px}.buy-guide-steps h2{font-size:29px}.buy-guide-steps>header>p:last-child{font-size:13px}.buy-guide-steps ol{grid-template-columns:1fr;gap:25px}.buy-guide-steps li{padding:0;border:0;border-bottom:1px solid #f0dfe6}.buy-guide-steps li:last-child{border-bottom:0}.buy-guide-step-copy{gap:16px;min-height:0}.buy-guide-step-number{font-size:65px}.buy-guide-step-copy h3{font-size:21px}.buy-guide-step-copy p{font-size:14px}.buy-guide-step-art{height:290px;max-width:355px;width:100%;align-self:center;margin-top:12px}.buy-guide-support-inner{width:100%;min-height:365px;display:block;padding:26px 24px}.buy-guide-support-copy{width:100%}.buy-guide-support h2{font-size:34px}.buy-guide-support-copy p{max-width:340px;font-size:14px}.buy-guide-support-chat{left:48%;top:175px;width:53%;height:100%;transform:rotate(12deg)}.buy-guide-support-note{position:absolute;left:24px;bottom:46px;font-size:19px;transform:rotate(-5deg)}.buy-guide-faq{width:100%;grid-template-columns:1fr}.buy-guide-faq-art{height:220px;object-fit:cover}.buy-guide-faq-copy{padding:23px 20px 28px}.buy-guide-faq h2{font-size:30px}.buy-guide-faq summary{font-size:13px;gap:8px}.buy-guide-faq details{padding:12px}.buy-guide-faq details>p{margin-left:32px}}
+/* A soft paper field keeps the hero readable while retaining the manga edges. */
+.buy-guide-hero-copy::before{content:'';position:absolute;inset:-35px -45px;z-index:-1;background:#fffffff2;mask-image:radial-gradient(ellipse at center,#000 55%,transparent 74%);pointer-events:none}
+@media(min-width:721px){.buy-guide-step-copy{gap:16px}.buy-guide-step-number{font-size:clamp(65px,6vw,96px)}.buy-guide-step-copy h3{font-size:clamp(18px,1.4vw,24px)}}
+.storefront:has(.buy-guide)::before,.storefront:has(.buy-guide)::after{opacity:.48}
+.buy-guide-support{background-image:linear-gradient(90deg,#041c34 38%,#041c34df),url('/illustrations/footer/manga-night.png');background-size:cover;background-position:center}
+@media(min-width:721px) and (max-width:1100px){.buy-guide-step-copy{min-height:100px}.buy-guide-step-number{font-size:55px}.buy-guide-step-copy h3{font-size:17px}}
+/* Keep the hero a single composition at wide desktop sizes. */
+.buy-guide-hero{background-image:url('/illustrations/manga-paper.webp');background-size:1100px auto}
+.buy-guide-steps{position:relative;z-index:2;background-image:url('/illustrations/manga-paper.webp');background-size:1100px auto}
+@media(min-width:721px){
+  .buy-guide-hero{width:94%;min-height:clamp(480px,43vw,930px);align-items:flex-start}
+  .buy-guide-hero-copy{margin-left:10%;width:43%;padding-top:clamp(65px,7vw,155px);padding-bottom:100px}
+  .buy-guide-hero-copy::before{inset:15px -15px 25px -45px;background:#ffffffa6}
+  .buy-guide-hero h1{font-size:clamp(42px,4.6vw,94px)}
+  .buy-guide-hero-copy>p{max-width:400px}
+  .buy-guide-hero-art{right:0;bottom:-35px;width:74%;height:109%;object-position:right bottom}
+  .buy-guide-steps{margin-top:-25px;padding-top:27px}
+  .buy-guide-steps::before{content:'';position:absolute;z-index:-1;top:-45px;left:0;width:100%;height:70px;background:#fafafa;clip-path:polygon(0 85%,6% 72%,12% 74%,19% 42%,28% 35%,38% 21%,47% 26%,56% 16%,66% 33%,74% 31%,84% 49%,93% 64%,100% 82%,100% 100%,0 100%)}
+}
+@media(min-width:1800px){.buy-guide-hero-copy>p{max-width:530px;font-size:21px}}
+@media(min-width:721px) and (max-width:1100px){.buy-guide-hero-copy{margin-left:10%;width:43%;padding-top:65px}.buy-guide-hero-copy>p{max-width:320px}.buy-guide-hero-art{width:75%;height:105%}.buy-guide-hero h1{font-size:clamp(38px,4.5vw,49px)}}
+.buy-guide-hero{background-image:linear-gradient(#ffffffb8,#ffffffb8),url('/illustrations/manga-paper.webp')}
+.buy-guide-steps{background-image:linear-gradient(#ffffffe6,#ffffffe6),url('/illustrations/manga-paper.webp')}
+@media(min-width:721px){.buy-guide-hero-art{height:105%}.buy-guide-steps::before{top:-30px;height:45px;background:#fff}.buy-guide-hero-copy>p{max-width:370px}}
+@media(min-width:1800px){.buy-guide-hero-copy>p{max-width:490px}}
+/* One continuous backdrop instead of framed hero and steps panels. */
+.buy-guide{position:relative;isolation:isolate}
+.buy-guide::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(#ffffffe0,#ffffffe0),url('/illustrations/manga-paper.webp');background-size:1100px auto;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.buy-guide-hero,.buy-guide-steps{background:none;border:0;box-shadow:none;border-radius:0}
+.buy-guide-hero-copy::before,.buy-guide-steps::before{content:none}
+.buy-guide-steps li{border:0}
+@media(min-width:721px){.buy-guide-steps{margin-top:0;padding-top:46px}}
+/* Show the phone conversation, not only the app header. */
+.buy-guide-support-inner{min-height:clamp(260px,21vw,390px)}
+.buy-guide-support-chat{left:45%;top:-75px;width:32%;max-width:600px;height:auto;transform:rotate(13deg)}
+.buy-guide-support-note{width:25%;max-width:410px;transform:none;margin-right:-1%;align-self:center}
+.buy-guide-support-note img{display:block;width:100%;height:auto}
+@media(min-width:1800px){.buy-guide-support-chat{top:-100px}.buy-guide-support-copy{padding-top:14px}}
+@media(max-width:720px){.buy-guide-support-inner{min-height:390px}.buy-guide-support-chat{left:44%;top:155px;width:60%;max-width:none}.buy-guide-support-note{left:12px;bottom:58px;width:46%;max-width:none;margin:0}}
+.buy-guide-faq{background:none;align-items:stretch}
+.buy-guide-faq-art{object-fit:contain;object-position:center bottom;align-self:end;max-height:390px;height:100%;display:block}
+@media(max-width:720px){.buy-guide-faq-art{height:260px;max-height:260px}.buy-guide-faq-copy{background:#ffffffd9}}
+@media(min-width:721px){.buy-guide-faq-art{position:relative;z-index:1;transform:translateY(12px)}}

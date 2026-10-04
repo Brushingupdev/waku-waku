@@ -1,0 +1,128 @@
+/* Preventas content polish; the shared header comes from storefront styles. */
+
+.storefront .store-preorders-title {
+  gap: 21px;
+  margin: 0 0 22px;
+  padding: 3px 0 0 clamp(0px, 2.1vw, 30px);
+}
+
+.storefront .store-preorders-title > svg {
+  width: 63px;
+  height: 67px;
+  color: #ff2879;
+  stroke-width: 1.8;
+}
+
+.storefront .store-preorders-title h1 {
+  margin-bottom: 4px;
+  font-size: clamp(32px, 2.7vw, 40px);
+  line-height: 1.02;
+  letter-spacing: -.045em;
+}
+
+.storefront .store-preorders-title p {
+  font-size: clamp(14px, 1.18vw, 17px);
+  line-height: 1.45;
+}
+
+.storefront .store-month-tabs {
+  gap: 10px;
+  margin: 0 clamp(0px, 3vw, 46px) 15px;
+}
+
+.storefront .store-month-tabs button {
+  height: 47px;
+  border-color: #e9dce4;
+  background: #fff;
+  box-shadow: 0 2px 7px #4e22470a;
+  font-size: 14px;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.storefront .store-month-tabs button strong {
+  font-weight: 700;
+}
+
+.storefront .store-month-tabs button:hover:not(.active) {
+  transform: translateY(-1px);
+  border-color: #f99ab9;
+  box-shadow: 0 5px 12px #f8277413;
+}
+
+.storefront .store-month-tabs button.active {
+  border-color: #dc0b5d;
+  background: #dc0b5d;
+  box-shadow: 0 7px 18px #f8277428;
+}
+
+.storefront .store-month-tabs button:focus-visible {
+  outline: 3px solid #ff9cbe;
+  outline-offset: 3px;
+}
+
+@media (max-width: 1050px) {
+  .storefront .store-month-tabs {
+    margin-inline: 0;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 900px) {
+  .storefront .store-month-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin-right: -3vw;
+    padding: 4px 3vw 8px 4px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    scrollbar-color: #eba3be transparent;
+  }
+
+  .storefront .store-month-tabs button {
+    flex: 0 0 auto;
+    min-width: 220px;
+    padding-inline: 19px;
+    scroll-snap-align: start;
+  }
+
+  .storefront .store-month-tabs button.active {
+    font-weight: 800;
+  }
+}
+
+@media (max-width: 720px) {
+  .storefront .store-preorders-title {
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding: 0;
+  }
+
+  .storefront .store-preorders-title > svg {
+    width: 42px;
+    height: 47px;
+  }
+
+  .storefront .store-preorders-title h1 {
+    font-size: clamp(29px, 7vw, 34px);
+  }
+
+  .storefront .store-preorders-title p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .storefront .store-month-tabs {
+    gap: 8px;
+    margin: 0 -14px 15px 0;
+    padding: 4px 14px 6px 4px;
+  }
+
+  .storefront .store-month-tabs button {
+    height: 41px;
+    padding: 0 15px;
+    font-size: 12px;
+  }
+}

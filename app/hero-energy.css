@@ -1,0 +1,101 @@
+/* Energy manga treatment for the main carousel information. */
+.store-catalog-layout .store-showcase-card.center .store-feature-copy h2 {
+ font-family:"Waku Navigation",Arial,sans-serif; font-style:italic; font-weight:900;
+ text-transform:uppercase; font-size:clamp(28px,3.4vw,64px); line-height:.98;
+ letter-spacing:-.04em; margin:8px 0 16px; text-wrap:balance;
+}
+.store-catalog-layout .store-showcase-card.center .store-feature-copy .store-feature-series-logo {
+ margin-bottom:10px; height:clamp(40px,4vw,72px);
+}
+.store-catalog-layout .store-showcase-card.center .store-feature-price {
+ flex-direction:column; align-items:flex-start; gap:5px;
+}
+.store-catalog-layout .store-showcase-card.center .store-feature-price strong {
+ color:#ff2879; font-family:"Waku Navigation",Arial,sans-serif; font-style:italic;
+ font-weight:900; font-size:clamp(44px,4.4vw,80px); line-height:1; letter-spacing:-.04em;
+}
+.store-catalog-layout .store-showcase-card.center .store-feature-price strong span {
+ color:#fff; font-family:Arial,sans-serif; font-size:.44em; letter-spacing:-.03em;
+}
+.store-catalog-layout .store-showcase-card.center .store-feature-price .store-status { color:#91c8ef; font-size:14px; }
+.store-catalog-layout .store-showcase-card.center .store-feature-actions { margin-top:18px; }
+.store-catalog-layout .store-showcase-card.center .store-feature-actions a {
+ border-radius:0; clip-path:polygon(4% 0,100% 0,96% 100%,0 100%);
+ padding:13px 22px; min-height:50px; gap:10px; background:#ff2879;
+}
+.store-hero-cta-arrow { margin-left:auto; flex:none; }
+.store-catalog-layout .store-showcase-card.center .store-feature-copy p {
+ margin-top:14px; padding-top:12px; color:#d5deee; border-top:1px solid #91c8ef55;
+}
+.store-catalog-layout .store-showcase-card.center .store-feature-series-logo[src$="series-0.webp"] { filter:brightness(0) invert(1); }
+@media(min-width:721px) and (max-width:1000px) {
+ .store-catalog-layout .store-showcase-card.center .store-feature-copy h2 { font-size:30px; }
+ .store-catalog-layout .store-showcase-card.center .store-feature-price strong { font-size:44px; }
+}
+@media(max-width:720px) {
+ .store-catalog-layout .store-showcase-card.center .store-feature-copy h2 { font-size:36px; }
+ .store-catalog-layout .store-showcase-card.center .store-feature-price strong { font-size:52px; }
+ .store-catalog-layout .store-showcase-card.center .store-feature-actions a { font-size:13px; }
+}
+.store-catalog-layout .store-showcase-card.center { container-type:inline-size; }
+.store-catalog-layout .store-showcase-card.center .store-feature-copy { padding-block:14px; }
+.store-catalog-layout .store-showcase-card.center .store-feature-copy .store-feature-series-logo { height:clamp(32px,5cqw,60px); margin-bottom:4px; }
+.store-catalog-layout .store-showcase-card.center .store-feature-copy h2 { font-size:clamp(26px,4.6cqw,58px); margin:4px 0 10px; }
+.store-catalog-layout .store-showcase-card.center .store-feature-price strong { display:flex; flex-direction:row; align-items:baseline; gap:8px; font-size:clamp(40px,6cqw,76px); }
+.store-catalog-layout .store-showcase-card.center .store-feature-actions { margin-top:10px; }
+.store-catalog-layout .store-showcase-card.center .store-feature-actions a { min-height:42px; padding:10px 16px; }
+.store-catalog-layout .store-showcase-card.center .store-feature-copy p { margin-top:8px; padding-top:8px; }
+.store-catalog-layout .store-showcase-card.side .store-feature-price strong { display:flex; flex-direction:row; align-items:baseline; gap:4px; }
+@media(max-width:720px) {
+ .store-catalog-layout .store-showcase-card.center .store-feature-copy h2 { font-size:36px; }
+ .store-catalog-layout .store-showcase-card.center .store-feature-price strong { font-size:52px; }
+ .store-catalog-layout .store-showcase-card.center .store-feature-copy .store-feature-series-logo { height:48px; }
+}
+@media(max-width:720px) {
+ .store-catalog-layout .store-showcase-card.center .store-feature-copy .store-feature-series-logo { display:block; position:static; width:150px; object-position:left center; margin-bottom:8px; }
+}
+/* Generated full banners: keep the baked artwork visible and CTA interactive. */
+.store-catalog-layout .store-showcase-card.center .store-feature-copy {
+ position:absolute; inset:0; display:block; padding:0; background:none; pointer-events:none;
+}
+.store-catalog-layout .store-showcase-card.center .store-feature-copy>h2,
+.store-catalog-layout .store-showcase-card.center .store-feature-copy>.store-feature-price,
+.store-catalog-layout .store-showcase-card.center .store-feature-copy>p,
+.store-catalog-layout .store-showcase-card.center .store-feature-copy>.store-feature-series-logo { display:none; }
+.store-catalog-layout .store-showcase-card.center .store-feature-actions {
+ position:absolute; left:49%; right:3%; top:73%; height:16%; margin:0; width:auto;
+}
+.store-catalog-layout .store-showcase-card.center .store-feature-actions a {
+ width:100%; height:100%; min-height:0; padding:0; background:transparent; color:transparent;
+ clip-path:none; border-radius:6px; pointer-events:auto;
+}
+.store-catalog-layout .store-showcase-card.center .store-feature-actions a svg { visibility:hidden; }
+.store-catalog-layout .store-showcase-card.center .store-feature-actions a:focus-visible { outline:3px solid #fff; outline-offset:-3px; }
+@media(max-width:720px) {
+ .store-catalog-layout .store-showcase-card.center { display:block; aspect-ratio:2.1; min-height:0; height:auto; }
+ .store-catalog-layout .store-showcase-card.center .store-feature-photo { position:absolute; inset:0; width:100%; height:100%; }
+ .store-catalog-layout .store-showcase-card.center .store-feature-photo img { object-fit:contain; object-position:center!important; }
+ .store-catalog-layout .store-showcase-card.center .store-feature-copy>.store-feature-series-logo { display:none; }
+}
+/* Illustrated information ribbons for the neighboring showcase figures. */
+.store-catalog-layout .store-showcase-card.side{grid-template-rows:minmax(0,1fr) clamp(104px,8.5vw,145px);height:clamp(305px,28vw,550px)}
+.store-catalog-layout .store-showcase-card.side .store-feature-copy{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;padding:15px 16px 10px;background:#061a35 url('/illustrations/carousel-manga/side-caption-ribbon.png') center/100% 100% no-repeat}
+.store-catalog-layout .store-showcase-card.side .store-feature-copy h2{font-family:'Waku Manga',Arial,sans-serif;font-size:clamp(22px,1.8vw,38px);font-weight:400;font-style:italic;line-height:1.05;letter-spacing:.01em;text-transform:uppercase;white-space:normal;overflow:visible;color:#fff;margin:0 0 4px;max-width:100%;text-wrap:balance}
+.store-catalog-layout .store-showcase-card.side .store-feature-price{margin:0;gap:0;width:calc(100% - 50px)}
+.store-catalog-layout .store-showcase-card.side .store-feature-price strong{font-family:'Waku Navigation',Arial,sans-serif;font-style:italic;font-weight:950;font-size:clamp(43px,3.7vw,76px);line-height:.95;letter-spacing:-.045em;color:#ff0878}
+.store-catalog-layout .store-showcase-card.side .store-feature-price strong span{font-size:.42em;letter-spacing:-.035em;color:#ff0878}
+.store-catalog-layout .store-showcase-card.side .store-status{display:none}
+.store-side-detail{position:absolute;right:14px;bottom:14px;width:clamp(36px,2.7vw,50px);height:clamp(36px,2.7vw,50px);padding:0;border:0;border-radius:50%;background:#fff;color:#ff0878;display:grid;place-items:center}
+.store-side-detail:hover{background:#ffe8f1}.store-side-detail:focus-visible{outline:3px solid #ff0878;outline-offset:3px}
+@media(min-width:721px) and (max-width:1000px){.store-catalog-layout .store-showcase-card.side .store-feature-copy{padding:14px 10px 9px}.store-catalog-layout .store-showcase-card.side .store-feature-copy h2{font-size:21px}.store-side-detail{right:8px;bottom:10px;width:30px;height:30px}.store-catalog-layout .store-showcase-card.side .store-feature-price{width:calc(100% - 32px)}.store-catalog-layout .store-showcase-card.side .store-feature-price strong{font-size:40px}}
+.store-catalog-layout .store-showcase-card.side .store-feature-copy,.store-side-detail{pointer-events:auto}
+.store-catalog-layout .store-showcase-card.side .store-feature-copy:has(.store-side-lettering){padding:12px 10px 8px}
+.store-side-lettering{display:block;width:100%;height:100%;object-fit:contain;object-position:left center;pointer-events:none}
+.store-catalog-layout .store-showcase-card.side .store-feature-copy:has(.store-side-lettering) h2,.store-catalog-layout .store-showcase-card.side .store-feature-copy:has(.store-side-lettering) .store-feature-price{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
+/* Give the featured banner more space while keeping side previews secondary. */
+@media (min-width:1001px) {
+ .store-catalog-layout .store-featured { grid-template-columns:1fr 4.2fr 1fr; gap:16px; }
+ .store-catalog-layout .store-showcase-card.side { height:clamp(305px,24vw,490px); }
+ .store-catalog-layout .store-showcase-card.center { box-shadow:0 14px 32px #061a3526; }
+}

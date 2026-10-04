@@ -1,0 +1,65 @@
+/* Shared manga collage, with navigation first in the page. */
+.storefront .store-footer { margin-top:0; }
+.storefront,
+.storefront:has(.store-catalog-page) {
+  position:relative;
+  isolation:isolate;
+  background-color: #fafafa;
+  background-image: linear-gradient(#ffffff66,#ffffff66), url('/illustrations/manga-collage-crisp.png');
+  background-position: center top;
+  background-size: 100% auto;
+  background-repeat: repeat-y;
+}
+.storefront .store-catalog-page,
+.storefront .store-preorders,
+.storefront .store-how,
+.storefront .store-catalog-layout .store-catalog-top,
+.storefront .store-home-content,
+.storefront .store-results {
+  background: transparent;
+}
+.storefront .store-catalog-top::before,
+.storefront .store-catalog-top::after {
+  display: none;
+}
+.storefront .store-preorders-petals,
+.storefront .store-preorders-character { display: none; }
+.storefront .store-header {
+  background: #ffffffec;
+  border-bottom-color: #ddd6cc80;
+}
+.storefront .store-footer {
+  background: #f8f9fdd9;
+  border-top: 1px solid #ddd6cc80;
+}
+.storefront .store-how-steps > article,
+.storefront .store-how-faq {
+  background: #fffffff2;
+  border-color: #e7ded6;
+}
+@media (min-width:721px) and (max-width:1000px) {
+  .storefront .store-catalog-layout .store-featured { grid-template-columns:minmax(0,1fr); }
+  .storefront .store-catalog-layout .store-showcase-card.side { display:none; }
+  .storefront .store-catalog-layout .store-showcase-card.center { min-width:0; width:100%; }
+}
+@media (max-width: 720px) {
+  .storefront,
+  .storefront:has(.store-catalog-page) {
+    background-image: linear-gradient(#ffffff66,#ffffff66), url('/illustrations/manga-collage-960.webp');
+    background-size: 100% auto;
+  }
+  .storefront .store-mobile-nav { background: #fffdf9f5; }
+}
+
+/* Keep the edge artwork at a bounded scale instead of stretching it across ultrawide displays. */
+@media (min-width:721px) {
+ .storefront,.storefront:has(.store-catalog-page) { background-image:none; }
+ .storefront::before,.storefront::after {
+  content:'';position:absolute;top:0;bottom:0;width:clamp(180px,27vw,390px);
+  z-index:-1;pointer-events:none;
+  background-image:linear-gradient(#ffffff66,#ffffff66),url('/illustrations/manga-collage-crisp.png');
+  background-size:1400px auto;background-repeat:repeat-y;
+ }
+ .storefront::before {left:0;background-position:left top;mask-image:linear-gradient(to right,#000 80%,transparent);}
+ .storefront::after {right:0;background-position:right top;mask-image:linear-gradient(to left,#000 80%,transparent);}
+}

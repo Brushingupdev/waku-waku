@@ -1,0 +1,53 @@
+.storefront .store-footer.store-footer-manga,
+.storefront:has(.store-catalog-page) .store-footer.store-footer-manga {
+  display:block;
+  position:relative;
+  background:#041c34 url('/illustrations/footer/manga-night.png') right top/84% auto no-repeat;
+  color:#fff;
+  padding:46px max(32px,6vw) 0;
+  overflow:hidden;
+}
+.store-footer-manga .store-footer-main{display:grid;grid-template-columns:38% 24%;gap:3%;min-height:375px;align-items:center;padding-bottom:20px}
+.store-footer-manga .store-footer-brand-link{display:block;width:100%;color:#fff}
+.store-footer-manga .store-footer-logo{display:block;width:250px;height:190px;object-fit:contain;margin-left:24px;margin-bottom:3px}
+.store-footer-manga .store-footer-brand-link strong{font-family:'Waku Navigation',Arial,sans-serif;font-style:italic;font-weight:950;font-size:clamp(35px,4vw,59px);line-height:.87;letter-spacing:-.025em;display:block}
+.store-footer-manga p.store-footer-tagline{font-family:'Waku Navigation',Arial,sans-serif;font-weight:900;font-style:italic;font-size:clamp(16px,1.55vw,23px);line-height:1.3;color:#fff;margin:8px 0 17px;white-space:nowrap}
+.store-footer-manga .store-footer-tagline span{color:#ff0878}
+.store-footer-manga .store-footer-whatsapp{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:99px;background:#ff0878;color:#fff;font-size:15px;font-weight:800;padding:14px 20px;min-height:49px}
+.store-footer-manga .store-footer-whatsapp svg:first-child{width:23px;height:23px}
+.store-footer-manga .store-footer-links{border-left:1px solid #ffffff65;padding-left:40px;align-self:center;max-width:250px}
+.store-footer-manga nav{display:flex;flex-direction:column;gap:19px;align-items:flex-start;padding:0 0 26px;margin:0;border-bottom:1px solid #ffffff65}
+.store-footer-manga nav a{color:#fff;font-size:18px;font-weight:600;line-height:1.4}
+.store-footer-manga .store-footer-end{padding:26px 0 0;text-align:left}
+.store-footer-manga .store-footer-socials{gap:21px;margin-bottom:14px}
+.storefront .store-footer-manga .store-footer-socials a{width:26px;height:26px;color:#fff}
+.store-footer-manga .store-footer-socials svg{width:26px;height:26px}
+.store-footer-manga .store-footer-handle{color:#fff;font-size:18px;font-weight:600}
+.store-footer-manga a:hover{color:#ff72b1}
+.store-footer-manga .store-footer-whatsapp:hover{color:#fff;background:#e8006a}
+.store-footer-manga a:focus-visible{outline:2px solid #fff;outline-offset:5px}
+.store-footer-manga .store-footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid #ffffff80;padding:15px 0 18px}
+.store-footer-manga .store-footer-bottom p{color:#fff;font-size:12px;line-height:1.5;margin:0}
+@media(max-width:1050px){
+ .storefront .store-footer.store-footer-manga,.storefront:has(.store-catalog-page) .store-footer.store-footer-manga{padding-inline:30px}
+ .store-footer-manga .store-footer-main{grid-template-columns:42% 25%;min-height:355px}
+ .store-footer-manga .store-footer-links{padding-left:23px}
+ .store-footer-manga .store-footer-logo{width:210px;height:160px}
+ .store-footer-manga p.store-footer-tagline{white-space:normal;max-width:330px}
+}
+@media(max-width:720px){
+ .storefront .store-footer.store-footer-manga,.storefront:has(.store-catalog-page) .store-footer.store-footer-manga{display:block;padding:28px 22px 0;background-size:auto 180px;background-position:right top;background-color:#041c34}
+ .store-footer-manga .store-footer-main{grid-template-columns:1fr;gap:30px;min-height:0;padding-bottom:28px}
+ .store-footer-manga .store-footer-brand{padding-top:150px}
+ .store-footer-manga .store-footer-logo{width:140px;height:105px;margin:0 0 10px}
+ .store-footer-manga .store-footer-brand-link strong{font-size:38px}
+ .store-footer-manga p.store-footer-tagline{font-size:18px;margin-bottom:17px}
+ .store-footer-manga .store-footer-links{border-left:0;padding:0;max-width:none}
+ .store-footer-manga nav{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+ .store-footer-manga nav a{font-size:16px}
+ .store-footer-manga .store-footer-end{padding-top:22px}
+ .store-footer-manga .store-footer-bottom{display:block;padding:18px 0 22px}
+ .store-footer-manga .store-footer-bottom p+p{margin-top:10px}
+}
+
+

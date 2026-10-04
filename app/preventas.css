@@ -1,0 +1,137 @@
+.storefront .store-preorders {
+  position: relative;
+  isolation: isolate;
+  max-width: none;
+  margin: 0;
+  padding: 24px 4.5% 34px;
+  overflow: hidden;
+  background: #fffafc;
+  border-bottom: 1px solid #f7dce7;
+}
+.store-preorders-inner { position: relative; z-index: 1; max-width: 1720px; margin: auto; }
+.store-preorders-petals,.store-preorders-character { position: absolute; z-index: 0; pointer-events: none; }
+.store-preorders-petals { top: 55px; left: -135px; width: 330px; height: 570px; object-fit: contain; opacity: .24; }
+.store-preorders-character { top: 30px; right: 34px; width: 290px; height: 445px; object-fit: contain; object-position: top right; opacity: .18; }
+.storefront:has(.store-preorders) > .store-header { width: 100%; box-sizing: border-box; flex: none; }
+.storefront .store-preorders-title { display: flex; align-items: center; gap: 23px; margin: 0 0 20px; }
+.store-preorders-title > svg { flex: none; width: 58px; height: 65px; color: #ff2374; stroke-width: 1.7; }
+.storefront .store-preorders-title h1 { margin: 0 0 3px; font-size: clamp(31px, 3vw, 41px); line-height: 1.07; letter-spacing: -.045em; color: #0b1233; }
+.storefront .store-preorders-title p { margin: 0; color: #607093; font-size: clamp(14px, 1.25vw, 17px); line-height: 1.4; }
+.storefront .store-month-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0 0 14px; overflow: visible; }
+.storefront .store-month-tabs button { min-width: 0; height: 46px; padding: 0 14px; border: 1px solid #eadfe5; border-radius: 999px; background: #fff9fc; color: #162049; font-size: 15px; white-space: nowrap; box-shadow: 0 1px 3px #a85c7b0a; }
+.storefront .store-month-tabs button strong { font-weight: 600; }
+.storefront .store-month-tabs button span { color: #667497; }
+.storefront .store-month-tabs button.active { border-color: #ff2879; background: #ff2879; color: #fff; box-shadow: 0 7px 20px #fa347d20; }
+.storefront .store-month-tabs button.active span { color: #fff; }
+.storefront .store-month-tabs button:hover:not(.active) { border-color: #ff9fbd; background: #fff1f6; }
+.storefront .store-pdf-layout { display: grid; grid-template-columns: minmax(0, 2.4fr) minmax(340px, .9fr); align-items: stretch; gap: 16px; }
+.storefront .store-pdf-viewer { position: relative; display: grid; place-items: center; min-height: 0; aspect-ratio: 16 / 9; padding: 7px; border: 1px solid #eedfe6; border-radius: 13px; background: #fff; box-shadow: 0 9px 30px #5e283a09; overflow: hidden; }
+.storefront .store-pdf-open { position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; border-radius: 7px; overflow: hidden; background: #f4a2b7; cursor: zoom-in; }
+.storefront .store-pdf-open > img { display: block; width: 100%; height: 100%; min-height: 0; max-height: none; aspect-ratio: 16 / 9; object-fit: contain; }
+.store-pdf-open > span { position: absolute; right: 16px; bottom: 15px; display: flex; align-items: center; gap: 7px; padding: 10px 15px; border: 1px solid #fff9; border-radius: 99px; background: #121a37dd; color: #fff; font-size: 12px; font-weight: 800; box-shadow: 0 4px 16px #15204125; }
+.store-pdf-open > span svg { width: 17px; height: 17px; }
+.store-pdf-open:hover > span,.store-pdf-open:focus-visible > span { background: #ff2879; }
+.storefront .store-pdf-viewer > button.prev,.storefront .store-pdf-viewer > button.next { position: absolute; top: 50%; display: grid; place-items: center; width: 50px; height: 50px; padding: 0; transform: translateY(-50%); border: 1px solid #ffe2ec; border-radius: 50%; background: #fffafc; color: #ff2879; box-shadow: 0 3px 16px #492b4017; }
+.storefront .store-pdf-viewer > button.prev { left: 21px; }
+.storefront .store-pdf-viewer > button.next { right: 21px; }
+.storefront .store-pdf-viewer > button.prev:hover,.storefront .store-pdf-viewer > button.next:hover { background: #ff2879; color: white; }
+.storefront .store-pdf-viewer > button.zoom { position: absolute; right: 13px; top: 13px; display: grid; place-items: center; width: 37px; height: 37px; border: 1px solid #fff8; border-radius: 50%; background: #fffdfde3; color: #d82d6b; opacity: .9; }
+.storefront .store-pdf-info { display: flex; flex-direction: column; gap: 0; min-width: 0; padding: 28px 21px 24px; border: 1px solid #f1e0e8; border-radius: 13px; background: #fff; box-shadow: 0 9px 30px #5e283a08; }
+.store-pdf-info-heading { margin: 0 7px 22px; }
+.storefront .store-pdf-info h2 { margin: 0 0 4px; color: #10183a; font-size: clamp(28px, 2.6vw, 36px); line-height: 1.05; letter-spacing: -.045em; }
+.storefront .store-pdf-info-heading p { margin: 0; color: #43557f; font-size: 18px; }
+.storefront .store-pdf-advice { display: flex; align-items: flex-start; gap: 15px; padding: 19px 17px; border-radius: 12px; background: #fff0f6; color: #203058; font-size: 14px; line-height: 1.48; }
+.store-pdf-advice svg { flex: none; width: 29px; height: 29px; color: #ff2879; stroke-width: 2; }
+.store-pdf-advice p { margin: 0; }
+.storefront .store-pdf-info > a { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 52px; padding: 10px 12px; border-radius: 99px; text-align: center; font-size: 13px; font-weight: 800; }
+.storefront .store-pdf-wa { margin-top: 16px; border: 1px solid #ff2879; background: #ff2879; color: white; }
+.storefront .store-pdf-wa:hover { background: #e41968; }
+.store-pdf-wa svg:first-child { width: 25px; height: 25px; }
+.store-pdf-wa svg:last-child { width: 17px; height: 17px; }
+.storefront .store-pdf-file { margin-top: 11px; border: 1px solid #ff2879; background: white; color: #172047; }
+.store-pdf-file:hover { background: #fff0f6; }
+.store-pdf-file svg:first-child { margin-right: 5px; width: 23px; height: 23px; color: #ff2879; }
+.store-pdf-file svg:last-child { margin-left: auto; width: 17px; height: 17px; color: #ff2879; }
+.store-pdf-help { margin-top: 19px; padding: 16px 17px; border: 1px solid #f4e4eb; border-radius: 12px; background: #fffbfd; }
+.store-pdf-help h3 { margin: 0 0 10px; color: #172047; font-size: 14px; }
+.store-pdf-help ol { margin: 0; padding-left: 20px; color: #506080; font-size: 12px; line-height: 1.65; }
+.store-pdf-help li::marker { color: #ff2879; font-weight: 800; }
+.storefront .store-handnote { margin: auto 0 0; padding: 17px 0 0; color: #a46981; font: italic 20px Georgia, serif; text-align: center; transform: rotate(-4deg); }
+.storefront .store-pdf-thumbs { display: grid; grid-template-columns: 52px minmax(0,1fr) 52px; align-items: center; gap: 14px; margin: 18px 0 0; }
+.storefront .store-pdf-thumbs > button { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid #f7dce8; border-radius: 50%; background: #fff; color: #ff2879; }
+.storefront .store-pdf-thumbs > button:hover { background: #fff0f6; }
+.storefront .store-pdf-thumbs > div { display: flex; justify-content: center; gap: 16px; min-width: 0; overflow-x: auto; padding: 2px 0 8px; scrollbar-width: thin; }
+.storefront .store-pdf-thumbs > div button { flex: 0 0 clamp(130px, 15.8%, 205px); min-width: 0; padding: 0; border: 0; border-radius: 7px; background: transparent; color: #29375c; text-align: center; font-size: 12px; overflow: visible; }
+.storefront .store-pdf-thumbs img { display: block; width: 100%; height: 90px; object-fit: cover; border: 2px solid transparent; border-radius: 7px; }
+.storefront .store-pdf-thumbs .active img { border: 3px solid #ff2879; box-shadow: 0 3px 10px #fa347d26; }
+.storefront .store-pdf-thumbs span { display: block; padding: 7px 0 0; }
+.storefront .store-pdf-thumbs .active span { color: #ff2879; font-weight: 800; }
+.storefront:has(.store-preorders) { display: flex; flex-direction: column; min-height: 100dvh; }
+.storefront:has(.store-preorders) > .store-preorders { flex: 1; }
+.storefront:has(.store-preorders) .store-footer { width: 100%; max-width: none; margin: 0; padding-inline: max(4.5vw, calc((100vw - 1720px) / 2)); background: #fff; }
+.storefront .store-pdf-zoom { padding: 24px; background: #0d1429dc; }
+.store-pdf-zoom-panel { display: flex; flex-direction: column; width: min(1600px, 100%); max-height: 100%; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 22px 80px #06091766; }
+.store-pdf-zoom-panel > header { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 61px; padding: 10px 18px; border-bottom: 1px solid #f0dfe7; }
+.store-pdf-zoom-panel > header > div:first-child { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.store-pdf-zoom-panel > header strong { color: #111936; font-size: 16px; }
+.store-pdf-zoom-panel > header span { color: #657390; font-size: 12px; }
+.store-pdf-zoom-actions { display: flex; align-items: center; gap: 6px; }
+.store-pdf-zoom-actions button { display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 1px solid #f1dfe7; border-radius: 50%; background: #fff7fa; color: #ff2879; }
+.store-pdf-zoom-actions button:last-child { margin-left: 7px; background: #121a37; color: #fff; border-color: #121a37; }
+.store-pdf-zoom-actions button:disabled { opacity: .35; cursor: default; }
+.store-pdf-zoom-actions svg { width: 18px; height: 18px; }
+.store-pdf-zoom-actions > span { min-width: 38px; text-align: center; }
+.store-pdf-zoom-scroll { min-height: 0; overflow: auto; background: #f5e9ee; }
+.storefront .store-pdf-zoom-scroll img { display: block; max-width: none; max-height: none; height: auto; margin: 0 auto; object-fit: contain; }
+
+@media (max-width: 1050px) {
+  .storefront .store-preorders { padding: 22px 3% 30px; }
+  .storefront .store-month-tabs { margin-inline: 0; }
+  .storefront .store-pdf-layout { grid-template-columns: minmax(0, 1.65fr) minmax(285px, 1fr); }
+  .storefront .store-pdf-info { padding: 21px 16px; }
+  .storefront .store-pdf-advice { padding: 13px; font-size: 12px; }
+  .storefront .store-handnote { font-size: 17px; }
+  .store-pdf-help { padding: 12px; }
+}
+
+@media (max-width: 720px) {
+  .storefront .store-preorders { padding: 22px 14px 29px; }
+  .store-preorders-petals { left: -185px; top: 65px; opacity: .18; }
+  .store-preorders-character { right: -65px; top: 20px; width: 200px; height: 270px; opacity: .13; }
+  .storefront .store-preorders-title { gap: 12px; margin: 0 0 20px; }
+  .store-preorders-title > svg { width: 39px; height: 45px; }
+  .storefront .store-preorders-title h1 { font-size: 31px; }
+  .storefront .store-preorders-title p { font-size: 12px; }
+  .storefront .store-month-tabs { display: flex; gap: 8px; margin: 0 -14px 14px 0; overflow-x: auto; padding: 0 14px 4px 0; scrollbar-width: none; }
+  .storefront .store-month-tabs button { flex: 0 0 auto; height: 40px; padding: 0 15px; font-size: 12px; }
+  .storefront .store-pdf-layout { display: block; }
+  .storefront .store-pdf-viewer { aspect-ratio: 16 / 9; min-height: 0; padding: 4px; }
+  .storefront .store-pdf-open > img { height: 100%; max-height: none; }
+  .storefront .store-pdf-viewer > button.prev,.storefront .store-pdf-viewer > button.next { width: 35px; height: 35px; }
+  .storefront .store-pdf-viewer > button.prev { left: 8px; }
+  .storefront .store-pdf-viewer > button.next { right: 8px; }
+  .store-pdf-open > span { right: 7px; bottom: 7px; padding: 7px 9px; font-size: 10px; }
+  .store-pdf-open > span svg { width: 14px; height: 14px; }
+  .storefront .store-pdf-info { margin-top: 12px; padding: 17px; }
+  .store-pdf-info-heading { margin: 0 0 12px; }
+  .storefront .store-pdf-info h2 { font-size: 25px; }
+  .storefront .store-pdf-info-heading p { font-size: 14px; }
+  .storefront .store-pdf-advice { gap: 10px; padding: 13px; font-size: 12px; }
+  .store-pdf-advice svg { width: 22px; height: 22px; }
+  .storefront .store-pdf-info > a { min-height: 45px; font-size: 11px; }
+  .storefront .store-handnote { display: block; font-size: 17px; padding-top: 15px; }
+  .storefront .store-pdf-thumbs { grid-template-columns: 32px minmax(0,1fr) 32px; gap: 5px; margin-top: 12px; }
+  .storefront .store-pdf-thumbs > button { width: 31px; height: 31px; }
+  .storefront .store-pdf-thumbs > div { justify-content: flex-start; gap: 8px; }
+  .storefront .store-pdf-thumbs > div button { flex-basis: 88px; font-size: 10px; }
+  .storefront .store-pdf-thumbs img { height: 55px; }
+  .storefront .store-pdf-zoom { padding: 0; }
+  .store-pdf-zoom-panel { width: 100%; height: 100%; max-height: none; border-radius: 0; }
+  .store-pdf-zoom-panel > header { min-height: 56px; gap: 7px; padding: 8px 10px; }
+  .store-pdf-zoom-panel > header strong { font-size: 12px; }
+  .store-pdf-zoom-panel > header span { font-size: 10px; }
+  .store-pdf-zoom-actions { gap: 3px; }
+  .store-pdf-zoom-actions button { width: 30px; height: 30px; }
+  .store-pdf-zoom-actions button:last-child { margin-left: 2px; }
+  .store-pdf-zoom-scroll { flex: 1; }
+}

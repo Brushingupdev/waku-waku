@@ -1,0 +1,253 @@
+/* Preventas: the original PDF page remains fully visible in both reading sizes. */
+.storefront .store-preorders .store-pdf-viewer {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  align-self: start;
+  aspect-ratio: auto;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto;
+  padding: 8px;
+  border-color: #f0dfe7;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 12px 34px rgba(73, 35, 58, .075);
+}
+
+.storefront .store-preorders .store-pdf-open {
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 9px;
+  background: #ece7ea;
+}
+
+.storefront .store-preorders .store-pdf-open > img {
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.storefront .store-preorders .store-pdf-open > span {
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
+  min-height: 38px;
+  padding: 8px 13px;
+  border: 1px solid rgba(255, 255, 255, .35);
+  background: rgba(17, 24, 52, .91);
+  box-shadow: 0 5px 15px rgba(17, 24, 52, .2);
+  font-size: 11px;
+  letter-spacing: .005em;
+  transition: background .18s ease, transform .18s ease;
+}
+
+.storefront .store-preorders .store-pdf-open:hover > span,
+.storefront .store-preorders .store-pdf-open:focus-visible > span {
+  background: #f92879;
+  transform: translateY(-2px);
+}
+
+.storefront .store-preorders .store-pdf-viewer > button.prev,
+.storefront .store-preorders .store-pdf-viewer > button.next {
+  z-index: 2;
+  width: 54px;
+  height: 54px;
+  border-color: rgba(255, 220, 233, .92);
+  background: rgba(255, 251, 253, .95);
+  box-shadow: 0 6px 21px rgba(44, 27, 43, .14);
+  transition: background .18s ease, color .18s ease, box-shadow .18s ease;
+}
+
+.storefront .store-preorders .store-pdf-viewer > button.prev { left: 20px; }
+.storefront .store-preorders .store-pdf-viewer > button.next { right: 20px; }
+.storefront .store-preorders .store-pdf-viewer > button.prev svg,
+.storefront .store-preorders .store-pdf-viewer > button.next svg { width: 25px; height: 25px; stroke-width: 2.5; }
+
+.storefront .store-preorders .store-pdf-viewer > button.prev:hover,
+.storefront .store-preorders .store-pdf-viewer > button.next:hover {
+  border-color: #ff2879;
+  background: #ff2879;
+  color: #fff;
+  box-shadow: 0 8px 23px rgba(255, 40, 121, .22);
+}
+
+.storefront .store-preorders .store-pdf-thumbs {
+  grid-template-columns: 54px minmax(0, 1fr) 54px;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.storefront .store-preorders .store-pdf-thumbs > button {
+  width: 50px;
+  height: 50px;
+  border-color: #f5dbe5;
+  box-shadow: 0 3px 10px rgba(48, 24, 43, .035);
+  transition: background .18s ease, border-color .18s ease;
+}
+
+.storefront .store-preorders .store-pdf-thumbs > button:hover {
+  border-color: #ff9ebc;
+  background: #fff0f6;
+}
+
+.storefront .store-preorders .store-pdf-thumbs > div {
+  justify-content: safe center;
+  gap: clamp(10px, 1.6vw, 24px);
+  padding: 3px 2px 9px;
+  scroll-snap-type: x proximity;
+  scrollbar-color: #f6bfd2 transparent;
+}
+
+.storefront .store-preorders .store-pdf-thumbs > div button {
+  flex: 0 0 clamp(116px, 15.2%, 200px);
+  scroll-snap-align: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.storefront .store-preorders .store-pdf-thumbs img {
+  height: auto;
+  aspect-ratio: 1.86;
+  object-fit: contain;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  background: #f3a0b8;
+  box-shadow: 0 3px 10px rgba(40, 24, 37, .08);
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.storefront .store-preorders .store-pdf-thumbs > div button:hover img {
+  border-color: #ff91b3;
+}
+
+.storefront .store-preorders .store-pdf-thumbs .active img {
+  border: 3px solid #ff2879;
+  box-shadow: 0 0 0 2px #fff, 0 6px 18px rgba(255, 40, 121, .22);
+}
+
+.storefront .store-preorders .store-pdf-thumbs span {
+  padding-top: 8px;
+  line-height: 1.15;
+}
+
+.storefront .store-preorders .store-pdf-open:focus-visible,
+.storefront .store-preorders .store-pdf-viewer > button:focus-visible,
+.storefront .store-preorders .store-pdf-thumbs button:focus-visible,
+.storefront .store-pdf-zoom button:focus-visible {
+  outline: 3px solid #ff2879;
+  outline-offset: 3px;
+}
+
+.storefront .store-pdf-zoom {
+  padding: clamp(12px, 3vw, 32px);
+  background: rgba(10, 15, 32, .87);
+  backdrop-filter: blur(7px);
+}
+
+.storefront .store-pdf-zoom-panel {
+  width: min(1540px, 100%);
+  height: min(940px, 92dvh);
+  max-height: 92dvh;
+  border: 1px solid rgba(255, 255, 255, .45);
+  border-radius: 16px;
+  box-shadow: 0 28px 90px rgba(5, 9, 25, .5);
+}
+
+.storefront .store-pdf-zoom-panel > header {
+  flex: none;
+  min-height: 66px;
+  padding: 11px 22px;
+  background: #fff;
+}
+
+.storefront .store-pdf-zoom-panel > header strong { font-size: 18px; letter-spacing: -.025em; }
+.storefront .store-pdf-zoom-panel > header span { font-size: 13px; }
+.storefront .store-pdf-zoom-actions { gap: 8px; }
+.storefront .store-pdf-zoom-actions button { width: 40px; height: 40px; background: #fff8fb; }
+.storefront .store-pdf-zoom-actions button:not(:disabled):hover { background: #ff2879; border-color: #ff2879; color: #fff; }
+.storefront .store-pdf-zoom-actions button.fit { background: #fff; border-color: #f1dfe7; }
+.storefront .store-pdf-zoom-actions button.fit:not(:disabled):hover { background: #ff2879; border-color: #ff2879; color: #fff; }
+.storefront .store-pdf-zoom-actions button:last-child {
+  margin-left: 8px;
+  border-color: #172043;
+  background: #172043;
+  color: #fff;
+}
+.storefront .store-pdf-zoom-actions button:last-child svg { width: 19px; height: 19px; stroke: currentColor; stroke-width: 2.5; }
+.storefront .store-pdf-zoom-actions > span { min-width: 46px; color: #37476d; font-weight: 700; }
+.storefront .store-pdf-zoom-hint { display: none; }
+.storefront .store-pdf-zoom-scroll { flex: 1; min-height: 0; overflow: auto; background: #e9e6e8; overscroll-behavior: contain; }
+.storefront .store-pdf-zoom-scroll img { display: block; height: auto; max-width: none; max-height: none; margin-inline: auto; object-fit: contain; }
+
+@media (max-width: 1050px) {
+  .storefront .store-preorders .store-pdf-viewer > button.prev,
+  .storefront .store-preorders .store-pdf-viewer > button.next { width: 44px; height: 44px; }
+  .storefront .store-preorders .store-pdf-viewer > button.prev { left: 13px; }
+  .storefront .store-preorders .store-pdf-viewer > button.next { right: 13px; }
+  .storefront .store-preorders .store-pdf-thumbs > div button { flex-basis: clamp(110px, 20%, 160px); }
+}
+
+@media (min-width: 721px) and (max-width: 900px) {
+  .storefront .store-preorders .store-pdf-layout {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 16px;
+  }
+  .storefront .store-preorders .store-pdf-info { margin-top: 0; }
+  .storefront .store-preorders .store-pdf-thumbs { gap: 10px; }
+  .storefront .store-preorders .store-pdf-thumbs > div { gap: 10px; }
+  .storefront .store-preorders .store-pdf-thumbs > div button { flex-basis: clamp(96px, 16%, 122px); }
+}
+
+@media (max-width: 720px) {
+  .storefront .store-preorders .store-pdf-viewer { padding: 4px; border-radius: 11px; }
+  .storefront .store-preorders .store-pdf-open { border-radius: 7px; }
+  .storefront .store-preorders .store-pdf-viewer > button.prev,
+  .storefront .store-preorders .store-pdf-viewer > button.next { width: 38px; height: 38px; }
+  .storefront .store-preorders .store-pdf-viewer > button.prev { left: 9px; }
+  .storefront .store-preorders .store-pdf-viewer > button.next { right: 9px; }
+  .storefront .store-preorders .store-pdf-viewer > button.prev svg,
+  .storefront .store-preorders .store-pdf-viewer > button.next svg { width: 19px; height: 19px; }
+  .storefront .store-preorders .store-pdf-open > span { right: 7px; bottom: 7px; min-height: 29px; padding: 5px 8px; font-size: 10px; }
+  .storefront .store-preorders .store-pdf-thumbs { grid-template-columns: 36px minmax(0, 1fr) 36px; gap: 6px; margin-top: 14px; }
+  .storefront .store-preorders .store-pdf-thumbs > button { width: 34px; height: 34px; }
+  .storefront .store-preorders .store-pdf-thumbs > div { justify-content: flex-start; gap: 9px; }
+  .storefront .store-preorders .store-pdf-thumbs > div button { flex-basis: 95px; font-size: 10px; }
+  .storefront .store-preorders .store-pdf-thumbs span { padding-top: 6px; }
+  .storefront .store-pdf-zoom { padding: 0; backdrop-filter: none; }
+  .storefront .store-pdf-zoom-panel { width: 100%; height: 100dvh; max-height: none; border: 0; border-radius: 0; }
+  .storefront .store-pdf-zoom-panel > header { min-height: 60px; gap: 8px; padding: 8px 12px; }
+  .storefront .store-pdf-zoom-panel > header > div:first-child { gap: 3px 8px; }
+  .storefront .store-pdf-zoom-panel > header strong { font-size: 13px; }
+  .storefront .store-pdf-zoom-panel > header span { font-size: 11px; }
+  .storefront .store-pdf-zoom-actions { gap: 3px; }
+  .storefront .store-pdf-zoom-actions button { width: 32px; height: 32px; }
+  .storefront .store-pdf-zoom-actions button:last-child { margin-left: 2px; }
+  .storefront .store-pdf-zoom-actions > span { min-width: 34px; font-size: 11px; }
+  .storefront .store-pdf-zoom-hint {
+    display: block;
+    flex: none;
+    margin: 0;
+    padding: 8px 10px;
+    border-bottom: 1px solid #f4dfe8;
+    background: #fff5f9;
+    color: #506080;
+    font-size: 11px;
+    line-height: 1.25;
+    text-align: center;
+  }
+  .storefront .store-pdf-zoom-scroll {
+    display: flex;
+    align-items: safe center;
+    justify-content: safe center;
+    background: #f1ebee;
+  }
+  .storefront .store-pdf-zoom-scroll img {
+    flex: none;
+    margin: auto;
+  }
+}

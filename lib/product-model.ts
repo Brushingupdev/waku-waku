@@ -10,6 +10,7 @@ export type Product = {
   quantity: number | null;
   month: string;
   image: string;
+  gallery?: { image: string; label: string }[];
   source: string;
   visible: boolean;
   updatedAt?: string;

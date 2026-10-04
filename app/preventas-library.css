@@ -1,0 +1,103 @@
+.preorder-library{position:relative;isolation:isolate;padding-bottom:16px;color:#08213f}
+.preorder-library-hero{position:relative;isolation:isolate;width:calc(100% - 80px);max-width:1440px;margin:auto;min-height:clamp(345px,28vw,430px);display:flex;align-items:center}
+.preorder-library-hero::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:url('/illustrations/preventas-library/hero.png') center top/100% auto no-repeat;mask-image:linear-gradient(to right,transparent,#000 12%,#000 97%,transparent),linear-gradient(to bottom,#000 88%,transparent);mask-composite:intersect}
+.preorder-library-hero-copy::before{content:'';position:absolute;inset:0 -24px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,#ffffffd9 35%,#ffffff80 65%,transparent 75%)}
+.preorder-library-hero-copy{position:relative;margin-left:11.5%;padding:34px 0 26px;max-width:650px}
+.preorder-library-eyebrow{font-size:13px;font-weight:800;letter-spacing:.48em;color:#ff0878;margin:0 0 13px}
+.preorder-library-hero h1{font-family:'Waku Navigation',Arial,sans-serif;font-weight:950;font-style:italic;font-size:clamp(36px,4.45vw,69px);line-height:.98;letter-spacing:-.035em;text-transform:uppercase;margin:0 0 13px}
+.preorder-library-hero h1 span{display:block;color:#ff0878}
+.preorder-library-intro{font-size:17px;line-height:1.4;color:#536987;margin:0 0 15px}
+.preorder-library-notice{display:flex;align-items:center;gap:11px;background:#fff0f6;border:1px solid #ffdae9;border-radius:11px;padding:12px 16px;width:max-content;max-width:100%;font-size:14px}
+.preorder-library-notice svg{color:#ff0878;flex:none}
+.preorder-library-content{max-width:1600px;padding:0 4.6%;margin:auto}
+.preorder-library-months{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:23px}
+.preorder-library-month{position:relative;isolation:isolate;display:block;min-width:0;padding:0;border:2px solid #fff;border-radius:8px;aspect-ratio:1.16;cursor:pointer;text-align:left;background:#08213f;color:#fff}
+.preorder-library-month>img{display:block;width:100%;height:100%;object-fit:cover;border-radius:6px}
+.preorder-library-month-caption{position:absolute;inset:auto 0 0;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:15px 15px 13px;border-radius:0 0 5px 5px;background:#041d39bf}
+.preorder-library-month-caption strong{display:block;font-family:'Waku Navigation',Arial,sans-serif;font-size:clamp(19px,2vw,30px);font-weight:950;font-style:italic;line-height:1.1;letter-spacing:-.04em}
+.preorder-library-month-caption small{display:block;margin-top:4px;font-size:14px}
+.preorder-library-month-arrow{display:grid;place-items:center;border-radius:50%;background:#fff;color:#08213f;width:43px;height:43px;flex:none}
+.preorder-library-month.active{border-color:#ff0878}
+.preorder-library-month.active::after{content:'';position:absolute;bottom:-9px;left:0;right:0;height:4px;background:#ff0878}
+.preorder-library-month.active .preorder-library-month-arrow{background:#ff0878;color:#fff}
+.preorder-library-month:hover .preorder-library-month-arrow{background:#ff0878;color:#fff}
+.preorder-library-summary{position:relative;display:grid;grid-template-columns:1fr 1.6fr 1.1fr;gap:28px;align-items:center;background:#fffffff5;padding:22px 22px 22px 64px;border:1px solid #e4e4ec;border-radius:13px;min-height:229px}
+.preorder-library-summary::before{content:'';position:absolute;left:9px;top:8px;bottom:8px;width:32px;background:#f49cb4;border-radius:3px}
+.preorder-library-summary h2{font-family:'Waku Navigation',Arial,sans-serif;font-size:clamp(24px,2.6vw,39px);font-weight:950;font-style:italic;letter-spacing:-.04em;line-height:1.15;margin:0 0 4px}
+.preorder-library-summary-copy>p{color:#536987;margin:0;font-size:16px}
+.preorder-library-summary-copy p.preorder-library-summary-description{font-size:15px;line-height:1.45;margin-top:24px}
+.preorder-library-preview{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.preorder-library-preview button{background:none;padding:0;border:0;cursor:pointer;color:#08213f}
+.preorder-library-preview img{width:100%;height:auto;aspect-ratio:1.5;object-fit:cover;border-radius:4px;border:1px solid #efb2c4}
+.preorder-library-preview span{display:block;font-size:14px;margin-top:5px}
+.preorder-library-actions{display:flex;flex-direction:column;gap:10px}
+.preorder-library-actions a{display:flex;align-items:center;justify-content:center;gap:10px;min-height:53px;border-radius:99px;font-size:14px;font-weight:800;text-decoration:none}
+.preorder-library-actions a svg{flex:none}
+.preorder-library-whatsapp{background:#ff0878;color:#fff;padding:11px 16px}
+.preorder-library-whatsapp svg:first-child{width:26px;height:26px}
+.preorder-library-pdf{background:#fff;color:#08213f;border:1px solid #ff0878;padding:11px 16px}
+.preorder-library-pdf svg{color:#ff0878}
+.preorder-library-view{display:flex;align-items:center;gap:8px;border:0;background:none;text-decoration:underline;text-underline-offset:4px;font-weight:800;font-size:14px;color:#08213f;cursor:pointer;padding:5px 3px;align-self:flex-start}
+.preorder-library-whatsapp:hover{background:#e6006a}
+.preorder-library-pdf:hover{background:#fff0f6}
+.preorder-library button:focus-visible,.preorder-library a:focus-visible{outline:3px solid #ff0878;outline-offset:4px}
+.preorder-library-reader{margin-top:24px;padding:22px;border-radius:12px;background:#fff;border:1px solid #e3dfe5}
+.preorder-library-reader header{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:16px}
+.preorder-library-reader h2{font-size:24px;margin:0;font-weight:800}
+.preorder-library-reader-stage{position:relative;max-width:1100px;margin:auto}
+.preorder-library-reader-open{display:block;position:relative;padding:0;width:100%;border:0;background:#fff;cursor:zoom-in}
+.preorder-library-reader-open img{width:100%;height:auto;display:block}
+.preorder-library-reader-open>span{position:absolute;bottom:16px;right:16px;background:#08213f;color:#fff;display:flex;gap:8px;align-items:center;padding:10px 15px;border-radius:99px;font-size:14px}
+.preorder-library-reader-stage>button:not(.preorder-library-reader-open){position:absolute;top:50%;transform:translateY(-50%);background:#fff;color:#ff0878;border:0;border-radius:50%;width:44px;height:44px;display:grid;place-items:center;cursor:pointer}
+.preorder-library-reader-stage>button.prev{left:12px}.preorder-library-reader-stage>button.next{right:12px}
+.preorder-library-reader-thumbs{display:flex;gap:10px;overflow:auto;padding:12px 2px 7px}
+.preorder-library-reader-thumbs button{flex:0 0 145px;padding:3px;border:2px solid transparent;border-radius:5px;background:#fff;cursor:pointer;color:#08213f}
+.preorder-library-reader-thumbs button.active{border-color:#ff0878}
+.preorder-library-reader-thumbs img{display:block;width:100%;aspect-ratio:16/9;object-fit:contain}.preorder-library-reader-thumbs span{font-size:12px}
+.preorder-library-reader-note{font-size:13px;color:#536987;margin:13px 0 0}
+@media(max-width:1050px){.preorder-library-hero-copy{margin-left:6%;max-width:55%}.preorder-library-summary{grid-template-columns:1fr 1.4fr;gap:20px}.preorder-library-actions{grid-column:1/-1;flex-direction:row;align-items:center}.preorder-library-actions a{flex:1}.preorder-library-summary-description br{display:none}.preorder-library-month-caption{padding:10px}.preorder-library-month-arrow{width:32px;height:32px}}
+@media(max-width:720px){.preorder-library-hero{width:100%;min-height:0;padding-top:225px;display:block}.preorder-library-hero::before{height:260px;background-size:auto 260px;background-position:right top;mask-image:linear-gradient(to bottom,#000 65%,transparent);mask-composite:add}.preorder-library-hero-copy{max-width:none;margin:0;padding:20px 18px 22px;background:linear-gradient(to bottom,#ffffffb3,#ffffffe6 35%,#ffffff80)}.preorder-library-eyebrow{font-size:10px;letter-spacing:.34em}.preorder-library-hero h1{font-size:37px}.preorder-library-intro{font-size:14px}.preorder-library-notice{font-size:12px;width:100%;padding:11px;gap:8px}.preorder-library-content{padding:0 16px}.preorder-library-months{grid-template-columns:1fr 1fr;gap:17px 10px;margin-bottom:22px}.preorder-library-month{aspect-ratio:.93}.preorder-library-month-caption{padding:9px;gap:4px}.preorder-library-month-caption strong{font-size:18px}.preorder-library-month-caption small{font-size:12px}.preorder-library-month-arrow{width:27px;height:27px}.preorder-library-month-arrow svg{width:18px}.preorder-library-summary{grid-template-columns:1fr;gap:18px;padding:22px 16px 20px 28px}.preorder-library-summary::before{width:5px}.preorder-library-summary h2{font-size:29px}.preorder-library-summary-copy p.preorder-library-summary-description{font-size:14px;margin-top:12px}.preorder-library-summary-description br{display:none}.preorder-library-actions{grid-column:auto;flex-direction:column;align-items:stretch}.preorder-library-actions a{flex:auto}.preorder-library-preview{gap:10px}.preorder-library-preview span{font-size:12px}.preorder-library-reader{padding:12px}.preorder-library-reader header{align-items:flex-start}.preorder-library-reader h2{font-size:19px}.preorder-library-reader header>span{font-size:12px}.preorder-library-reader-stage>button:not(.preorder-library-reader-open){width:32px;height:32px}.preorder-library-reader-open>span{font-size:11px;padding:7px 10px;bottom:8px;right:8px}.preorder-library-reader-open>span svg{width:15px}}
+
+@media(max-width:720px){.preorder-library-hero-copy::before{inset:0}}
+
+/* Let the preorder composition grow with wide desktop viewports. */
+@media(min-width:1800px){
+ .preorder-library-hero{width:calc(100% - 120px);max-width:2080px;min-height:clamp(430px,24vw,560px)}
+ .preorder-library-hero-copy{margin-left:7%;max-width:840px}
+ .preorder-library-hero h1{font-size:clamp(69px,3.9vw,92px)}
+ .preorder-library-intro{font-size:20px}
+ .preorder-library-notice{font-size:16px;padding:14px 18px}
+ .preorder-library-content{max-width:2240px;padding:0 4.6%}
+ .preorder-library-month-caption strong{font-size:clamp(30px,1.8vw,39px)}
+ .preorder-library-summary{min-height:270px;gap:36px;padding-top:26px;padding-bottom:26px}
+ .storefront:has(.preorder-library) .store-footer.store-footer-manga{width:calc(100% - 120px);max-width:2240px}
+}
+
+@media(min-width:721px){.storefront:has(.preorder-library){background-image:linear-gradient(#ffffff99,#ffffff99),url('/illustrations/manga-paper.webp');background-size:1120px auto;background-position:center top;background-repeat:repeat}}
+
+/* Monthly catalog: every page is visible on the website. */
+.preorder-month-gallery{padding:30px 42px 22px;background:#fffffff2;border-top:1px solid #e8e4eb}
+.preorder-month-gallery-header{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:22px}
+.preorder-month-gallery-header h2{margin:0 0 3px;font-family:'Waku Navigation',Arial,sans-serif;font-size:clamp(34px,4.1vw,64px);font-weight:950;font-style:italic;line-height:1.05;letter-spacing:-.035em;color:#08213f}
+.preorder-month-gallery-header p{margin:0;color:#536987;font-size:18px;font-weight:600}
+.preorder-month-gallery-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.preorder-month-gallery-tools a{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid #ff0878;border-radius:99px;min-height:46px;padding:10px 17px;color:#08213f;font-size:13px;font-weight:700;white-space:nowrap;background:#fff}
+.preorder-month-gallery-tools a svg{color:#ff0878;flex:none}
+.preorder-month-gallery-tools a:hover{background:#fff0f6}
+.preorder-month-gallery-pages{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px 16px}
+.preorder-month-gallery-page{grid-column:span 2;min-width:0;border:0;padding:0;background:none;color:#08213f;cursor:zoom-in;text-align:center}
+.preorder-month-gallery-page.featured,.preorder-month-gallery-page.paired{grid-column:span 3}
+.preorder-month-gallery-page.centered{grid-column:3 / 5}
+.preorder-month-gallery-page img{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;display:block;border:1px solid #f49cb4;border-radius:3px;background:#f49cb4;transition:box-shadow .18s ease}
+.preorder-month-gallery-page:hover img{box-shadow:0 0 0 2px #ff0878}
+.preorder-month-gallery-page>span{display:flex;justify-content:center;align-items:center;gap:10px;font-size:14px;font-weight:700;padding-top:9px}
+.preorder-month-gallery-page>span svg{color:#ff0878}
+.preorder-month-gallery-whatsapp{display:flex;align-items:center;justify-content:center;gap:12px;background:#ff0878;color:#fff;border-radius:99px;min-height:54px;font-size:16px;font-weight:800;margin-top:24px;padding:12px 18px}
+.preorder-month-gallery-whatsapp>svg:first-child{width:27px;height:27px}
+.preorder-month-gallery-whatsapp:hover{background:#e6006a}
+@media(min-width:1800px){.preorder-month-gallery{padding:38px 48px 28px}.preorder-month-gallery-header{margin-bottom:28px}.preorder-month-gallery-header h2{font-size:74px}.preorder-month-gallery-tools a{font-size:15px}.preorder-month-gallery-pages{gap:22px}.preorder-month-gallery-page>span{font-size:16px}}
+@media(max-width:1150px){.preorder-month-gallery-header{align-items:flex-start;flex-direction:column;gap:16px}.preorder-month-gallery-tools{justify-content:flex-start}}
+@media(max-width:720px){.preorder-month-gallery{padding:22px 14px 18px}.preorder-month-gallery-header{gap:14px;margin-bottom:18px}.preorder-month-gallery-header h2{font-size:34px}.preorder-month-gallery-header p{font-size:14px}.preorder-month-gallery-tools{gap:8px;width:100%}.preorder-month-gallery-tools a{font-size:11px;min-height:40px;padding:9px 11px;gap:6px;white-space:normal}.preorder-month-gallery-tools a svg{width:17px}.preorder-month-gallery-pages{grid-template-columns:1fr;gap:18px}.preorder-month-gallery-page,.preorder-month-gallery-page.featured,.preorder-month-gallery-page.paired,.preorder-month-gallery-page.centered{grid-column:auto}.preorder-month-gallery-page>span{font-size:13px;padding-top:8px}.preorder-month-gallery-whatsapp{font-size:14px;gap:9px;min-height:50px;margin-top:20px}}
+
+@media(min-width:1151px) and (max-width:1799px){.preorder-library-month-caption strong{font-size:clamp(17px,1.6vw,28px);white-space:nowrap}}
+.preorder-month-gallery-header h2{font-size:clamp(34px,5vw,64px)}
