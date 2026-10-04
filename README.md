@@ -1,6 +1,5 @@
 # Waku Waku
 
-Frontend del catálogo de Waku Waku en Next.js, React y TypeScript. Preparado para publicar en Vercel desde GitHub y conectar después una API en Python.
 
 ## Levantar el frontend en tu computadora
 
@@ -28,7 +27,6 @@ En los siguientes arranques basta con `npm run dev`. Después de descargar cambi
 
 Se recomienda npm porque el repositorio incluye `package-lock.json`. Si prefieres pnpm y ya lo tienes instalado, puedes ejecutar `pnpm install` y `pnpm dev`; esto genera un archivo de bloqueo propio de pnpm.
 
-No necesitas Python, una base de datos ni un archivo `.env.local` para probar el frontend: sin configurar una API, se muestran los productos de referencia. El panel no guarda cambios en ese modo. El backend de prueba local no está incluido en este repositorio.
 
 ## Validar
 
@@ -41,12 +39,4 @@ npm run build
 
 La compilación de producción se ejecuta con `npm start`.
 
-## Publicar en Vercel
 
-Importar el repositorio desde GitHub, seleccionar **Next.js** y **Node.js 22.x**. El proyecto está en la raíz del repositorio. Usar `npm run build` y conservar el directorio de salida predeterminado; no seleccionar `dist`.
-
-## Conectar Python
-
-Sin configurar una API, el catálogo muestra los productos de referencia y el panel de administración es una vista previa sin guardado. Para conectar Python, definir `NEXT_PUBLIC_PRODUCTS_API_URL` con la URL completa del endpoint y volver a desplegar. El backend debe implementar CORS y la autenticación de administración.
-
-Los estilos y assets del catálogo se conservan. No se requieren OpenAI Sites ni Cloudflare para ejecutar este frontend.
