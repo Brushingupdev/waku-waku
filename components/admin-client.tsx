@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { baseProducts } from "../data/reference-products";
 import { pdfGroups } from "../data/preorder-catalogs";
-import { getProducts, saveProduct } from "../lib/products-api";
+import { getProducts } from "../lib/products-api";
 import { type Product, type ProductStatus, statusLabels, validStatuses } from "../lib/product-model";
 
 const blank: Product = { id: "", title: "", detail: "", series: "", price: null, status: "por_confirmar", quantity: null, month: "", image: "/catalogo/pdf/pagina-04.jpg", source: "PDF página 4", visible: true };
@@ -17,7 +17,7 @@ export default function AdminClient() {
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
   const [loadError, setLoadError] = useState("");
-  const backendConfigured = Boolean(process.env.NEXT_PUBLIC_PRODUCTS_API_URL?.trim());
+  const backendConfigured = false;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -39,14 +39,7 @@ export default function AdminClient() {
   function setField<K extends keyof Product>(field: K, value: Product[K]) { setDraft((current) => ({ ...current, [field]: value })); }
 
   async function save() {
-    if (saving) return;
-    setSaving(true); setMessage("");
-    try {
-      const saved = await saveProduct(draft);
-      setProducts((current) => current.some((item) => item.id === saved.id) ? current.map((item) => item.id === saved.id ? saved : item) : [...current, saved]);
-      setDraft(saved); setSelectedId(saved.id); setMessage("Cambios guardados. El catálogo ya muestra esta información.");
-    } catch (error) { setMessage(error instanceof Error ? error.message : "No se pudo guardar."); }
-    finally { setSaving(false); }
+    setMessage("La administración todavía no está conectada a Commerce Service.");
   }
 
   return <main className="admin-shell">

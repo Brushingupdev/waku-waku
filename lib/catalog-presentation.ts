@@ -1,5 +1,6 @@
 import type { Product } from "./product-model";
-import { usesReferenceArtwork } from "./reference-artwork";
+import { usesReferenceArtwork, usesReferencePoster } from "./reference-artwork";
+import { approvedCommerceMedia } from "./commerce-media";
 
 // Existing artwork and editorial ordering. Product data comes from products-api.
 export const featuredIds = [
@@ -26,10 +27,18 @@ export const sideCaptionArtwork: Record<string, { file: string; price: number }>
   "DaGveDbnxoS-1": { file: "douma", price: 90 },
   "DU1S9PjgWPy-2": { file: "rem", price: 120 },
 };
-export const sideCaptionImage = (product: Product) => usesReferenceArtwork(product) && sideCaptionArtwork[product.id]?.price === product.price ? `/illustrations/carousel-lettering/${sideCaptionArtwork[product.id].file}.png` : undefined;
+export const sideCaptionImage = (product: Product) => {
+  const artwork = sideCaptionArtwork[product.referenceId || product.id];
+  if (!usesReferenceArtwork(product) || artwork?.price !== product.price) return undefined;
+  return approvedCommerceMedia(product)?.presentation.lettering || `/illustrations/carousel-lettering/${artwork.file}.png`;
+};
 
 export function showcaseImage(product: Product, center: boolean) {
-  const image = usesReferenceArtwork(product) ? showcaseArt[product.id]?.image : undefined;
+  if (center && !usesReferencePoster(product)) return product.image;
+  const approved = usesReferenceArtwork(product) ? approvedCommerceMedia(product) : undefined;
+  const cloudImage = approved?.presentation[center ? "hero" : "side"];
+  if (cloudImage) return cloudImage;
+  const image = usesReferenceArtwork(product) ? showcaseArt[product.referenceId || product.id]?.image : undefined;
   return (center ? image?.replace("/carousel-manga/", "/carousel-energy/").replace(".webp", ".png") : image) || product.image;
 }
 export const modalMangaArtwork = (title:string) => title.includes("Bakugo") ? "bakugo" : title.includes("Toga") ? "toga" : title.includes("Miku") ? "miku" : title.includes("Law") ? "law" : title.includes("Gojo") ? "gojo" : title.includes("Killua") ? "killua" : title.includes("Douma") ? "douma" : title === "Rem" ? "rem" : null;

@@ -1,0 +1,218 @@
+{
+  "e9392956-c405-48ce-ac6a-45e291e80cbe": {
+    "referenceId": "Da6q6QukYcK-1",
+    "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/e9392956-c405-48ce-ac6a-45e291e80cbe/a9bb15fd365295b5d1dc.webp",
+    "presentation": {
+      "hero": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/e9392956-c405-48ce-ac6a-45e291e80cbe/ec2bf771ee4b2cb28d9f.webp",
+      "side": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/e9392956-c405-48ce-ac6a-45e291e80cbe/ec2bf771ee4b2cb28d9f.webp",
+      "lettering": null,
+      "collection": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/e9392956-c405-48ce-ac6a-45e291e80cbe/fd81da6dd27402fff720.webp"
+    },
+    "gallery": [
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/e9392956-c405-48ce-ac6a-45e291e80cbe/a9bb15fd365295b5d1dc.webp",
+        "label": "Vista horizontal adaptada con IA",
+        "provenance": "adapted"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/e9392956-c405-48ce-ac6a-45e291e80cbe/b66ef5d8ac916e8b4d80.webp",
+        "label": "Vista lateral con IA",
+        "provenance": "generated"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/e9392956-c405-48ce-ac6a-45e291e80cbe/5a976887393c13de8b34.webp",
+        "label": "Vista frontal con IA",
+        "provenance": "generated"
+      }
+    ]
+  },
+  "10b1a137-4df9-42db-8d84-c8111b625edc": {
+    "referenceId": "DaGveDbnxoS-1",
+    "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/10b1a137-4df9-42db-8d84-c8111b625edc/8cf4e0c6d3b05a82f0a5.webp",
+    "presentation": {
+      "hero": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/10b1a137-4df9-42db-8d84-c8111b625edc/0dd800f85bd53428e5ee.webp",
+      "side": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/10b1a137-4df9-42db-8d84-c8111b625edc/e7a63ae068556fa122a2.webp",
+      "lettering": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/10b1a137-4df9-42db-8d84-c8111b625edc/85190369435448b2f0c6.webp",
+      "collection": null
+    },
+    "gallery": [
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/10b1a137-4df9-42db-8d84-c8111b625edc/8cf4e0c6d3b05a82f0a5.webp",
+        "label": "Vista horizontal adaptada con IA",
+        "provenance": "adapted"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/10b1a137-4df9-42db-8d84-c8111b625edc/3c8e693a083c488e1abc.webp",
+        "label": "Vista lateral con IA",
+        "provenance": "generated"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/10b1a137-4df9-42db-8d84-c8111b625edc/7259f398e2f72fa83395.webp",
+        "label": "Vista posterior con IA",
+        "provenance": "generated"
+      }
+    ]
+  },
+  "95b8d9d1-8dae-49a5-9ac8-9d1497cd7761": {
+    "referenceId": "DU6btvSARSm-1",
+    "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/95b8d9d1-8dae-49a5-9ac8-9d1497cd7761/9ed561202ddc2913eef9.webp",
+    "presentation": {
+      "hero": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/95b8d9d1-8dae-49a5-9ac8-9d1497cd7761/e97fa2ab2de47ccf52ac.webp",
+      "side": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/95b8d9d1-8dae-49a5-9ac8-9d1497cd7761/cb0d62a17f11d1c5ace9.webp",
+      "lettering": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/95b8d9d1-8dae-49a5-9ac8-9d1497cd7761/27eb354fcfd523c0b3c3.webp",
+      "collection": null
+    },
+    "gallery": [
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/95b8d9d1-8dae-49a5-9ac8-9d1497cd7761/9ed561202ddc2913eef9.webp",
+        "label": "Vista horizontal adaptada con IA",
+        "provenance": "adapted"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/95b8d9d1-8dae-49a5-9ac8-9d1497cd7761/f208ef3591bc5ebdcc1a.webp",
+        "label": "Vista lateral con IA",
+        "provenance": "generated"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/95b8d9d1-8dae-49a5-9ac8-9d1497cd7761/d7954433738d9b3f3873.webp",
+        "label": "Vista posterior con IA",
+        "provenance": "generated"
+      }
+    ]
+  },
+  "ead9d117-12fe-4160-8b44-81278d081a90": {
+    "referenceId": "DaELkMLHwJw-1",
+    "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/ead9d117-12fe-4160-8b44-81278d081a90/5ad6207b191cd5c629c0.webp",
+    "presentation": {
+      "hero": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/ead9d117-12fe-4160-8b44-81278d081a90/fab14a5d95ff5d7dceb2.webp",
+      "side": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/ead9d117-12fe-4160-8b44-81278d081a90/80bd8eb857794555cfbf.webp",
+      "lettering": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/ead9d117-12fe-4160-8b44-81278d081a90/754cd87defab48191d33.webp",
+      "collection": null
+    },
+    "gallery": [
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/ead9d117-12fe-4160-8b44-81278d081a90/5ad6207b191cd5c629c0.webp",
+        "label": "Vista horizontal adaptada con IA",
+        "provenance": "adapted"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/ead9d117-12fe-4160-8b44-81278d081a90/269d58f939517fa230b1.webp",
+        "label": "Vista lateral con IA",
+        "provenance": "generated"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/ead9d117-12fe-4160-8b44-81278d081a90/5e2ebba61abbb54c4126.webp",
+        "label": "Vista posterior con IA",
+        "provenance": "generated"
+      }
+    ]
+  },
+  "90f9e03c-83b1-41bc-a506-7fda36129264": {
+    "referenceId": "DVKO171kQPy-1",
+    "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/90f9e03c-83b1-41bc-a506-7fda36129264/4916c12774c03d43dbac.webp",
+    "presentation": {
+      "hero": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/90f9e03c-83b1-41bc-a506-7fda36129264/d812a52047c8776bfa6f.webp",
+      "side": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/90f9e03c-83b1-41bc-a506-7fda36129264/70ee18e9e79de8d350f1.webp",
+      "lettering": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/90f9e03c-83b1-41bc-a506-7fda36129264/76fbbd363a45caa56e9e.webp",
+      "collection": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/90f9e03c-83b1-41bc-a506-7fda36129264/ac7092fa974b22b4c3a6.webp"
+    },
+    "gallery": [
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/90f9e03c-83b1-41bc-a506-7fda36129264/4916c12774c03d43dbac.webp",
+        "label": "Vista horizontal adaptada con IA",
+        "provenance": "adapted"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/90f9e03c-83b1-41bc-a506-7fda36129264/7bed0c77d83785289852.webp",
+        "label": "Vista lateral con IA",
+        "provenance": "generated"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/90f9e03c-83b1-41bc-a506-7fda36129264/d3f3f7fbc0dbf72440b2.webp",
+        "label": "Vista posterior con IA",
+        "provenance": "generated"
+      }
+    ]
+  },
+  "945d96e8-5411-4aa6-90e3-62c42be2fe43": {
+    "referenceId": "DQ2tT3EEQoO-1",
+    "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/945d96e8-5411-4aa6-90e3-62c42be2fe43/22d448020cc5124ff9ec.webp",
+    "presentation": {
+      "hero": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/945d96e8-5411-4aa6-90e3-62c42be2fe43/4aa73c588a2726df74c1.webp",
+      "side": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/945d96e8-5411-4aa6-90e3-62c42be2fe43/c17cfe30f0acad76725a.webp",
+      "lettering": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/945d96e8-5411-4aa6-90e3-62c42be2fe43/2a44513feb9218f4b38b.webp",
+      "collection": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/945d96e8-5411-4aa6-90e3-62c42be2fe43/0a2c151b675116891348.webp"
+    },
+    "gallery": [
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/945d96e8-5411-4aa6-90e3-62c42be2fe43/22d448020cc5124ff9ec.webp",
+        "label": "Vista horizontal adaptada con IA",
+        "provenance": "adapted"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/945d96e8-5411-4aa6-90e3-62c42be2fe43/3b108e38bd62725f56e6.webp",
+        "label": "Vista lateral con IA",
+        "provenance": "generated"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/945d96e8-5411-4aa6-90e3-62c42be2fe43/dda0122ee3cb817b6205.webp",
+        "label": "Vista posterior con IA",
+        "provenance": "generated"
+      }
+    ]
+  },
+  "2a5e8649-bd0b-46e7-8d6d-6e76a8b9fa1e": {
+    "referenceId": "DU1S9PjgWPy-2",
+    "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/2a5e8649-bd0b-46e7-8d6d-6e76a8b9fa1e/a41b0315dd8a4a252d4e.webp",
+    "presentation": {
+      "hero": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/2a5e8649-bd0b-46e7-8d6d-6e76a8b9fa1e/6f2c62573875aa39203c.webp",
+      "side": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/2a5e8649-bd0b-46e7-8d6d-6e76a8b9fa1e/0276e3f11631bb125b4d.webp",
+      "lettering": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/2a5e8649-bd0b-46e7-8d6d-6e76a8b9fa1e/fe8fccb7c85ae4f741a3.webp",
+      "collection": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/2a5e8649-bd0b-46e7-8d6d-6e76a8b9fa1e/7ec3fbba83aa184d8012.webp"
+    },
+    "gallery": [
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/2a5e8649-bd0b-46e7-8d6d-6e76a8b9fa1e/a41b0315dd8a4a252d4e.webp",
+        "label": "Vista horizontal adaptada con IA",
+        "provenance": "adapted"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/2a5e8649-bd0b-46e7-8d6d-6e76a8b9fa1e/518ab875b8d3d10afaf8.webp",
+        "label": "Vista lateral con IA",
+        "provenance": "generated"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/2a5e8649-bd0b-46e7-8d6d-6e76a8b9fa1e/7df1a6862b70c8a05368.webp",
+        "label": "Vista posterior con IA",
+        "provenance": "generated"
+      }
+    ]
+  },
+  "52b5480a-f8b5-4ee9-917e-e8a9697468d8": {
+    "referenceId": "DaoZfSFn3XY-1",
+    "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/52b5480a-f8b5-4ee9-917e-e8a9697468d8/dec4fb4f7c1b38cd3442.webp",
+    "presentation": {
+      "hero": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/52b5480a-f8b5-4ee9-917e-e8a9697468d8/cb162d2a6a8358d73b59.webp",
+      "side": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/52b5480a-f8b5-4ee9-917e-e8a9697468d8/98c9864ce296108b4800.webp",
+      "lettering": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/52b5480a-f8b5-4ee9-917e-e8a9697468d8/5e48bce7d23efdf6b557.webp",
+      "collection": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/52b5480a-f8b5-4ee9-917e-e8a9697468d8/3051debddcfafb2ef30d.webp"
+    },
+    "gallery": [
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/52b5480a-f8b5-4ee9-917e-e8a9697468d8/dec4fb4f7c1b38cd3442.webp",
+        "label": "Vista horizontal adaptada con IA",
+        "provenance": "adapted"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/52b5480a-f8b5-4ee9-917e-e8a9697468d8/09d32c8caae3dd978331.webp",
+        "label": "Vista lateral con IA",
+        "provenance": "generated"
+      },
+      {
+        "image": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/products/52b5480a-f8b5-4ee9-917e-e8a9697468d8/dd34395665d16acbfe5a.webp",
+        "label": "Vista posterior con IA",
+        "provenance": "generated"
+      }
+    ]
+  }
+}
