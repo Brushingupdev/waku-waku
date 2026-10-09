@@ -7,6 +7,7 @@ import { sidebarSeries, showcaseArt, showcaseImage, sideCaptionImage, seriesImag
 import { selectFeaturedProducts, selectHomeSeries } from "../lib/catalog-selectors";
 import { wa, money } from "../lib/product-format";
 import { useCatalogProducts } from "../hooks/use-catalog-products";
+import { useSeries } from "../hooks/use-series";
 import StorefrontShell from "./storefront-shell";
 import CollectorCommunity from "./collector-community";
 import { WhatsAppIcon } from "./whatsapp-icon";
@@ -18,6 +19,10 @@ import { AnimeLogoMarquee } from "./catalog/anime-logo-marquee";
 
 export default function CatalogClient() {
   const { products, error: loadError } = useCatalogProducts();
+  const { series: apiSeries, error: seriesError } = useSeries();
+  useEffect(() => {
+    if (seriesError) console.error("No se pudo cargar /api/series:", seriesError);
+  }, [seriesError]);
   const [query, setQuery] = useState("");
   useEffect(() => {
     const initialQuery = new URLSearchParams(window.location.search).get("q");
@@ -34,7 +39,9 @@ export default function CatalogClient() {
 
   const visible = useMemo(() => products.filter(p => p.visible), [products]);
   const allSeries = useMemo(() => [...new Set(visible.map(p => p.series))].sort((a,b) => a.localeCompare(b,"es")), [visible]);
-  const orderedSidebarSeries = [...sidebarSeries.filter(name => allSeries.includes(name)), ...allSeries.filter(name => !sidebarSeries.includes(name))];
+  const localOrderedSeries = [...sidebarSeries.filter(name => allSeries.includes(name)), ...allSeries.filter(name => !sidebarSeries.includes(name))];
+  const orderedSidebarSeries = apiSeries.length ? apiSeries.map(s => s.name) : localOrderedSeries;
+  const marqueeLogos = Object.fromEntries(apiSeries.map(s => [s.name, s.logo_url]));
   const featured = selectFeaturedProducts(visible);
   const matches = visible.filter(p => (series === null || p.series === series) && (status === "todos" || p.status === status) && `${p.title} ${p.series} ${p.detail}`.toLocaleLowerCase("es").includes(query.toLocaleLowerCase("es").trim()));
   const filtered = !!query.trim() || status !== "todos" || series !== null;
@@ -61,7 +68,7 @@ export default function CatalogClient() {
       </div><div className="store-feature-controls"><button type="button" onClick={() => moveHero(-1)} aria-label="Destacados anteriores"><ChevronLeft/></button><span>{featured.map((p,i) => <button type="button" key={p.id} className={heroIndex === i ? "active" : ""} onClick={() => setHeroIndex(i)} aria-label={`Ver destacado ${i+1}`} aria-pressed={heroIndex === i}/>)}</span><button type="button" onClick={() => moveHero(1)} aria-label="Destacados siguientes"><ChevronRight/></button></div></div>}
 
     </section>}
-    {!series && <AnimeLogoMarquee names={orderedSidebarSeries} selected={series} onSelect={selectSeries}/>}
+    {!series && apiSeries.length > 0 && <AnimeLogoMarquee names={orderedSidebarSeries} logos={marqueeLogos} selected={series} onSelect={selectSeries}/>}
     {series ? <SeriesGallery name={series} items={matches} onOpen={setSelected} onBack={clear}/> : filtered ? <section className="store-results"><div className="store-section-heading"><div><span className="store-kicker">EXPLORA WAKU WAKU</span><h1>{series || "Resultados"}</h1><p>{matches.length} {matches.length === 1 ? "figura" : "figuras"}</p></div><button type="button" onClick={clear}>Mostrar todo ×</button></div>{matches.length ? <div className="store-results-grid">{matches.map(p => <Figure key={p.id} product={p} onOpen={setSelected}/>)}</div> : <div className="store-no-results"><h2>No encontramos figuras</h2><p>Prueba con otra serie, personaje o estado.</p><button type="button" onClick={clear}>Ver todo el catálogo</button></div>}</section> : <div className="store-home-content">
       {selectHomeSeries(allSeries).map(name => <SeriesCarousel key={name} name={name} items={visible.filter(p => p.series === name)} onOpen={setSelected} onSeeAll={() => { setSeries(name); window.scrollTo({top:0,behavior:"smooth"}); }}/>) }
       <CollectorCommunity whatsappIcon={<WhatsAppIcon size={29}/>}/>
