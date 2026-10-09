@@ -55,4 +55,3 @@ El frontend consulta `GET /api/products`, adapta los campos estructurados y cons
 
 Las imágenes se descargan desde las URLs que entrega la API. Los recursos públicos de Supabase ya preparados se activan cuando la API devuelve las URLs correspondientes. La migración de URLs en Mongo sigue pendiente.
 
-El panel `/admin` es una vista previa sin guardado; su conexión con la administración de Commerce Service está pendiente. Nunca colocar credenciales de Mongo ni claves privadas de Supabase en el frontend.
