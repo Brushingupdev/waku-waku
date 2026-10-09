@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { getReferenceId } from "../../lib/product-presentation";
 import type { Product } from "../../lib/product-model";
 import { seriesImages, seriesSpotlights } from "../../lib/catalog-presentation";
 import { CollectionPhoto } from "./product-card";
@@ -9,7 +10,7 @@ import { CollectionPhoto } from "./product-card";
 export function SeriesCarousel({ name, items, onOpen, onSeeAll }: { name:string; items:Product[]; onOpen:(p:Product)=>void; onSeeAll:()=>void }) {
   const spotlight = seriesSpotlights[name];
   const priority = name==="My Hero Academia" ? [spotlight.id,"DaoZfSFn3XY-1","DaoZfSFn3XY-2","Da6q6QukYcK-1"] : name==="Vocaloid" ? [spotlight.id,"pdf-5-snow-miku","pdf-5-miku-fashion","pdf-5-miku-figurizm"] : spotlight ? [spotlight.id] : [];
-  const ordered = [...priority.map(id=>items.find(p=>(p.referenceId || p.id)===id)).filter((p):p is Product=>!!p), ...items.filter(p=>!priority.includes(p.referenceId || p.id))];
+  const ordered = [...priority.map(id=>items.find(p=>(getReferenceId(p))===id)).filter((p):p is Product=>!!p), ...items.filter(p=>!priority.includes(getReferenceId(p)))];
   const [slide, setSlide] = useState(0);
   const index = slide % ordered.length;
   const main = ordered[index];

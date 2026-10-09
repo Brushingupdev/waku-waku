@@ -1,5 +1,6 @@
 import { z } from "zod";
-import { type Product, validStatuses } from "./product-model";
+import { validStatuses } from "./product-model";
+import type { ReferenceProduct as Product } from "./reference-product-model";
 
 // Validation for the read-only reference catalog. Commerce Service has its own adapter.
 export const productSchema: z.ZodType<Product> = z.object({

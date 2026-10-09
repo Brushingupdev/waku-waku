@@ -1,4 +1,10 @@
 /* Live values for products without a matching poster; approved posters retain their layout. */
+.store-product-specifications { margin:8px 0 0; display:grid; gap:3px; font-size:12px; }
+.store-product-specifications>div { display:flex; gap:6px; align-items:baseline; flex-wrap:wrap; }
+.store-product-specifications dt { opacity:.75; font-weight:400; }
+.store-product-specifications dd { margin:0; font-weight:600; }
+.store-showcase-card .store-feature-copy>.store-product-specifications { display:none; }
+.store-catalog-layout .store-showcase-card.center[data-live-copy="true"] .store-feature-copy>.store-product-specifications { display:grid; font-size:clamp(8px,1.6cqw,13px); }
 .store-catalog-layout .store-showcase-card.center[data-live-copy="true"] .store-feature-photo img { width:49%; object-fit:contain; }
 .store-catalog-layout .store-showcase-card.center[data-live-copy="true"] .store-feature-copy { inset:0 0 0 48%; padding:clamp(10px,2cqw,24px); background:#110e1c; }
 .store-catalog-layout .store-showcase-card.center[data-live-copy="true"] .store-feature-copy>h2,

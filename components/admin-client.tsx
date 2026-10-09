@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import type { ReferenceProduct as Product } from "../lib/reference-product-model";
 import { baseProducts } from "../data/reference-products";
 import { pdfGroups } from "../data/preorder-catalogs";
 import { getProducts } from "../lib/products-api";
-import { type Product, type ProductStatus, statusLabels, validStatuses } from "../lib/product-model";
+import { type ProductStatus, statusLabels, validStatuses } from "../lib/product-model";
 
 const blank: Product = { id: "", title: "", detail: "", series: "", price: null, status: "por_confirmar", quantity: null, month: "", image: "/catalogo/pdf/pagina-04.jpg", source: "PDF página 4", visible: true };
 

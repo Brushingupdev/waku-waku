@@ -1,3 +1,4 @@
+import { getReferenceId } from "./product-presentation";
 import type { Product } from "./product-model";
 import { usesReferenceArtwork, usesReferencePoster } from "./reference-artwork";
 import { approvedCommerceMedia } from "./commerce-media";
@@ -28,18 +29,18 @@ export const sideCaptionArtwork: Record<string, { file: string; price: number }>
   "DU1S9PjgWPy-2": { file: "rem", price: 120 },
 };
 export const sideCaptionImage = (product: Product) => {
-  const artwork = sideCaptionArtwork[product.referenceId || product.id];
+  const artwork = sideCaptionArtwork[getReferenceId(product)];
   if (!usesReferenceArtwork(product) || artwork?.price !== product.price) return undefined;
   return approvedCommerceMedia(product)?.presentation.lettering || `/illustrations/carousel-lettering/${artwork.file}.png`;
 };
 
 export function showcaseImage(product: Product, center: boolean) {
-  if (center && !usesReferencePoster(product)) return product.image;
+  if (center && !usesReferencePoster(product)) return product.image || "/illustrations/waku-logo.png";
   const approved = usesReferenceArtwork(product) ? approvedCommerceMedia(product) : undefined;
   const cloudImage = approved?.presentation[center ? "hero" : "side"];
   if (cloudImage) return cloudImage;
-  const image = usesReferenceArtwork(product) ? showcaseArt[product.referenceId || product.id]?.image : undefined;
-  return (center ? image?.replace("/carousel-manga/", "/carousel-energy/").replace(".webp", ".png") : image) || product.image;
+  const image = usesReferenceArtwork(product) ? showcaseArt[getReferenceId(product)]?.image : undefined;
+  return (center ? image?.replace("/carousel-manga/", "/carousel-energy/").replace(".webp", ".png") : image) || product.image || "/illustrations/waku-logo.png";
 }
 export const modalMangaArtwork = (title:string) => title.includes("Bakugo") ? "bakugo" : title.includes("Toga") ? "toga" : title.includes("Miku") ? "miku" : title.includes("Law") ? "law" : title.includes("Gojo") ? "gojo" : title.includes("Killua") ? "killua" : title.includes("Douma") ? "douma" : title === "Rem" ? "rem" : null;
 export const mainSeries = ["My Hero Academia", "Vocaloid", "One Piece", "Re:Zero"];

@@ -1,4 +1,5 @@
 import media from "../data/commerce-media.json";
+import { getReferenceId } from "./product-presentation";
 import type { Product } from "./product-model";
 
 type ApprovedMedia = {
@@ -13,5 +14,5 @@ const approved: Record<string, ApprovedMedia> = media as Record<string, Approved
 // A later image replacement takes precedence over every editorial resource.
 export function approvedCommerceMedia(product: Product) {
   const entry = approved[product.id];
-  return entry && entry.referenceId === product.referenceId && entry.image === product.image ? entry : undefined;
+  return entry && entry.referenceId === getReferenceId(product) && entry.image === product.image ? entry : undefined;
 }
