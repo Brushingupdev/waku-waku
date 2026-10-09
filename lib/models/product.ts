@@ -1,0 +1,45 @@
+import { z } from "zod";
+import { seriesSchema } from "./series";
+
+export const productStatuses = [
+    "por_confirmar",
+    "disponible",
+    "preventa",
+    "separado",
+    "agotado"
+] as const;
+
+export type ProductStatus = (typeof productStatuses)[number];
+
+export const galleryItemSchema = z.object({
+  image: z.string(),
+  label: z.string(),
+});
+
+export const productSchema = z.object({
+  id: z.string().min(1),
+  title: z.string(),
+  series_id: z.string(),
+  series: seriesSchema,
+  collection: z.string().nullish().transform((v) => v ?? ""),
+  edition: z.string().nullish().transform((v) => v ?? ""),
+  height: z.string().nullish().transform((v) => v ?? ""),
+  price: z.number().finite().nonnegative().nullable(),
+  status: z.enum(productStatuses),
+  quantity: z.number().int().nonnegative().nullable(),
+  image: z.string(),
+  gallery: z.array(galleryItemSchema).default([]),
+  highlights: z.array(z.string()).default([]),
+  visible: z.boolean(),
+});
+
+export type Product = z.infer<typeof productSchema>;
+export type GalleryItem = z.infer<typeof galleryItemSchema>;
+
+export const statusLabels: Record<ProductStatus, string> = {
+  por_confirmar: "Por confirmar",
+  disponible: "Disponible",
+  preventa: "Preventa",
+  separado: "Separado",
+  agotado: "Agotado",
+};

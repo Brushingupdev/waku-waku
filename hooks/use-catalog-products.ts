@@ -12,7 +12,7 @@ export function useCatalogProducts() {
 
   useEffect(() => {
     const controller = new AbortController();
-    const commerceMode = Boolean(process.env.NEXT_PUBLIC_COMMERCE_API_URL?.trim());
+    const commerceMode = Boolean(process.env.NEXT_PUBLIC_COMMERCE_API_URL?.trim() || process.env.NEXT_PUBLIC_API_URL?.trim());
     const load = commerceMode ? getCommerceProducts(controller.signal) : getProducts(controller.signal);
     load.then((items) => {
       if (!controller.signal.aborted) setProducts(commerceMode ? mergeCommerceProducts(baseProducts, items) : items);

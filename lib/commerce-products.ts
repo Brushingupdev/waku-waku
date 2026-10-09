@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { api } from "./api/client";
 import type { Product } from "./product-model";
 import { validStatuses } from "./product-model";
 
@@ -52,9 +53,5 @@ export function mergeCommerceProducts(reference: Product[], commerce: Product[])
 }
 
 export async function getCommerceProducts(signal?: AbortSignal) {
-  const base = process.env.NEXT_PUBLIC_COMMERCE_API_URL?.trim().replace(/\/+$/, "");
-  if (!base) throw new Error("Commerce Service no está configurado.");
-  const response = await fetch(`${base}/products`, { signal, cache: "no-store" });
-  if (!response.ok) throw new Error(`No se pudo cargar Commerce Service (${response.status}).`);
-  return parseCommerceProducts(await response.json());
+  return parseCommerceProducts(await api.get("/products", z.unknown(), signal));
 }

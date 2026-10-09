@@ -10,6 +10,30 @@ const product = baseProducts[1];
 const { parseCommerceProducts, mergeCommerceProducts } = require("../lib/commerce-products.ts");
 const commerceFixture = require("./fixtures/commerce-products.json");
 const commerceMedia = require("../data/commerce-media.json");
+const { getSeries } = require("../lib/api/series.ts");
+const { ApiError: CommerceApiError } = require("../lib/api/client.ts");
+
+test("series requests sort the backend order, accept missing logos and forward cancellation", async () => {
+  const previousFetch = global.fetch;
+  const controller = new AbortController();
+  try {
+    global.fetch = async (url, options) => {
+      assert.match(url, /\/series$/);
+      assert.equal(options.signal, controller.signal);
+      return Response.json([
+        { id: "second", name: "Second", slug: "second", order: 2, logo_url: null },
+        { id: "first", name: "First", slug: "first", order: 1, logo_url: "https://cdn.example.com/logo.webp" },
+      ]);
+    };
+    const series = await getSeries(controller.signal);
+    assert.deepEqual(series.map(item => item.id), ["first", "second"]);
+    assert.equal(series[1].logo_url, "");
+    global.fetch = async () => Response.json({ error: "Unavailable" }, { status: 503 });
+    await assert.rejects(getSeries(), error => error instanceof CommerceApiError && error.status === 503);
+    global.fetch = async () => Response.json([{ id: "bad", name: "Bad", slug: "bad", order: "1" }]);
+    await assert.rejects(getSeries());
+  } finally { global.fetch = previousFetch; }
+});
 
 test("approved cloud media preserves compositions and respects new API images and prices", () => {
   const products = parseCommerceProducts(commerceFixture).map(p => ({ ...p, image: commerceMedia[p.id].image, gallery: commerceMedia[p.id].gallery.map(({ image, label }) => ({ image, label })) }));
