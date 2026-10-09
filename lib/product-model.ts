@@ -14,6 +14,13 @@ export type Product = {
   source: string;
   visible: boolean;
   updatedAt?: string;
+  // Presentation identity is separate from the UUID stored in Commerce Service.
+  referenceId?: string;
+  seriesId?: string;
+  collection?: string | null;
+  edition?: string | null;
+  height?: string | null;
+  highlights?: string[];
 };
 
 export const statusLabels: Record<ProductStatus, string> = {

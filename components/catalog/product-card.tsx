@@ -3,6 +3,7 @@ import { type Product, statusLabels } from "../../lib/product-model";
 import { money } from "../../lib/product-format";
 import { photoCrops, focalPositions, illustratedCollectionPhotos, collectionPhotos } from "../../lib/catalog-presentation";
 import { usesReferenceArtwork } from "../../lib/reference-artwork";
+import { approvedCommerceMedia } from "../../lib/commerce-media";
 
 export function ProductPhoto({ product }: { product: Product }) {
   const crop = usesReferenceArtwork(product) && product.source.startsWith("PDF") ? photoCrops[product.id] : undefined;
@@ -23,6 +24,9 @@ export function Figure({ product, onOpen, compact = false }: { product: Product;
 
 export function CollectionPhoto({product}:{product:Product}) {
   if (!usesReferenceArtwork(product)) return <ProductPhoto product={product}/>;
-  if(illustratedCollectionPhotos[product.id]) return <span className="store-collection-art"><img className="store-collection-art-figure" src={illustratedCollectionPhotos[product.id]} alt={product.title} loading="lazy"/></span>;
-  return collectionPhotos[product.id] ? <img src={`/illustrations/series-showcase/${collectionPhotos[product.id]}.webp`} alt={product.title} loading="lazy"/> : <ProductPhoto product={product}/>;
+  const cloudImage = approvedCommerceMedia(product)?.presentation.collection;
+  if (cloudImage) return <span className="store-collection-art"><img className="store-collection-art-figure" src={cloudImage} alt={product.title} loading="lazy"/></span>;
+  const visualId = product.referenceId || product.id;
+  if(illustratedCollectionPhotos[visualId]) return <span className="store-collection-art"><img className="store-collection-art-figure" src={illustratedCollectionPhotos[visualId]} alt={product.title} loading="lazy"/></span>;
+  return collectionPhotos[visualId] ? <img src={`/illustrations/series-showcase/${collectionPhotos[visualId]}.webp`} alt={product.title} loading="lazy"/> : <ProductPhoto product={product}/>;
 }

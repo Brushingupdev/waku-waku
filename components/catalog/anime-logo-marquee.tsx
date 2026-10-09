@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { animeFilterLogos } from "../../lib/catalog-presentation";
 
-export function AnimeLogoMarquee({ names, selected, onSelect }: { names:string[]; selected:string|null; onSelect:(name:string|null)=>void }) {
+export function AnimeLogoMarquee({ names, logos, selected, onSelect }: { names:string[]; logos:Record<string,string>; selected:string|null; onSelect:(name:string|null)=>void }) {
   const track = useRef<HTMLDivElement>(null);
   const paused = useRef(false);
   const idleUntil = useRef(0);
@@ -39,6 +39,6 @@ export function AnimeLogoMarquee({ names, selected, onSelect }: { names:string[]
     onPointerMove={e=>{const d=drag.current;if(!d)return;const distance=e.clientX-d.x;if(Math.abs(distance)>6)d.moved=true;if(d.mouse&&d.moved){e.currentTarget.setPointerCapture(e.pointerId);e.currentTarget.scrollLeft=d.scroll-distance;}}}
     onPointerUp={finish} onPointerCancel={finish}
     onClickCapture={e=>{if(suppressClick.current){e.preventDefault();e.stopPropagation();suppressClick.current=false;}}}>
-    {[0,1,2].map(copy=><div className="store-anime-marquee-group" key={copy} aria-hidden={copy !== 1}>{names.map(name=><button type="button" key={name} tabIndex={copy===1?0:-1} aria-label={"Filtrar por "+name} aria-pressed={selected===name} onClick={()=>onSelect(selected===name?null:name)}><img src={animeFilterLogos[name]} alt={name} loading="eager" draggable={false}/></button>)}</div>)}
+    {[0,1,2].map(copy=><div className="store-anime-marquee-group" key={copy} aria-hidden={copy !== 1}>{names.map(name=><button type="button" key={name} tabIndex={copy===1?0:-1} aria-label={"Filtrar por "+name} aria-pressed={selected===name} onClick={()=>onSelect(selected===name?null:name)}>{logos[name] ? <img src={logos[name]} alt={name} loading="eager" draggable={false} onError={event => { const fallback = animeFilterLogos[name]; if (fallback && event.currentTarget.getAttribute("src") !== fallback) event.currentTarget.src = fallback; }}/> : <span>{name}</span>}</button>)}</div>)}
   </div></nav>;
 }

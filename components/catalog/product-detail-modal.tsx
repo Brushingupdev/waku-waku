@@ -43,8 +43,8 @@ export function ProductDetailModal({ selected, onClose }: { selected: Product; o
     </header>
     <div className="store-manga-scroll"><div className={`store-product-gallery store-product-gallery-expanded${modalData?.preserveOriginal ? " store-product-gallery-original" : ""}`}>
       <div className="store-product-stage">
-        <img className="store-product-stage-image" src={selectedPhoto.image} alt={`${selected.title} — ${selectedPhoto.label}`}/>
-        <button type="button" className="store-product-enlarge" title="Ampliar foto" aria-label="Ampliar foto" onClick={() => setZoom(true)}><ZoomIn size={18}/> Ampliar foto</button>
+        {selectedPhoto.image ? <img className="store-product-stage-image" src={selectedPhoto.image} alt={`${selected.title} — ${selectedPhoto.label}`}/> : <span>Imagen por agregar</span>}
+        {selectedPhoto.image && <button type="button" className="store-product-enlarge" title="Ampliar foto" aria-label="Ampliar foto" onClick={() => setZoom(true)}><ZoomIn size={18}/> Ampliar foto</button>}
         {gallery.length > 1 && <><button type="button" className="store-product-photo-prev" onClick={() => setPhotoIndex(i => (i - 1 + gallery.length) % gallery.length)} aria-label="Foto anterior"><ChevronLeft/></button><button type="button" className="store-product-photo-next" onClick={() => setPhotoIndex(i => (i + 1) % gallery.length)} aria-label="Foto siguiente"><ChevronRight/></button></>}
       </div>
       {gallery.length > 1 && <div className="store-product-thumbnails" aria-label="Fotos de la figura">{gallery.map((photo,i) => <button key={`${photo.image}-${i}`} type="button" className={i === photoIndex ? "active" : ""} onClick={() => setPhotoIndex(i)} aria-label={`Mostrar ${photo.label}`} aria-pressed={i === photoIndex}><img src={photo.image} alt=""/></button>)}</div>}

@@ -40,3 +40,24 @@ npm run build
 La compilación de producción se ejecuta con `npm start`.
 
 
+
+## Conectar Commerce Service
+
+Crear `.env.local` en la raíz del frontend:
+
+```dotenv
+NEXT_PUBLIC_COMMERCE_API_URL=http://127.0.0.1:8000/api
+```
+
+Reiniciar `npm run dev`. El backend debe permitir `http://127.0.0.1:5173` mediante CORS y tener su conexión a Mongo configurada en su propio `.env`.
+
+El frontend consulta `GET /api/products`, adapta los campos estructurados y conserva los UUID. Las secciones aún no migradas mantienen los productos de referencia. Si falla la API, se muestra el catálogo de respaldo con un aviso.
+
+Las imágenes se descargan desde las URLs que entrega la API. Los recursos públicos de Supabase ya preparados se activan cuando la API devuelve las URLs correspondientes. La migración de URLs en Mongo sigue pendiente.
+
+
+### Series y proxy opcional
+
+La misma configuración de Commerce Service también consulta `GET /api/series` para obtener el orden y `logo_url` de la franja de animes. Si falla, conserva las series y logos de referencia.
+
+Como alternativa a la URL directa, configura `API_BASE_URL=http://127.0.0.1:8000` y `NEXT_PUBLIC_API_URL=/api`, dejando `NEXT_PUBLIC_COMMERCE_API_URL` vacía. Next.js reenviará `/api/*` al backend. Reinicia el servidor después de modificar esas variables. Sin `API_BASE_URL`, el proxy está desactivado.

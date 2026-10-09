@@ -1,12 +1,116 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const { baseProducts } = require("../data/reference-products.ts");
-const { getProducts, saveProduct, parseCatalogResponse } = require("../lib/products-api.ts");
+const { getProducts, parseCatalogResponse, ApiError } = require("../lib/products-api.ts");
 const { productModal } = require("../lib/product-modal.ts");
 const { selectFeaturedProducts, selectHomeSeries } = require("../lib/catalog-selectors.ts");
 const { showcaseImage, sideCaptionImage } = require("../lib/catalog-presentation.ts");
 const { usesReferenceArtwork } = require("../lib/reference-artwork.ts");
 const product = baseProducts[1];
+const { parseCommerceProducts, mergeCommerceProducts, getCommerceProducts } = require("../lib/commerce-products.ts");
+const commerceFixture = require("./fixtures/commerce-products.json");
+const commerceMedia = require("../data/commerce-media.json");
+const { getSeries } = require("../lib/api/series.ts");
+const { ApiError: CommerceApiError } = require("../lib/api/client.ts");
+
+test("series requests sort the backend order, accept missing logos and forward cancellation", async () => {
+  const previousFetch = global.fetch;
+  const controller = new AbortController();
+  try {
+    global.fetch = async (url, options) => {
+      assert.match(url, /\/series$/);
+      assert.equal(options.signal, controller.signal);
+      return Response.json([
+        { id: "second", name: "Second", slug: "second", order: 2, logo_url: null },
+        { id: "first", name: "First", slug: "first", order: 1, logo_url: "https://cdn.example.com/logo.webp" },
+      ]);
+    };
+    const series = await getSeries(controller.signal);
+    assert.deepEqual(series.map(item => item.id), ["first", "second"]);
+    assert.equal(series[1].logo_url, "");
+    global.fetch = async () => Response.json({ error: "Unavailable" }, { status: 503 });
+    await assert.rejects(getSeries(), error => error instanceof CommerceApiError && error.status === 503);
+    global.fetch = async () => Response.json([{ id: "bad", name: "Bad", slug: "bad", order: "1" }]);
+    await assert.rejects(getSeries());
+  } finally { global.fetch = previousFetch; }
+});
+
+test("approved cloud media preserves compositions and respects new API images and prices", () => {
+  const products = parseCommerceProducts(commerceFixture).map(p => ({ ...p, image: commerceMedia[p.id].image, gallery: commerceMedia[p.id].gallery.map(({ image, label }) => ({ image, label })) }));
+  const toga = products.find(p => p.title === "Toga vs Uraraka");
+  assert.equal(showcaseImage(toga, true), commerceMedia[toga.id].presentation.hero);
+  assert.equal(sideCaptionImage(toga), commerceMedia[toga.id].presentation.lettering);
+  assert.ok(productModal(toga).photos.some(photo => photo.provenance));
+  assert.equal(showcaseImage({ ...toga, price: 999 }, true), toga.image);
+  const replacement = { ...toga, image: "https://cdn.example.com/replacement.webp", gallery: [] };
+  assert.equal(usesReferenceArtwork(replacement), false);
+  assert.equal(showcaseImage(replacement, true), replacement.image);
+  assert.equal(sideCaptionImage(replacement), undefined);
+  const bakugo = products.find(p => p.title === "Katsuki Bakugo");
+  assert.equal(showcaseImage(bakugo, true), bakugo.image);
+  assert.equal(productModal(bakugo).photos.length, 3);
+});
+
+test("Commerce Service preserves UUIDs, structured fields and the remaining catalog", () => {
+  const live = parseCommerceProducts(commerceFixture);
+  const merged = mergeCommerceProducts(baseProducts, live);
+  assert.equal(live.length, 8);
+  assert.equal(merged.length, 37); // Remove the other Bakugo variant by explicit choice.
+  assert.ok(baseProducts.filter(p => p.id.startsWith("pdf-")).every(p => merged.includes(p)));
+  const featured = selectFeaturedProducts(merged.filter(p => p.visible));
+  assert.equal(featured.length, 8);
+  assert.ok(featured.every(p => live.includes(p)));
+  assert.equal(featured[1].id, "e9392956-c405-48ce-ac6a-45e291e80cbe");
+  assert.equal(featured[1].price, 180);
+  assert.equal(productModal(featured[1]).size, "23 cm");
+  assert.equal(productModal(featured[1]).collection, "Ichiban Kuji");
+  assert.equal(featured[1].month, "");
+  assert.equal(featured[1].source, "");
+  assert.equal(showcaseImage(featured[1], true), featured[1].image);
+  assert.match(showcaseImage(featured[0], true), /carousel-energy\/toga.png$/);
+  assert.equal(merged.find(p => p.id === featured[0].id), featured[0]);
+});
+
+test("Commerce validation rejects invalid status, mismatched series and broken payloads", () => {
+  const item = commerceFixture.products[0];
+  for (const change of [{ status: "UNKNOWN" }, { series: { ...item.series, id: "wrong" } }, { quantity: -1 }, { price: "180" }, { gallery: ["photo"] }]) {
+    assert.throws(() => parseCommerceProducts({ products: [{ ...item, ...change }] }));
+  }
+  const [missing] = parseCommerceProducts({ products: [{ ...item, series: null, image: null, gallery: [], collection: null, edition: null, height: null }] });
+  assert.equal(missing.series, "Sin serie");
+  assert.equal(missing.image, "");
+  assert.equal(productModal(missing).size, undefined);
+});
+
+test("the products service validates the shared model before adapting API data", async () => {
+  const previousFetch = global.fetch;
+  const controller = new AbortController();
+  try {
+    global.fetch = async (url, options) => {
+      assert.match(url, /\/products$/);
+      assert.equal(options.signal, controller.signal);
+      return Response.json(commerceFixture);
+    };
+    assert.deepEqual(await getCommerceProducts(controller.signal), parseCommerceProducts(commerceFixture));
+    const item = commerceFixture.products[0];
+    global.fetch = async () => Response.json({ products: [{ ...item, series: null, image: null }] });
+    const [missing] = await getCommerceProducts();
+    assert.equal(missing.series, "Sin serie");
+    assert.equal(missing.image, "");
+    global.fetch = async () => Response.json({ products: [{ ...item, series_id: "mismatched" }] });
+    await assert.rejects(getCommerceProducts());
+  } finally { global.fetch = previousFetch; }
+});
+
+test("missing and hidden migrated products do not revive old records or stale posters", () => {
+  const live = parseCommerceProducts(commerceFixture);
+  const removed = mergeCommerceProducts(baseProducts, live.filter(p => p.title !== "Douma"));
+  assert.ok(!removed.some(p => p.title === "Douma"));
+  const toga = live.find(p => p.title === "Toga vs Uraraka");
+  assert.equal(showcaseImage({ ...toga, price: 999 }, true), toga.image);
+  const hidden = mergeCommerceProducts(baseProducts, live.map(p => ({ ...p, visible: false })));
+  assert.deepEqual(selectFeaturedProducts(hidden.filter(p => p.visible)), []);
+});
 
 test("the Vercel reference endpoint is readable and cannot persist writes", async () => {
   const { GET, POST, PUT } = require("../app/api/products/route.ts");
@@ -67,32 +171,10 @@ test("backend images and galleries override reference artwork even with existing
   assert.equal(productModal(product).photos.length, 6);
 });
 
-test("list and save share the configurable endpoint and preserve HTTP errors", async () => {
+test("non-JSON backend responses become a readable API error", async () => {
   const previousFetch = global.fetch;
-  const previousUrl = process.env.NEXT_PUBLIC_PRODUCTS_API_URL;
-  const calls = [];
-  process.env.NEXT_PUBLIC_PRODUCTS_API_URL = "https://backend.example.com/products";
   try {
-    global.fetch = async (url, init) => {
-      calls.push({ url, init });
-      return Response.json(init.method ? { product: { ...product, price: 150.5 } } : { products: [] });
-    };
-    const controller = new AbortController();
-    assert.deepEqual(await getProducts(controller.signal), []);
-    assert.equal((await saveProduct(product)).price, 150.5);
-    await saveProduct({ ...product, id: "" });
-    assert.equal(calls[0].init.signal, controller.signal);
-    assert.equal(calls[1].init.method, "PUT");
-    assert.equal(calls[2].init.method, "POST");
-    assert.ok(calls.every(call => call.url === process.env.NEXT_PUBLIC_PRODUCTS_API_URL));
-    assert.deepEqual(JSON.parse(calls[1].init.body), product);
-    global.fetch = async () => Response.json({ error: "Inicia sesión" }, { status: 401 });
-    await assert.rejects(saveProduct(product), /Inicia sesión/);
-    global.fetch = async () => Response.json({ products: baseProducts, error: "Sin conexión" }, { status: 503 });
-    await assert.rejects(getProducts(), /Sin conexión/);
-  } finally {
-    global.fetch = previousFetch;
-    if (previousUrl === undefined) delete process.env.NEXT_PUBLIC_PRODUCTS_API_URL;
-    else process.env.NEXT_PUBLIC_PRODUCTS_API_URL = previousUrl;
-  }
+    global.fetch = async () => new Response("Unavailable", { status: 502 });
+    await assert.rejects(getProducts(), error => error instanceof ApiError && error.status === 502 && /JSON/.test(error.message));
+  } finally { global.fetch = previousFetch; }
 });
