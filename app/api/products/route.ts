@@ -1,8 +1,8 @@
-import { baseProducts } from "../../../data/reference-products";
+import { referenceCatalogProducts } from "../../../lib/product-presentation";
 
 // Read-only reference catalog until the external Python API is configured.
 export async function GET() {
-  return Response.json({ products: baseProducts });
+  return Response.json({ products: referenceCatalogProducts });
 }
 
 function backendPending() {

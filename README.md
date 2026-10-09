@@ -1,5 +1,7 @@
 # Waku Waku
 
+El endpoint de referencia `/api/products` también devuelve la estructura de Commerce Service, con `series_id`, `series` y especificaciones separadas. Conserva sus IDs e imágenes de referencia: cambiar el formato no sustituye la conexión con Mongo ni actualiza sus URLs.
+
 El catálogo usa la estructura de Commerce Service: `series_id`, el objeto `series`, `collection`, `edition` y `height`. Las asociaciones con los pósters se mantienen en `lib/product-presentation.ts`, fuera del producto del API. Los filtros comparan IDs de series, aunque sus nombres coincidan. Solo los datos antiguos de referencia se convierten a esta estructura al cargarlos.
 
 

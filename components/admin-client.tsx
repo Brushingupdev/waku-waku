@@ -6,6 +6,7 @@ import type { ReferenceProduct as Product } from "../lib/reference-product-model
 import { baseProducts } from "../data/reference-products";
 import { pdfGroups } from "../data/preorder-catalogs";
 import { getProducts } from "../lib/products-api";
+import { referenceMetadata } from "../lib/product-presentation";
 import { type ProductStatus, statusLabels, validStatuses } from "../lib/product-model";
 
 const blank: Product = { id: "", title: "", detail: "", series: "", price: null, status: "por_confirmar", quantity: null, month: "", image: "/catalogo/pdf/pagina-04.jpg", source: "PDF página 4", visible: true };
@@ -24,9 +25,14 @@ export default function AdminClient() {
     const controller = new AbortController();
     getProducts(controller.signal).then((items) => {
       if (controller.signal.aborted) return;
-      setProducts(items);
-      setDraft(items[0] ? { ...items[0] } : { ...blank });
-      setSelectedId(items[0]?.id ?? "");
+      // This disabled reference editor still uses its legacy form fields.
+      const drafts = items.flatMap(item => {
+        const original = referenceMetadata.get(item.id);
+        return original ? [{ ...original, title: item.title, price: item.price, status: item.status, quantity: item.quantity, visible: item.visible, image: item.image || "", gallery: item.gallery }] : [];
+      });
+      setProducts(drafts);
+      setDraft(drafts[0] ? { ...drafts[0] } : { ...blank });
+      setSelectedId(drafts[0]?.id ?? "");
     }).catch((error: unknown) => {
       if (!controller.signal.aborted) setLoadError(error instanceof Error ? error.message : "No se pudo cargar el catálogo.");
     });

@@ -17,7 +17,7 @@ export const galleryItemSchema = z.object({
 });
 
 export const productSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string().min(1),
   title: z.string().min(1),
   series_id: z.string().min(1),
   series: seriesSchema.nullable(),

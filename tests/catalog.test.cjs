@@ -1,6 +1,5 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { baseProducts: legacyProducts } = require("../data/reference-products.ts");
 const { referenceCatalogProducts: baseProducts } = require("../lib/product-presentation.ts");
 const { getProducts, parseCatalogResponse, ApiError } = require("../lib/products-api.ts");
 const { productModal } = require("../lib/product-modal.ts");
@@ -126,17 +125,24 @@ test("the Vercel reference endpoint is readable and cannot persist writes", asyn
   const { GET, POST, PUT } = require("../app/api/products/route.ts");
   const response = await GET();
   assert.equal(response.status, 200);
-  assert.deepEqual(parseCatalogResponse(await response.json()), legacyProducts);
+  const payload = await response.json();
+  assert.deepEqual(payload.products, baseProducts);
+  assert.deepEqual(parseCatalogResponse(payload), baseProducts);
+  assert.equal(typeof payload.products[0].series, "object");
+  assert.equal(payload.products[0].series_id, payload.products[0].series.id);
+  for (const item of payload.products) {
+    for (const field of ["detail", "month", "source", "seriesId", "referenceId"]) assert.ok(!(field in item));
+  }
   for (const handler of [POST, PUT]) {
     const result = await handler();
     assert.equal(result.status, 501);
     assert.match((await result.json()).error, /backend/);
   }
-  assert.deepEqual(parseCatalogResponse(await (await GET()).json()), legacyProducts);
+  assert.deepEqual(parseCatalogResponse(await (await GET()).json()), baseProducts);
 });
 
 test("the existing catalog retains its data, nullable prices and editorial order", () => {
-  assert.deepEqual(parseCatalogResponse({ products: legacyProducts }), legacyProducts);
+  assert.deepEqual(parseCatalogResponse({ products: baseProducts }), baseProducts);
   assert.equal(baseProducts.at(-1).price, null);
   assert.deepEqual(selectFeaturedProducts(baseProducts).map(p => p.id), [
     "DaoZfSFn3XY-1", "Da6q6QukYcK-2", "DQ2tT3EEQoO-1", "DVKO171kQPy-1",
@@ -153,7 +159,7 @@ test("a successful empty catalog replaces reference data", () => {
 
 test("malformed products are rejected at the API boundary", () => {
   for (const change of [{ status: "unknown" }, { price: "150" }, { price: -1 }, { quantity: 1.5 }, { visible: 1 }, { title: null }, { gallery: ["photo.png"] }]) {
-    assert.throws(() => parseCatalogResponse({ products: [{ ...legacyProducts[1], ...change }] }));
+    assert.throws(() => parseCatalogResponse({ products: [{ ...baseProducts[1], ...change }] }));
   }
   assert.throws(() => parseCatalogResponse({ results: [] }));
 });

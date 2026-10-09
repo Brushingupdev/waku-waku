@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { referenceCatalogProducts, referenceCatalogProduct } from "../lib/product-presentation";
+import { referenceCatalogProducts } from "../lib/product-presentation";
 import type { Product } from "../lib/product-model";
 import { getProducts } from "../lib/products-api";
 import { getCommerceProducts, mergeCommerceProducts } from "../lib/commerce-products";
@@ -13,7 +13,7 @@ export function useCatalogProducts() {
   useEffect(() => {
     const controller = new AbortController();
     const commerceMode = Boolean(process.env.NEXT_PUBLIC_COMMERCE_API_URL?.trim() || process.env.NEXT_PUBLIC_API_URL?.trim());
-    const load = commerceMode ? getCommerceProducts(controller.signal).then(items => mergeCommerceProducts(referenceCatalogProducts, items)) : getProducts(controller.signal).then(items => items.map(referenceCatalogProduct));
+    const load = commerceMode ? getCommerceProducts(controller.signal).then(items => mergeCommerceProducts(referenceCatalogProducts, items)) : getProducts(controller.signal);
     load.then((items) => {
       if (!controller.signal.aborted) setProducts(items);
     }).catch((cause: unknown) => {

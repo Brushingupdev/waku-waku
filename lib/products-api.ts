@@ -1,25 +1,6 @@
 import { z } from "zod";
-import { validStatuses } from "./product-model";
-import type { ReferenceProduct as Product } from "./reference-product-model";
+import { productsResponseSchema } from "./models/product";
 
-// Validation for the read-only reference catalog. Commerce Service has its own adapter.
-export const productSchema: z.ZodType<Product> = z.object({
-  id: z.string().min(1),
-  title: z.string(),
-  detail: z.string(),
-  series: z.string(),
-  price: z.number().finite().nonnegative().nullable(),
-  status: z.enum(validStatuses as [typeof validStatuses[number], ...typeof validStatuses[number][]]),
-  quantity: z.number().int().nonnegative().nullable(),
-  month: z.string(),
-  image: z.string(),
-  gallery: z.array(z.object({ image: z.string(), label: z.string() })).optional(),
-  source: z.string(),
-  visible: z.boolean(),
-  updatedAt: z.string().optional(),
-});
-
-const catalogSchema = z.object({ products: z.array(productSchema) });
 export class ApiError extends Error {
   constructor(message: string, public readonly status: number) {
     super(message);
@@ -28,7 +9,7 @@ export class ApiError extends Error {
 }
 
 export function parseCatalogResponse(value: unknown) {
-  return catalogSchema.parse(value).products;
+  return productsResponseSchema.parse(value).products;
 }
 
 function endpoint() {
