@@ -7,7 +7,7 @@ const { selectFeaturedProducts, selectHomeSeries } = require("../lib/catalog-sel
 const { showcaseImage, sideCaptionImage } = require("../lib/catalog-presentation.ts");
 const { usesReferenceArtwork } = require("../lib/reference-artwork.ts");
 const product = baseProducts[1];
-const { parseCommerceProducts, mergeCommerceProducts } = require("../lib/commerce-products.ts");
+const { parseCommerceProducts, mergeCommerceProducts, getCommerceProducts } = require("../lib/commerce-products.ts");
 const commerceFixture = require("./fixtures/commerce-products.json");
 const commerceMedia = require("../data/commerce-media.json");
 const { getSeries } = require("../lib/api/series.ts");
@@ -80,6 +80,26 @@ test("Commerce validation rejects invalid status, mismatched series and broken p
   assert.equal(missing.series, "Sin serie");
   assert.equal(missing.image, "");
   assert.equal(productModal(missing).size, undefined);
+});
+
+test("the products service validates the shared model before adapting API data", async () => {
+  const previousFetch = global.fetch;
+  const controller = new AbortController();
+  try {
+    global.fetch = async (url, options) => {
+      assert.match(url, /\/products$/);
+      assert.equal(options.signal, controller.signal);
+      return Response.json(commerceFixture);
+    };
+    assert.deepEqual(await getCommerceProducts(controller.signal), parseCommerceProducts(commerceFixture));
+    const item = commerceFixture.products[0];
+    global.fetch = async () => Response.json({ products: [{ ...item, series: null, image: null }] });
+    const [missing] = await getCommerceProducts();
+    assert.equal(missing.series, "Sin serie");
+    assert.equal(missing.image, "");
+    global.fetch = async () => Response.json({ products: [{ ...item, series_id: "mismatched" }] });
+    await assert.rejects(getCommerceProducts());
+  } finally { global.fetch = previousFetch; }
 });
 
 test("missing and hidden migrated products do not revive old records or stale posters", () => {
