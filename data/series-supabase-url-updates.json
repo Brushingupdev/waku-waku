@@ -1,0 +1,104 @@
+[
+  {
+    "id": "fb4dfe89-0396-4a34-a61f-0a0d00a827c9",
+    "name": "My Hero Academia",
+    "slug": "my-hero-academia",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/fb4dfe89-0396-4a34-a61f-0a0d00a827c9/47da37762ae39b73124d.webp"
+  },
+  {
+    "id": "305b4cb2-5de3-4006-ab59-c093bebad6d3",
+    "name": "Kimetsu no Yaiba",
+    "slug": "kimetsu-no-yaiba",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/305b4cb2-5de3-4006-ab59-c093bebad6d3/e0107e1d7a08adbc0f9f.webp"
+  },
+  {
+    "id": "38288cf7-74d9-4213-a8da-d195918ddc58",
+    "name": "One Piece",
+    "slug": "one-piece",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/38288cf7-74d9-4213-a8da-d195918ddc58/412741f4e47b27be0cb3.webp"
+  },
+  {
+    "id": "7bb45f4a-2b1e-4884-aafe-1c7c56b15481",
+    "name": "Vocaloid",
+    "slug": "vocaloid",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/7bb45f4a-2b1e-4884-aafe-1c7c56b15481/0ac8ad8d9cf681d14875.webp"
+  },
+  {
+    "id": "359264ca-aa8f-47fc-b271-38a6a3343fa1",
+    "name": "Re:Zero",
+    "slug": "re-zero",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/359264ca-aa8f-47fc-b271-38a6a3343fa1/2b1d884c472c3407088b.webp"
+  },
+  {
+    "id": "af3f3165-d324-4e0a-8965-41f4bacbd080",
+    "name": "Jujutsu Kaisen",
+    "slug": "jujutsu-kaisen",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/af3f3165-d324-4e0a-8965-41f4bacbd080/6dcb4390b3950a228013.webp"
+  },
+  {
+    "id": "fe461d5b-dcbe-4245-9fcf-9d2869ea669c",
+    "name": "Hunter x Hunter",
+    "slug": "hunter-x-hunter",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/fe461d5b-dcbe-4245-9fcf-9d2869ea669c/d8f7da644b8afb16f7e3.webp"
+  },
+  {
+    "id": "5c6694b1-e8b2-44aa-8e3c-e30541d0af89",
+    "name": "Bleach",
+    "slug": "bleach",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/5c6694b1-e8b2-44aa-8e3c-e30541d0af89/4d9f992526644cddd525.webp"
+  },
+  {
+    "id": "729c7396-da5f-453b-82e0-439f3c59d752",
+    "name": "Evangelion",
+    "slug": "evangelion",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/729c7396-da5f-453b-82e0-439f3c59d752/13589b5c5e04cfcf3c5c.webp"
+  },
+  {
+    "id": "f1e720ad-f8d1-4c46-a02e-6acf44bbf79f",
+    "name": "My Dress-Up Darling",
+    "slug": "my-dress-up-darling",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/f1e720ad-f8d1-4c46-a02e-6acf44bbf79f/e2cf25c8343340446489.webp"
+  },
+  {
+    "id": "43bc3883-620e-449d-8f9e-0a3889b3f26c",
+    "name": "Attack on Titan",
+    "slug": "attack-on-titan",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/43bc3883-620e-449d-8f9e-0a3889b3f26c/3dd257e946d0b8c334a7.webp"
+  },
+  {
+    "id": "f145033f-5ade-467c-80ea-24b09bba091f",
+    "name": "Bunny Girl Senpai",
+    "slug": "bunny-girl-senpai",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/f145033f-5ade-467c-80ea-24b09bba091f/63ddc7e021f820d369e5.webp"
+  },
+  {
+    "id": "8ec2001d-683f-4292-b761-7ef8c99f8f74",
+    "name": "Dandadan",
+    "slug": "dandadan",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/8ec2001d-683f-4292-b761-7ef8c99f8f74/9b0deb2dd109ac51ad64.webp"
+  },
+  {
+    "id": "9075fada-a2e8-4f8d-b543-59d46499ebf6",
+    "name": "Date A Live",
+    "slug": "date-a-live",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/9075fada-a2e8-4f8d-b543-59d46499ebf6/ad36bfa78bc519a8fe6c.webp"
+  },
+  {
+    "id": "c80c141d-76c7-46fb-9ff3-4c3d821e403d",
+    "name": "Haikyu!!",
+    "slug": "haikyu",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/c80c141d-76c7-46fb-9ff3-4c3d821e403d/695fd6daf3f45e2bda79.webp"
+  },
+  {
+    "id": "1bd79e61-e2fa-47bc-98ef-f1b942cb146f",
+    "name": "Tokyo Ghoul",
+    "slug": "tokyo-ghoul",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/1bd79e61-e2fa-47bc-98ef-f1b942cb146f/4cfac4846bb744789cb5.webp"
+  },
+  {
+    "id": "1ff36565-96bb-4604-a5f1-4173d02fdf48",
+    "name": "Yu-Gi-Oh!",
+    "slug": "yu-gi-oh",
+    "logo_url": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/series/1ff36565-96bb-4604-a5f1-4173d02fdf48/67d5b5cbd153eb11670c.webp"
+  }
+]
