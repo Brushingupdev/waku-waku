@@ -1,5 +1,8 @@
 import CatalogClient from "../components/catalog-client";
+import { getPublishedCatalog } from "../lib/server-catalog";
 
-export default function Home() {
-  return <CatalogClient />;
+export const revalidate = 60;
+
+export default async function Home() {
+  return <CatalogClient initialCatalog={await getPublishedCatalog()} />;
 }

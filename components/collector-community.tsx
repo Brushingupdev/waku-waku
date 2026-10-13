@@ -5,11 +5,12 @@ import { ChevronRight, Quote } from "lucide-react";
 import { useCollectors } from "../hooks/use-collectors";
 import { LoadingSkeleton } from "./loading-skeleton";
 import { LoadingImage } from "./loading-image";
+import type { Collector } from "../lib/models/collector";
 
 const contact = (text: string) => `https://wa.me/51937809466?text=${encodeURIComponent(text)}`;
 
-export default function CollectorCommunity({ whatsappIcon }: { whatsappIcon: ReactNode }) {
-  const { collectors, error, loading, retry } = useCollectors();
+export default function CollectorCommunity({ whatsappIcon, initialCollectors }: { whatsappIcon: ReactNode; initialCollectors?: Collector[] }) {
+  const { collectors, error, loading, retry } = useCollectors(initialCollectors);
 
   return <section className="collector-community" aria-labelledby="collector-community-title" id="coleccionistas">
     <header className="collector-community-heading">
