@@ -31,5 +31,5 @@ export function CollectionPhoto({product}:{product:Product}) {
   if (cloudImage) return <span className="store-collection-art"><LoadingImage className="store-collection-art-figure" src={cloudImage} alt={product.title} loading="lazy"/></span>;
   const visualId = getReferenceId(product);
   if(illustratedCollectionPhotos[visualId]) return <span className="store-collection-art"><LoadingImage className="store-collection-art-figure" src={illustratedCollectionPhotos[visualId]} alt={product.title} loading="lazy"/></span>;
-  return collectionPhotos[visualId] ? <LoadingImage src={`/illustrations/series-showcase/${collectionPhotos[visualId]}.webp`} alt={product.title} loading="lazy"/> : <ProductPhoto product={product}/>;
+  return collectionPhotos[visualId] ? <LoadingImage src={`https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/series-showcase/${collectionPhotos[visualId]}.webp`} alt={product.title} loading="lazy"/> : <ProductPhoto product={product}/>;
 }

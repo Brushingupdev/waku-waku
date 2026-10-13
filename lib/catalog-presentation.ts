@@ -9,14 +9,14 @@ export const featuredIds = [
   "DU6btvSARSm-1", "DaELkMLHwJw-1", "DaGveDbnxoS-1", "DU1S9PjgWPy-2",
 ];
 export const showcaseArt: Record<string, { image: string; accent: string }> = {
-  "DaoZfSFn3XY-1": { image: "/illustrations/carousel-manga/toga.webp", accent: "#ff80ac" },
-  "Da6q6QukYcK-2": { image: "/illustrations/carousel-manga/bakugo.webp", accent: "#ff9858" },
-  "DQ2tT3EEQoO-1": { image: "/illustrations/carousel-manga/miku.webp", accent: "#73e1df" },
-  "DVKO171kQPy-1": { image: "/illustrations/carousel-manga/law.webp", accent: "#ffc46d" },
-  "DU6btvSARSm-1": { image: "/illustrations/carousel-manga/gojo.webp", accent: "#c4a7ff" },
-  "DaELkMLHwJw-1": { image: "/illustrations/carousel-manga/killua.webp", accent: "#89c5ff" },
-  "DaGveDbnxoS-1": { image: "/illustrations/carousel-manga/douma.webp", accent: "#ff808e" },
-  "DU1S9PjgWPy-2": { image: "/illustrations/carousel-manga/rem.webp", accent: "#8cd7ff" },
+  "DaoZfSFn3XY-1": { image: "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/carousel-manga/toga.webp", accent: "#ff80ac" },
+  "Da6q6QukYcK-2": { image: "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/carousel-manga/bakugo.webp", accent: "#ff9858" },
+  "DQ2tT3EEQoO-1": { image: "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/carousel-manga/miku.webp", accent: "#73e1df" },
+  "DVKO171kQPy-1": { image: "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/carousel-manga/law.webp", accent: "#ffc46d" },
+  "DU6btvSARSm-1": { image: "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/carousel-manga/gojo.webp", accent: "#c4a7ff" },
+  "DaELkMLHwJw-1": { image: "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/carousel-manga/killua.webp", accent: "#89c5ff" },
+  "DaGveDbnxoS-1": { image: "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/carousel-manga/douma.webp", accent: "#ff808e" },
+  "DU1S9PjgWPy-2": { image: "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/carousel-manga/rem.webp", accent: "#8cd7ff" },
 };
 export const sideCaptionArtwork: Record<string, { file: string; price: number }> = {
   "DQ2tT3EEQoO-1": { file: "miku", price: 75 },
@@ -31,7 +31,7 @@ export const sideCaptionArtwork: Record<string, { file: string; price: number }>
 export const sideCaptionImage = (product: Product) => {
   const artwork = sideCaptionArtwork[getReferenceId(product)];
   if (!usesReferenceArtwork(product) || artwork?.price !== product.price) return undefined;
-  return approvedCommerceMedia(product)?.presentation.lettering || `/illustrations/carousel-lettering/${artwork.file}.webp`;
+  return approvedCommerceMedia(product)?.presentation.lettering || `https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/carousel-lettering/${artwork.file}.webp`;
 };
 
 export function showcaseImage(product: Product, center: boolean) {
@@ -99,33 +99,33 @@ export const focalPositions: Record<string, string> = {
 };
 
 export const seriesSpotlights: Record<string, { id: string; image: string }> = {
-  "My Hero Academia": { id:"Da6q6QukYcK-2", image:"/illustrations/series-showcase/bakugo.webp" },
-  "Vocaloid": { id:"DQ2tT3EEQoO-1", image:"/illustrations/series-showcase/miku.webp" },
-  "One Piece": { id:"DVKO171kQPy-1", image:"/illustrations/series-showcase/law.webp" },
-  "Re:Zero": { id:"DU1S9PjgWPy-2", image:"/illustrations/series-showcase/rem.webp" },
+  "My Hero Academia": { id:"Da6q6QukYcK-2", image:"https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/series-showcase/bakugo.webp" },
+  "Vocaloid": { id:"DQ2tT3EEQoO-1", image:"https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/series-showcase/miku.webp" },
+  "One Piece": { id:"DVKO171kQPy-1", image:"https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/series-showcase/law.webp" },
+  "Re:Zero": { id:"DU1S9PjgWPy-2", image:"https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/series-showcase/rem.webp" },
 };
 export const collectionPhotos: Record<string,string> = {
   "pdf-5-miku-fashion":"miku-fashion", "pdf-5-snow-miku":"snow-miku", "pdf-5-miku-figurizm":"miku-figurizm",
   "pdf-6-rem-bicute":"rem-bicute", "pdf-6-ram-bicute":"ram-bicute",
 };
 export const illustratedCollectionPhotos:Record<string,string> = {
-  "pdf-7-tamaki-set": "/illustrations/equal-gallery/tamaki-set-clean.webp",
-  "rezero-emilia": "/illustrations/equal-gallery/emilia.webp",
-  "Da6q6QukYcK-1": "/illustrations/equal-gallery/bakugo-back.webp",
-  "DaoZfSFn3XY-1": "/illustrations/equal-gallery/toga-uraraka.webp",
-  "DaoZfSFn3XY-2": "/illustrations/equal-gallery/deku.webp",
-  "DPnDHfPDUXh-1": "/illustrations/equal-gallery/bakugo-small.webp",
-  "DPnDHfPDUXh-2": "/illustrations/equal-gallery/toga.webp",
-  "pdf-5-snow-miku": "/illustrations/equal-gallery/snow.webp",
-  "pdf-5-miku-fashion": "/illustrations/equal-gallery/fashion.webp",
-  "pdf-5-miku-figurizm": "/illustrations/equal-gallery/figurizm.webp",
-  "DVKO171kQPy-2": "/illustrations/equal-gallery/lilith.webp",
-  "DPev6RhEaCe-1": "/illustrations/equal-gallery/mihawk.webp",
-  "DPev6RhEaCe-2": "/illustrations/equal-gallery/roger.webp",
-  "pdf-6-rem-bicute": "/illustrations/equal-gallery/rem-selected.webp",
-  "pdf-6-ram-bicute": "/illustrations/equal-gallery/ram-selected.webp",
-  "Da6q6QukYcK-2": "/illustrations/equal-gallery/bakugo.webp",
-  "DQ2tT3EEQoO-1": "/illustrations/equal-gallery/miku.webp",
-  "DVKO171kQPy-1": "/illustrations/equal-gallery/law.webp",
-  "DU1S9PjgWPy-2": "/illustrations/equal-gallery/rem-portrait.webp"
+  "pdf-7-tamaki-set": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/tamaki-set-clean.webp",
+  "rezero-emilia": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/emilia.webp",
+  "Da6q6QukYcK-1": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/bakugo-back.webp",
+  "DaoZfSFn3XY-1": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/toga-uraraka.webp",
+  "DaoZfSFn3XY-2": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/deku.webp",
+  "DPnDHfPDUXh-1": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/bakugo-small.webp",
+  "DPnDHfPDUXh-2": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/toga.webp",
+  "pdf-5-snow-miku": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/snow.webp",
+  "pdf-5-miku-fashion": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/fashion.webp",
+  "pdf-5-miku-figurizm": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/figurizm.webp",
+  "DVKO171kQPy-2": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/lilith.webp",
+  "DPev6RhEaCe-1": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/mihawk.webp",
+  "DPev6RhEaCe-2": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/roger.webp",
+  "pdf-6-rem-bicute": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/rem-selected.webp",
+  "pdf-6-ram-bicute": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/ram-selected.webp",
+  "Da6q6QukYcK-2": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/bakugo.webp",
+  "DQ2tT3EEQoO-1": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/miku.webp",
+  "DVKO171kQPy-1": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/law.webp",
+  "DU1S9PjgWPy-2": "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/rem-portrait.webp"
 };

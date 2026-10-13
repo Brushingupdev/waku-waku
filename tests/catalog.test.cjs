@@ -53,13 +53,13 @@ test("approved cloud media preserves compositions and respects new API images an
   assert.equal(productModal(bakugo).photos.length, 3);
 });
 
-test("Commerce Service preserves UUIDs, structured fields and the remaining catalog", () => {
+test("Commerce Service preserves UUIDs and does not revive migrated records missing from the API", () => {
   const live = parseCommerceProducts(commerceFixture);
   assert.deepEqual(live, commerceFixture.products);
   const merged = mergeCommerceProducts(baseProducts, live);
   assert.equal(live.length, 8);
-  assert.equal(merged.length, 37); // Remove the other Bakugo variant by explicit choice.
-  assert.ok(baseProducts.filter(p => p.id.startsWith("pdf-")).every(p => merged.includes(p)));
+  assert.equal(merged.length, 8);
+  assert.ok(!merged.some(p => p.id.startsWith("pdf-")));
   const featured = selectFeaturedProducts(merged.filter(p => p.visible));
   assert.equal(featured.length, 8);
   assert.ok(featured.every(p => live.includes(p)));
@@ -76,6 +76,28 @@ test("Commerce Service preserves UUIDs, structured fields and the remaining cata
   assert.equal(showcaseImage(featured[1], true), featured[1].image);
   assert.match(showcaseImage(featured[0], true), /carousel-energy\/toga.webp$/);
   assert.equal(merged.find(p => p.id === featured[0].id), featured[0]);
+});
+
+test("the complete migrated catalog restores 37 unique products with cloud galleries and presentation identity", () => {
+  const references = require("../data/migrated-product-references.json");
+  const migrated = Object.entries(references).map(([id, {referenceId}]) => {
+    const original = baseProducts.find(p => p.id === referenceId);
+    assert.ok(original);
+    const media = commerceMedia[id];
+    assert.ok(media);
+    const item = {...original, id, image:media.image, gallery:media.gallery.map(({image,label}) => ({image,label}))};
+    assert.match(item.image, /^https:\/\/[^/]+\.supabase\.co\/storage\/v1\/object\/public\//);
+    assert.ok(item.gallery.every(photo => photo.image.startsWith("https://")));
+    assert.equal(usesReferenceArtwork(item),true);
+    assert.deepEqual(productModal(item).photos.map(photo=>photo.image),item.gallery.map(photo=>photo.image));
+    assert.equal(usesReferenceArtwork({...item,image:"https://cdn.example.com/replaced.webp"}),false);
+    return item;
+  });
+  assert.equal(migrated.length,29);
+  const merged=mergeCommerceProducts(baseProducts,[...parseCommerceProducts(commerceFixture),...migrated]);
+  assert.equal(merged.length,37);
+  assert.equal(new Set(merged.map(p=>p.id)).size,37);
+  assert.ok(merged.every(p=>!p.id.startsWith("pdf-")));
 });
 
 test("Commerce validation rejects invalid status, mismatched series and broken payloads", () => {
