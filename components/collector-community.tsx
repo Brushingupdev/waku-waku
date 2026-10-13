@@ -3,6 +3,8 @@
 import type { ReactNode } from "react";
 import { ChevronRight, Quote } from "lucide-react";
 import { useCollectors } from "../hooks/use-collectors";
+import { LoadingSkeleton } from "./loading-skeleton";
+import { LoadingImage } from "./loading-image";
 
 const contact = (text: string) => `https://wa.me/51937809466?text=${encodeURIComponent(text)}`;
 
@@ -14,12 +16,12 @@ export default function CollectorCommunity({ whatsappIcon }: { whatsappIcon: Rea
       <h2 id="collector-community-title"><span>Coleccionistas que ya</span><em>confiaron en Waku Waku</em></h2>
       <p>De nuestra tienda a tu vitrina.</p>
     </header>
-    {loading ? <p className="collector-community-state" role="status">Cargando experiencias…</p>
+    {loading ? <LoadingSkeleton variant="collectors"/>
       : error ? <div className="collector-community-state" role="status"><p>{error}</p><button type="button" onClick={retry}>Reintentar</button></div>
       : collectors.length === 0 ? <p className="collector-community-state" role="status">Todavía no hay experiencias publicadas. Comparte tu colección con nosotros.</p>
       : <div className="collector-community-mosaic">
       {collectors.map(person => <article className={`collector-story collector-story-${person.slot}`} key={person.id}>
-        {person.image_url ? <img className="collector-story-photo" src={person.image_url} alt={person.alt || `${person.name} con su figura de ${person.figure}`} loading="lazy" decoding="async" width={person.slot === "feature" ? 900 : 1200} height={person.slot === "feature" ? 1200 : 900}/>
+        {person.image_url ? <LoadingImage className="collector-story-photo" src={person.image_url} alt={person.alt || `${person.name} con su figura de ${person.figure}`} loading="lazy" decoding="async" width={person.slot === "feature" ? 900 : 1200} height={person.slot === "feature" ? 1200 : 900}/>
           : <div className="collector-story-photo collector-photo-placeholder" role="img" aria-label="Imagen no disponible">Imagen no disponible</div>}
         <div className="collector-story-caption">
           <Quote className="collector-quote-icon" size={32} fill="currentColor" strokeWidth={0} aria-hidden="true"/>

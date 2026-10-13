@@ -8,7 +8,7 @@ export function SeriesGallery({ name, items, onOpen, onBack }: { name:string; it
   return <section className="store-series-gallery" aria-label={`Toda la colección de ${name}`}>
     <header className="series-gallery-heading">
       {seriesImages[name] ? <img className="series-gallery-logo" src={`/illustrations/${seriesImages[name]}`} alt={name}/> : <p className="series-gallery-name">{name}</p>}
-      <h2><img src="/illustrations/series-gallery/collection-title.png" alt="Toda la colección"/></h2>
+      <h2><img src="/illustrations/series-gallery/collection-title.webp" alt="Toda la colección"/></h2>
       <p className="series-gallery-count"><strong>{String(items.length).padStart(2,"0")}</strong> figuras</p>
       <button type="button" className="series-gallery-back" onClick={onBack}><ChevronLeft size={18}/>Volver al catálogo</button>
     </header>

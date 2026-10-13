@@ -9,6 +9,7 @@ import { getCommerceProducts, mergeCommerceProducts } from "../lib/commerce-prod
 export function useCatalogProducts() {
   const [products, setProducts] = useState<Product[]>(referenceCatalogProducts);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -20,9 +21,11 @@ export function useCatalogProducts() {
       if (!controller.signal.aborted) {
         setError(cause instanceof Error ? cause.message : "No se pudo cargar el catálogo.");
       }
+    }).finally(() => {
+      if (!controller.signal.aborted) setLoading(false);
     });
     return () => controller.abort();
   }, []);
 
-  return { products, error };
+  return { products, error, loading };
 }

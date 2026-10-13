@@ -19,6 +19,7 @@ import "./preventas-library.css";
 import "./how-to-buy.css";
 import "./series-gallery.css";
 import "./commerce-carousel.css";
+import "./loading-motion.css";
 
 export const metadata: Metadata = {
   title: "Waku Waku · Catálogo de figuras",
@@ -27,8 +28,8 @@ export const metadata: Metadata = {
     "codex-preview": "waku-waku",
   },
   icons: {
-    icon: "/illustrations/waku-logo.png",
-    shortcut: "/illustrations/waku-logo.png",
+    icon: "/illustrations/waku-logo.webp",
+    shortcut: "/illustrations/waku-logo.webp",
   },
 };
 

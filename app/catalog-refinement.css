@@ -19,7 +19,7 @@
 .store-whatsapp-dark span { font-size:16px; margin-left:2px; opacity:.85; line-height:1; }
 
 /* ── Catalog Top (search + tabs + hero) ── */
-.store-catalog-top { background:#fff9fc url('/illustrations/catalogo-laterales.png') center bottom / 100% calc(100% - 68px) no-repeat; border-bottom:0; }
+.store-catalog-top { background:#fff9fc url('/illustrations/catalogo-laterales.webp') center bottom / 100% calc(100% - 68px) no-repeat; border-bottom:0; }
 .storefront .store-catalog-top:before,.storefront .store-catalog-top:after { content:none; }
 .store-search-line { max-width:1520px; min-height:68px; padding:14px 32px; gap:22px; border-bottom:1px solid #f5e5ec; }
 .store-count { min-width:280px; gap:16px; font-size:15px; }
@@ -448,7 +448,7 @@
   linear-gradient(180deg,#fff8fb 0%,#fffdfd 35%,#fffafc 70%,#fff6fa 100%); }
 .store-catalog-layout .store-catalog-top { background:transparent; border-bottom:0; }
 @media(min-width:1850px) {
-  .store-catalog-page::before,.store-catalog-page::after { content:""; position:absolute; z-index:0; pointer-events:none; width:calc((100vw - 1680px)/2); max-width:235px; height:380px; background:url('/illustrations/sakura-esquina.png') center/contain no-repeat; opacity:.2; }
+  .store-catalog-page::before,.store-catalog-page::after { content:""; position:absolute; z-index:0; pointer-events:none; width:calc((100vw - 1680px)/2); max-width:235px; height:380px; background:url('/illustrations/sakura-esquina.webp') center/contain no-repeat; opacity:.2; }
   .store-catalog-page::before { top:145px; left:0; }
   .store-catalog-page::after { top:900px; right:0; transform:scaleX(-1); }
   .store-catalog-layout,.store-catalog-page>.store-fineprint { position:relative; z-index:1; }

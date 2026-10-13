@@ -5,7 +5,7 @@
   position:relative;
   isolation:isolate;
   background-color: #fafafa;
-  background-image: linear-gradient(#ffffff66,#ffffff66), url('/illustrations/manga-collage-crisp.png');
+  background-image: linear-gradient(#ffffff66,#ffffff66), url('/illustrations/manga-collage-crisp.webp');
   background-position: center top;
   background-size: 100% auto;
   background-repeat: repeat-y;
@@ -57,7 +57,7 @@
  .storefront::before,.storefront::after {
   content:'';position:absolute;top:0;bottom:0;width:clamp(180px,27vw,390px);
   z-index:-1;pointer-events:none;
-  background-image:linear-gradient(#ffffff66,#ffffff66),url('/illustrations/manga-collage-crisp.png');
+  background-image:linear-gradient(#ffffff66,#ffffff66),url('/illustrations/manga-collage-crisp.webp');
   background-size:1400px auto;background-repeat:repeat-y;
  }
  .storefront::before {left:0;background-position:left top;mask-image:linear-gradient(to right,#000 80%,transparent);}

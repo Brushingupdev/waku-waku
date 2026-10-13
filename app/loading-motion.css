@@ -1,0 +1,42 @@
+.loading-skeleton{width:100%}
+.store-feature-photo,.store-collection-photo,.store-figure-image,.store-collection-art,.store-product-stage{position:relative}
+.loading-image{transition:opacity .35s ease}
+.loading-image-loading,.loading-image-error{opacity:0}
+.loading-image-ready{opacity:1}
+.image-loading-overlay,.image-error-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:inherit;pointer-events:none}
+.image-error-overlay{background:#e8e8ed;color:#47516c;font:600 14px Arial,sans-serif;text-align:center;padding:16px}
+.store-pdf-crop{position:relative}
+.storefront img.skeleton-crop-probe{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.collector-story>.image-loading-overlay,.collector-story>.image-error-overlay{z-index:0}
+.collector-story-caption{z-index:1}
+@media(max-width:720px){.collector-story-top-center .collector-story-caption,.collector-story-top-right .collector-story-caption,.collector-story-bottom-center .collector-story-caption,.collector-story-bottom-right .collector-story-caption{min-height:160px}.skeleton-collector:not(.collector-story-feature):not(.collector-story-float) .collector-story-caption{min-height:160px!important}}
+.skeleton-block{background:linear-gradient(100deg,#e8e8ed 25%,#f5f5f8 45%,#e8e8ed 65%);background-size:220% 100%;animation:skeleton-shimmer 1.6s ease-in-out infinite;border-radius:14px}
+.skeleton-hero{position:relative}
+.skeleton-hero-fill{position:absolute;inset:0;border-radius:inherit}
+.skeleton-silhouette{display:block;position:absolute;inset:5% 8% 0;background:center bottom / contain no-repeat;opacity:.28;pointer-events:none}
+.skeleton-silhouette-flow{background-image:url('/illustrations/skeleton/figure-flow.webp')}
+.skeleton-silhouette-warrior{background-image:url('/illustrations/skeleton/figure-warrior.webp')}
+.skeleton-product .store-collection-photo{position:relative;overflow:hidden}
+.skeleton-hero.center .skeleton-silhouette{inset:3% 18% 0}
+.skeleton-dots{display:flex;justify-content:center;gap:9px;padding:15px 0}
+.skeleton-dots>span{width:9px;height:9px;border-radius:50%}
+.skeleton-series-strip{display:flex;justify-content:center;align-items:center;gap:clamp(20px,4vw,70px);height:160px;overflow:hidden;padding:24px}
+.skeleton-series-strip>span{flex:0 0 clamp(95px,12vw,180px);height:64px}
+.skeleton-series-heading{width:180px;height:64px}
+.skeleton-see-all{width:170px;height:44px;border-radius:99px}
+.skeleton-caption{width:100%;min-width:0}
+.skeleton-line{display:block;height:18px;width:80%;border-radius:6px}
+.skeleton-line.short{width:45%;height:14px;margin-top:12px}
+.skeleton-cta{flex:none;width:70px;height:40px;border-radius:99px}
+.storefront .skeleton-product{background:#fff;border-color:#e1e5ee}
+.storefront .skeleton-product .store-collection-photo{height:100%;width:100%;border-radius:0}
+.storefront .skeleton-product .store-collection-featured-copy{background:#fff}
+.skeleton-collector .collector-story-photo{border-radius:0}
+.skeleton-collector .collector-story-caption{background:#f4f4f7;width:auto}
+.skeleton-collector .skeleton-caption{padding:5px 0}
+.scroll-reveal-pending{opacity:0;translate:0 16px}
+.scroll-reveal-visible{animation:scroll-reveal .55s ease-out both}
+@keyframes skeleton-shimmer{to{background-position:-220% 0}}
+@keyframes scroll-reveal{from{opacity:0;translate:0 16px}to{opacity:1;translate:0 0}}
+@media(max-width:720px){.skeleton-series-strip{height:110px;justify-content:flex-start;gap:24px}.skeleton-series-strip>span{height:50px}.skeleton-series-heading{width:130px;height:48px}.skeleton-see-all{width:110px;height:36px}.skeleton-collector:not(.collector-story-feature):not(.collector-story-float) .collector-story-photo{height:auto;aspect-ratio:4/3}.skeleton-collector:not(.collector-story-feature) .collector-story-caption{min-height:125px}.skeleton-collector.collector-story-float .collector-story-photo{height:100%;min-height:160px}}
+@media(prefers-reduced-motion:reduce){.skeleton-block,.scroll-reveal-visible{animation:none}.scroll-reveal-pending{opacity:1;translate:none}.loading-image{transition:none}}

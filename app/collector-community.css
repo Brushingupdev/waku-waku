@@ -29,7 +29,7 @@
 .collector-story-float .collector-story-caption h3 { font-size:12px; }
 .collector-story-float .collector-story-figure,.collector-story-float .collector-story-caption blockquote p { font-size:12px; }
 .collector-community-footer { position:relative; isolation:isolate; display:grid; grid-template-columns:minmax(0,1fr) auto auto; align-items:center; gap:22px; min-height:128px; margin-top:18px; padding:18px 14%; background:#fff; border-radius:10px; }
-.collector-community-footer::before,.collector-community-footer::after { content:""; position:absolute; z-index:-1; top:0; bottom:0; width:15%; background-image:url("/illustrations/collectors/footer-manga.png"); background-size:auto 170%; background-repeat:no-repeat; pointer-events:none; }
+.collector-community-footer::before,.collector-community-footer::after { content:""; position:absolute; z-index:-1; top:0; bottom:0; width:15%; background-image:url("/illustrations/collectors/footer-manga.webp"); background-size:auto 170%; background-repeat:no-repeat; pointer-events:none; }
 .collector-community-footer::before { left:0; background-position:left center; border-radius:10px 0 0 10px; }
 .collector-community-footer::after { right:0; background-position:right center; border-radius:0 10px 10px 0; }
 .collector-community-message { display:flex; align-items:flex-start; gap:10px; min-width:0; padding-right:20px; border-right:1px solid #dbe1e9; }

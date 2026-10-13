@@ -19,9 +19,13 @@ import { SeriesGallery } from "./catalog/series-gallery";
 import { SeriesCarousel } from "./catalog/series-carousel";
 import { ProductSpecifications } from "./catalog/product-specifications";
 import { AnimeLogoMarquee } from "./catalog/anime-logo-marquee";
+import { LoadingImage } from "./loading-image";
+import { LoadingSkeleton } from "./loading-skeleton";
+import { useScrollReveal } from "../hooks/use-scroll-reveal";
 
 export default function CatalogClient() {
-  const { products, error: loadError } = useCatalogProducts();
+  const { products, error: loadError, loading } = useCatalogProducts();
+  useScrollReveal(loading);
   const { series: apiSeries, error: seriesError } = useSeries();
   const [query, setQuery] = useState("");
   useEffect(() => {
@@ -65,9 +69,10 @@ export default function CatalogClient() {
     {notice && <p className="store-load-notice" role="status">{notice}</p>}
     <div className="store-catalog-layout">
     <div className="store-catalog-content">
+    {loading ? <LoadingSkeleton/> : <>
     {!series && <section className="store-catalog-top">
       {featured.length > 1 && <div className="store-featured-wrap"><div className="store-featured" onTouchStart={e => { touchStart.current = e.touches[0].clientX; }} onTouchEnd={e => { const delta = e.changedTouches[0].clientX - touchStart.current; if (Math.abs(delta) > 50) moveHero(delta < 0 ? 1 : -1); }}>
-        {([-1,0,1] as const).map(offset => { const p = heroAt(offset); return <article key={`${p.id}-${offset}`} data-live-copy={offset === 0 && !usesReferencePoster(p)} data-product-id={p.id} style={{ "--manga-accent": showcaseArt[getReferenceId(p)]?.accent } as React.CSSProperties} className={`store-feature-card store-showcase-card ${offset === 0 ? "center" : "side"} showcase-theme-${(heroIndex + offset + featured.length) % featured.length % 4}`}><button type="button" className="store-feature-photo" onClick={() => setSelected(p)} aria-label={`Ver detalle de ${p.title}`}><img src={showcaseImage(p, offset === 0)} alt={offset === 0 ? `${p.title}, ${money(p.price)}, ${statusLabels[p.status]}` : p.title}/></button><img className="store-showcase-brand" src="/illustrations/waku-logo.png" alt="Waku Waku"/><div className="store-feature-copy">{offset !== 0 && sideCaptionImage(p) && <img className="store-side-lettering" src={sideCaptionImage(p)} alt="" aria-hidden="true" width={900} height={450}/ >}{offset === 0 && (p.series?.logo_url || seriesImages[p.series?.name || ""]) && <img className="store-feature-series-logo" src={p.series?.logo_url || `/illustrations/${seriesImages[p.series?.name || ""]}`} alt=""/>}<h2>{p.title}</h2><div className="store-feature-price"><strong>{p.price === null ? "Consultar" : <><span>S/</span> {p.price}</>}</strong><small className={`store-status status-${p.status}`}>{statusLabels[p.status]}</small></div>{offset === 0 && <><div className="store-feature-actions"><a href={wa(p)} aria-label={`Consultar por WhatsApp sobre ${p.title}`} target="_blank" rel="noreferrer"><WhatsAppIcon size={19}/>Consultar por WhatsApp<ArrowUpRight className="store-hero-cta-arrow" size={21}/></a></div><ProductSpecifications product={p}/></>}</div></article>; })}
+        {([-1,0,1] as const).map(offset => { const p = heroAt(offset); return <article key={`${p.id}-${offset}`} data-live-copy={offset === 0 && !usesReferencePoster(p)} data-product-id={p.id} style={{ "--manga-accent": showcaseArt[getReferenceId(p)]?.accent } as React.CSSProperties} className={`store-feature-card store-showcase-card ${offset === 0 ? "center" : "side"} showcase-theme-${(heroIndex + offset + featured.length) % featured.length % 4}`}><button type="button" className="store-feature-photo" onClick={() => setSelected(p)} aria-label={`Ver detalle de ${p.title}`}><LoadingImage src={showcaseImage(p, offset === 0)} alt={offset === 0 ? `${p.title}, ${money(p.price)}, ${statusLabels[p.status]}` : p.title}/></button><img className="store-showcase-brand" src="/illustrations/waku-logo.webp" alt="Waku Waku"/><div className="store-feature-copy">{offset !== 0 && sideCaptionImage(p) && <img className="store-side-lettering" src={sideCaptionImage(p)} alt="" aria-hidden="true" width={900} height={450}/ >}{offset === 0 && (p.series?.logo_url || seriesImages[p.series?.name || ""]) && <img className="store-feature-series-logo" src={p.series?.logo_url || `/illustrations/${seriesImages[p.series?.name || ""]}`} alt=""/>}<h2>{p.title}</h2><div className="store-feature-price"><strong>{p.price === null ? "Consultar" : <><span>S/</span> {p.price}</>}</strong><small className={`store-status status-${p.status}`}>{statusLabels[p.status]}</small></div>{offset === 0 && <><div className="store-feature-actions"><a href={wa(p)} aria-label={`Consultar por WhatsApp sobre ${p.title}`} target="_blank" rel="noreferrer"><WhatsAppIcon size={19}/>Consultar por WhatsApp<ArrowUpRight className="store-hero-cta-arrow" size={21}/></a></div><ProductSpecifications product={p}/></>}</div></article>; })}
       </div><div className="store-feature-controls"><button type="button" onClick={() => moveHero(-1)} aria-label="Destacados anteriores"><ChevronLeft/></button><span>{featured.map((p,i) => <button type="button" key={p.id} className={heroIndex === i ? "active" : ""} onClick={() => setHeroIndex(i)} aria-label={`Ver destacado ${i+1}`} aria-pressed={heroIndex === i}/>)}</span><button type="button" onClick={() => moveHero(1)} aria-label="Destacados siguientes"><ChevronRight/></button></div></div>}
 
     </section>}
@@ -76,6 +81,7 @@ export default function CatalogClient() {
       {homeSeries.map(item => <SeriesCarousel key={item.id} name={item.name} items={visible.filter(p => p.series_id === item.id)} onOpen={setSelected} onSeeAll={() => { setSeries(item.id); window.scrollTo({top:0,behavior:"smooth"}); }}/>) }
       <CollectorCommunity whatsappIcon={<WhatsAppIcon size={29}/>}/>
     </div>}
+    </>}
     </div>
     </div>
     <p className="store-fineprint">Confirma precio y disponibilidad actual por WhatsApp antes de separar una figura.</p>
