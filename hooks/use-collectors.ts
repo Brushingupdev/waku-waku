@@ -6,6 +6,8 @@ import { getCollectors, type Collector } from "../lib/api/collectors";
 export function useCollectors() {
   const [collectors, setCollectors] = useState<Collector[]>([]);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -13,13 +15,21 @@ export function useCollectors() {
       .then((items) => {
         if (!controller.signal.aborted) setCollectors(items);
       })
-      .catch((cause: unknown) => {
+      .catch(() => {
         if (!controller.signal.aborted) {
-          setError(cause instanceof Error ? cause.message : "No se pudo cargar la lista de coleccionistas.");
+          setError("No pudimos cargar las experiencias de los coleccionistas.");
         }
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setLoading(false);
       });
     return () => controller.abort();
-  }, []);
+  }, [attempt]);
 
-  return { collectors, error };
+  const retry = () => {
+    setLoading(true);
+    setError("");
+    setAttempt(value => value + 1);
+  };
+  return { collectors, error, loading, retry };
 }

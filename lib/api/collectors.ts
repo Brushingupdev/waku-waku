@@ -6,5 +6,5 @@ export type { Collector };
 
 export async function getCollectors(signal?: AbortSignal): Promise<Collector[]> {
   const list = await api.get("/collectors", z.array(collectorSchema), signal);
-  return list.sort((a, b) => a.order - b.order);
+  return list.filter(item => item.is_active).sort((a, b) => a.order - b.order);
 }
