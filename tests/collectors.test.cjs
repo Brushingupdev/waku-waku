@@ -5,10 +5,14 @@ const { renderToStaticMarkup } = require("react-dom/server");
 const CollectorCommunity = require("../components/collector-community.tsx").default;
 const { getCollectors } = require("../lib/api/collectors.ts");
 
-test("collectors show a loading message instead of an empty mosaic", () => {
+test("collectors loading preserves the mosaic slots without interactive cards", () => {
   const html = renderToStaticMarkup(React.createElement(CollectorCommunity, { whatsappIcon: null }));
   assert.match(html, /Cargando experiencias/);
-  assert.doesNotMatch(html, /collector-community-mosaic/);
+  assert.match(html, /collector-community-mosaic/);
+  for (const slot of ["feature", "top-center", "top-right", "bottom-center", "bottom-right", "float"]) {
+    assert.match(html, new RegExp(`collector-story-${slot}`));
+  }
+  assert.match(html, /aria-busy="true"/);
 });
 
 test("collectors API preserves data, order and cancellation without inactive entries", async () => {

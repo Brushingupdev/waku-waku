@@ -74,7 +74,7 @@ test("Commerce Service preserves UUIDs, structured fields and the remaining cata
   assert.ok(!("month" in featured[1]));
   assert.ok(!("source" in featured[1]));
   assert.equal(showcaseImage(featured[1], true), featured[1].image);
-  assert.match(showcaseImage(featured[0], true), /carousel-energy\/toga.png$/);
+  assert.match(showcaseImage(featured[0], true), /carousel-energy\/toga.webp$/);
   assert.equal(merged.find(p => p.id === featured[0].id), featured[0]);
 });
 

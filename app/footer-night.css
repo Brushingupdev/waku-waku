@@ -2,7 +2,7 @@
 .storefront:has(.store-catalog-page) .store-footer.store-footer-manga {
   display:block;
   position:relative;
-  background:#041c34 url('/illustrations/footer/manga-night.png') right top/84% auto no-repeat;
+  background:#041c34 url('/illustrations/footer/manga-night.webp') right top/84% auto no-repeat;
   color:#fff;
   padding:46px max(32px,6vw) 0;
   overflow:hidden;

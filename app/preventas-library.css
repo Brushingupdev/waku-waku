@@ -1,6 +1,6 @@
 .preorder-library{position:relative;isolation:isolate;padding-bottom:16px;color:#08213f}
 .preorder-library-hero{position:relative;isolation:isolate;width:calc(100% - 80px);max-width:1440px;margin:auto;min-height:clamp(345px,28vw,430px);display:flex;align-items:center}
-.preorder-library-hero::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:url('/illustrations/preventas-library/hero.png') center top/100% auto no-repeat;mask-image:linear-gradient(to right,transparent,#000 12%,#000 97%,transparent),linear-gradient(to bottom,#000 88%,transparent);mask-composite:intersect}
+.preorder-library-hero::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:url('/illustrations/preventas-library/hero.webp') center top/100% auto no-repeat;mask-image:linear-gradient(to right,transparent,#000 12%,#000 97%,transparent),linear-gradient(to bottom,#000 88%,transparent);mask-composite:intersect}
 .preorder-library-hero-copy::before{content:'';position:absolute;inset:0 -24px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,#ffffffd9 35%,#ffffff80 65%,transparent 75%)}
 .preorder-library-hero-copy{position:relative;margin-left:11.5%;padding:34px 0 26px;max-width:650px}
 .preorder-library-eyebrow{font-size:13px;font-weight:800;letter-spacing:.48em;color:#ff0878;margin:0 0 13px}

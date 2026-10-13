@@ -50,7 +50,7 @@ export default function AdminClient() {
   }
 
   return <main className="admin-shell">
-    <header className="admin-header"><Link prefetch={false} href="/" className="admin-brand" aria-label="Waku Waku Store, inicio"><img src="/illustrations/waku-logo.png" alt="Waku Waku Store" /></Link><span>Panel del catálogo</span><Link prefetch={false} href="/" className="admin-back">Ver catálogo ↗</Link></header>
+    <header className="admin-header"><Link prefetch={false} href="/" className="admin-brand" aria-label="Waku Waku Store, inicio"><img src="/illustrations/waku-logo.webp" alt="Waku Waku Store" /></Link><span>Panel del catálogo</span><Link prefetch={false} href="/" className="admin-back">Ver catálogo ↗</Link></header>
     <div className="admin-main"><div className="admin-title"><div><span className="eyebrow">GESTIÓN DE PRODUCTOS</span><h1>Tu catálogo, al día.</h1><p>Edita precio, cantidad y estado. Guarda para actualizar las fichas del catálogo.</p></div><button type="button" className="primary-button" onClick={() => { setSelectedId(""); setDraft({ ...blank }); setMessage(""); }}>+ Nuevo producto</button></div>
       <div className="admin-stats"><div><strong>{counts.total}</strong><span>Productos</span></div><div><strong>{counts.confirm}</strong><span>Por confirmar</span></div><div><strong>{counts.available}</strong><span>Disponibles</span></div><div><strong>{counts.separated}</strong><span>Separados</span></div></div>
       {!backendConfigured && <p className="notice" role="status">Vista previa del panel. El guardado estará disponible cuando se conecte el backend.</p>}

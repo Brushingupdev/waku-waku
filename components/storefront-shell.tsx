@@ -6,7 +6,7 @@ import { WhatsAppIcon } from "./whatsapp-icon";
 export default function StorefrontShell({ active, children, search }: { search?: React.ReactNode; active: "catalogo" | "preventas" | "comprar"; children: React.ReactNode }) {
   return <div className="storefront">
     <header className="store-header">
-      <Link prefetch={false} className="store-brand" href="/" aria-label="Waku Waku Store, inicio"><span className="store-brand-symbol"><img className="store-brand-logo" src="/illustrations/waku-logo.png" alt="" /></span><span className="store-brand-words">waku waku<small>STORE</small></span></Link>
+      <Link prefetch={false} className="store-brand" href="/" aria-label="Waku Waku Store, inicio"><span className="store-brand-symbol"><img className="store-brand-logo" src="/illustrations/waku-logo.webp" alt="" /></span><span className="store-brand-words">waku waku<small>STORE</small></span></Link>
       <nav className="store-nav" aria-label="Principal"><Link prefetch={false} className={active === "catalogo" ? "active" : ""} aria-current={active === "catalogo" ? "page" : undefined} href="/">Catálogo</Link><Link prefetch={false} className={active === "preventas" ? "active" : ""} aria-current={active === "preventas" ? "page" : undefined} href="/preventas">Preventas</Link><Link prefetch={false} className={active === "comprar" ? "active" : ""} aria-current={active === "comprar" ? "page" : undefined} href="/como-comprar">Cómo comprar</Link></nav>
       <div className="store-header-actions">{search || <form className="store-catalog-search" action="/" method="get" role="search"><Search size={20} aria-hidden="true"/><input type="search" name="q" placeholder="Buscar personaje, serie o figura..." aria-label="Buscar figuras"/></form>}<a className="store-whatsapp-dark" href="https://wa.me/51937809466" target="_blank" rel="noreferrer"><WhatsAppIcon /> WhatsApp <span>›</span></a></div>
     </header>
@@ -15,7 +15,7 @@ export default function StorefrontShell({ active, children, search }: { search?:
       <div className="store-footer-main">
       <div className="store-footer-brand">
         <Link prefetch={false} className="store-footer-brand-link" href="/" aria-label="Waku Waku Store, inicio">
-          <img src="/illustrations/waku-logo.png" alt="" className="store-footer-logo" />
+          <img src="/illustrations/waku-logo.webp" alt="" className="store-footer-logo" />
           <strong>WAKU WAKU<br />STORE</strong>
         </Link>
         <p className="store-footer-tagline">Más que figuras, <span>es tu historia.</span></p>

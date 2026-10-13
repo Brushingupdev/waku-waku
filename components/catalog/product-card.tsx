@@ -6,10 +6,11 @@ import { money } from "../../lib/product-format";
 import { photoCrops, focalPositions, illustratedCollectionPhotos, collectionPhotos } from "../../lib/catalog-presentation";
 import { usesReferenceArtwork } from "../../lib/reference-artwork";
 import { approvedCommerceMedia } from "../../lib/commerce-media";
+import { LoadingImage } from "../loading-image";
 
 export function ProductPhoto({ product }: { product: Product }) {
   const crop = usesReferenceArtwork(product) && referenceMetadata.get(getReferenceId(product))?.source.startsWith("PDF") ? photoCrops[product.id] : undefined;
-  return crop ? <span className="store-pdf-crop" role="img" aria-label={product.title} style={{ backgroundImage: `url("${product.image}")`, backgroundSize: `${crop[0]} auto`, backgroundPosition: crop[1] }} /> : <img src={product.image || "/illustrations/waku-logo.png"} alt={product.title} loading="lazy" style={{ objectPosition: focalPositions[product.id] || "50% 0%" }}/>;
+  return crop ? <span className="store-pdf-crop" role="img" aria-label={product.title} style={{ backgroundImage: `url("${product.image}")`, backgroundSize: `${crop[0]} auto`, backgroundPosition: crop[1] }}><LoadingImage className="skeleton-crop-probe" src={product.image!} alt="" aria-hidden="true" loading="lazy"/></span> : <LoadingImage src={product.image || "/illustrations/waku-logo.webp"} alt={product.title} loading="lazy" style={{ objectPosition: focalPositions[product.id] || "50% 0%" }}/>;
 }
 
 export function Figure({ product, onOpen, compact = false }: { product: Product; onOpen: (product: Product) => void; compact?: boolean }) {
@@ -27,8 +28,8 @@ export function Figure({ product, onOpen, compact = false }: { product: Product;
 export function CollectionPhoto({product}:{product:Product}) {
   if (!usesReferenceArtwork(product)) return <ProductPhoto product={product}/>;
   const cloudImage = approvedCommerceMedia(product)?.presentation.collection;
-  if (cloudImage) return <span className="store-collection-art"><img className="store-collection-art-figure" src={cloudImage} alt={product.title} loading="lazy"/></span>;
+  if (cloudImage) return <span className="store-collection-art"><LoadingImage className="store-collection-art-figure" src={cloudImage} alt={product.title} loading="lazy"/></span>;
   const visualId = getReferenceId(product);
-  if(illustratedCollectionPhotos[visualId]) return <span className="store-collection-art"><img className="store-collection-art-figure" src={illustratedCollectionPhotos[visualId]} alt={product.title} loading="lazy"/></span>;
-  return collectionPhotos[visualId] ? <img src={`/illustrations/series-showcase/${collectionPhotos[visualId]}.webp`} alt={product.title} loading="lazy"/> : <ProductPhoto product={product}/>;
+  if(illustratedCollectionPhotos[visualId]) return <span className="store-collection-art"><LoadingImage className="store-collection-art-figure" src={illustratedCollectionPhotos[visualId]} alt={product.title} loading="lazy"/></span>;
+  return collectionPhotos[visualId] ? <LoadingImage src={`/illustrations/series-showcase/${collectionPhotos[visualId]}.webp`} alt={product.title} loading="lazy"/> : <ProductPhoto product={product}/>;
 }

@@ -31,16 +31,16 @@ export const sideCaptionArtwork: Record<string, { file: string; price: number }>
 export const sideCaptionImage = (product: Product) => {
   const artwork = sideCaptionArtwork[getReferenceId(product)];
   if (!usesReferenceArtwork(product) || artwork?.price !== product.price) return undefined;
-  return approvedCommerceMedia(product)?.presentation.lettering || `/illustrations/carousel-lettering/${artwork.file}.png`;
+  return approvedCommerceMedia(product)?.presentation.lettering || `/illustrations/carousel-lettering/${artwork.file}.webp`;
 };
 
 export function showcaseImage(product: Product, center: boolean) {
-  if (center && !usesReferencePoster(product)) return product.image || "/illustrations/waku-logo.png";
+  if (center && !usesReferencePoster(product)) return product.image || "/illustrations/waku-logo.webp";
   const approved = usesReferenceArtwork(product) ? approvedCommerceMedia(product) : undefined;
   const cloudImage = approved?.presentation[center ? "hero" : "side"];
   if (cloudImage) return cloudImage;
   const image = usesReferenceArtwork(product) ? showcaseArt[getReferenceId(product)]?.image : undefined;
-  return (center ? image?.replace("/carousel-manga/", "/carousel-energy/").replace(".webp", ".png") : image) || product.image || "/illustrations/waku-logo.png";
+  return (center ? image?.replace("/carousel-manga/", "/carousel-energy/") : image) || product.image || "/illustrations/waku-logo.webp";
 }
 export const modalMangaArtwork = (title:string) => title.includes("Bakugo") ? "bakugo" : title.includes("Toga") ? "toga" : title.includes("Miku") ? "miku" : title.includes("Law") ? "law" : title.includes("Gojo") ? "gojo" : title.includes("Killua") ? "killua" : title.includes("Douma") ? "douma" : title === "Rem" ? "rem" : null;
 export const mainSeries = ["My Hero Academia", "Vocaloid", "One Piece", "Re:Zero"];
@@ -59,10 +59,10 @@ export const seriesImages: Record<string, string> = {
   "Date A Live": "anime-logos/series-9.webp",
   "Tokyo Ghoul": "anime-logos/series-11.webp",
   "Yu-Gi-Oh!": "anime-logos/series-12.webp",
-  "My Hero Academia": "series-my-hero.png",
-  "Vocaloid": "series-vocaloid.png",
-  "One Piece": "series-one-piece.png",
-  "Re:Zero": "series-re-zero.png",
+  "My Hero Academia": "series-my-hero.webp",
+  "Vocaloid": "series-vocaloid.webp",
+  "One Piece": "series-one-piece.webp",
+  "Re:Zero": "series-re-zero.webp",
 };
 export const animeFilterLogos: Record<string,string> = {
   "My Hero Academia": "/illustrations/bilingual-logos/hero.webp",
@@ -109,8 +109,8 @@ export const collectionPhotos: Record<string,string> = {
   "pdf-6-rem-bicute":"rem-bicute", "pdf-6-ram-bicute":"ram-bicute",
 };
 export const illustratedCollectionPhotos:Record<string,string> = {
-  "pdf-7-tamaki-set": "/illustrations/equal-gallery/tamaki-set-clean.png",
-  "rezero-emilia": "/illustrations/equal-gallery/emilia.png",
+  "pdf-7-tamaki-set": "/illustrations/equal-gallery/tamaki-set-clean.webp",
+  "rezero-emilia": "/illustrations/equal-gallery/emilia.webp",
   "Da6q6QukYcK-1": "/illustrations/equal-gallery/bakugo-back.webp",
   "DaoZfSFn3XY-1": "/illustrations/equal-gallery/toga-uraraka.webp",
   "DaoZfSFn3XY-2": "/illustrations/equal-gallery/deku.webp",
@@ -127,5 +127,5 @@ export const illustratedCollectionPhotos:Record<string,string> = {
   "Da6q6QukYcK-2": "/illustrations/equal-gallery/bakugo.webp",
   "DQ2tT3EEQoO-1": "/illustrations/equal-gallery/miku.webp",
   "DVKO171kQPy-1": "/illustrations/equal-gallery/law.webp",
-  "DU1S9PjgWPy-2": "/illustrations/equal-gallery/rem-portrait.png"
+  "DU1S9PjgWPy-2": "/illustrations/equal-gallery/rem-portrait.webp"
 };

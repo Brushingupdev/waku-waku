@@ -67,7 +67,7 @@ export default function PreventasClient() {
       </div></section>
       <div className="preorder-library-content">
         <div className="preorder-library-months" role="tablist" aria-label="Mes de preventa">{pdfGroups.map((month, index) => <button type="button" role="tab" aria-selected={index === groupIndex} aria-controls="preorder-month-panel" id={`preorder-month-${index}`} className={`preorder-library-month ${index === groupIndex ? "active" : ""}`} key={month.month} onClick={() => { setGroupIndex(index); setPageIndex(0); }}>
-          <img src={`/illustrations/preventas-library/${monthCovers[index]}.png`} alt="" width={900} height={760}/>
+          <img src={`/illustrations/preventas-library/${monthCovers[index]}.webp`} alt="" width={900} height={760}/>
           <span className="preorder-library-month-caption"><span><strong>{month.month}</strong><small>{month.pages.length} páginas</small></span><span className="preorder-library-month-arrow"><ChevronRight size={24}/></span></span>
         </button>)}</div>
         <section className="preorder-month-gallery" id="preorder-month-panel" role="tabpanel" aria-labelledby={`preorder-month-${groupIndex}`}>

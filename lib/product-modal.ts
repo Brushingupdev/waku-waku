@@ -28,10 +28,10 @@ const nameArtwork: Record<string, string> = characterTitles;
 const featureArtwork: Record<string, string> = featureIcons;
 const iconRoot = "/illustrations/modal-products/";
 const bakugoPhotos: ModalPhoto[] = [
-  { image:`${iconRoot}bakugo-front-horizontal.png`, label:"Frontal · IA", provenance:"generated" },
-  { image:`${iconRoot}bakugo-original-landscape.png`, label:"Foto adaptada con IA", provenance:"adapted" },
-  { image:`${iconRoot}bakugo-side-view.png`, label:"Lateral · IA", provenance:"generated" },
-  { image:`${iconRoot}bakugo-rear-view.png`, label:"Posterior · IA", provenance:"generated" },
+  { image:`${iconRoot}bakugo-front-horizontal.webp`, label:"Frontal · IA", provenance:"generated" },
+  { image:`${iconRoot}bakugo-original-landscape.webp`, label:"Foto adaptada con IA", provenance:"adapted" },
+  { image:`${iconRoot}bakugo-side-view.webp`, label:"Lateral · IA", provenance:"generated" },
+  { image:`${iconRoot}bakugo-rear-view.webp`, label:"Posterior · IA", provenance:"generated" },
 ];
 
 export function productModal(product: Product) {
@@ -45,18 +45,18 @@ export function productModal(product: Product) {
   const edition = specs.edition || "";
   const kind = /Insignia/i.test(collection) ? "Insignia de colección" : /Set/i.test(collection) ? "Set de colección" : /Ilustración/i.test(collection) ? "Ilustración de referencia" : "Figura de colección";
   const customBakugo = visualId === "Da6q6QukYcK-1" || visualId === "Da6q6QukYcK-2";
-  const icons = customBakugo ? ["icon-costume.png", "icon-gauntlet.png", "icon-armor.png"] : ["icon-detail.png", "icon-design.png", "icon-accent.png"];
+  const icons = customBakugo ? ["icon-costume.webp", "icon-gauntlet.webp", "icon-armor.webp"] : ["icon-detail.webp", "icon-design.webp", "icon-accent.webp"];
   const featureStrip = referenceArtwork ? featureArtwork[visualId] : undefined;
   const highlights = (product.highlights?.length ? product.highlights : asset?.highlights || [product.title, collection, product.series?.name || "Sin serie"]).map((text, index) => ({
     text,
     icon:featureStrip || iconRoot + icons[index % icons.length],
     iconSlot:featureStrip ? index : undefined,
     // Exclude the neighboring cape tip from the repaired Eren sheet's second cell.
-    iconClip:featureStrip?.endsWith("features-12-v2.png") && index === 1 ? "inset(0 0 0 6%)" : undefined,
+    iconClip:featureStrip?.endsWith("features-12-v2.webp") && index === 1 ? "inset(0 0 0 6%)" : undefined,
   }));
   const hasBackendGallery = Boolean(product.gallery?.length);
   const preserveOriginal = hasBackendGallery || !asset || asset.preserveOriginal || asset.pending;
-  const primary: ModalPhoto = { image:asset?.image || product.image || "/illustrations/waku-logo.png", label:preserveOriginal ? "Foto original" : "Vista horizontal adaptada con IA", provenance:!preserveOriginal ? "adapted" : undefined };
+  const primary: ModalPhoto = { image:asset?.image || product.image || "/illustrations/waku-logo.webp", label:preserveOriginal ? "Foto original" : "Vista horizontal adaptada con IA", provenance:!preserveOriginal ? "adapted" : undefined };
   const existingPhotos = referenceArtwork && visualId === "Da6q6QukYcK-2" ? bakugoPhotos : [primary];
   const photos: ModalPhoto[] = product.gallery?.length ? product.gallery.map(photo => {
     const provenance = approved?.gallery.find(item => item.image === photo.image)?.provenance;
@@ -64,6 +64,6 @@ export function productModal(product: Product) {
     return referenceArtwork && asset && !asset.preserveOriginal && !asset.pending && photo.image === product.image ? { ...photo, provenance: "adapted" as const } : photo;
   }) : [...existingPhotos, ...(referenceArtwork ? views[visualId] || [] : [])];
   // Preserve source references outside the fixed-ratio main gallery.
-  const originals = product.gallery?.length ? product.gallery : [{ image:product.image || "/illustrations/waku-logo.png", label:"Foto original" }];
+  const originals = product.gallery?.length ? product.gallery : [{ image:product.image || "/illustrations/waku-logo.webp", label:"Foto original" }];
   return { photos, originals, size, collection, edition, editionImage:lettering[edition || collection], titleImage:nameArtwork[product.title], kind, highlights, preserveOriginal };
 }
