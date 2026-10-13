@@ -36,7 +36,12 @@ export default function CatalogClient({ initialCatalog }: { initialCatalog: Cata
   const [status, setStatus] = useState<"todos" | ProductStatus>("todos");
   const [series, setSeries] = useState<string | null>(null);
   const [heroIndex, setHeroIndex] = useState(1);
-  const [selected, setSelected] = useState<Product | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const selected = products.find(product => product.id === selectedId && product.visible) ?? null;
+  const setSelected = (product: Product | null) => setSelectedId(product?.id ?? null);
+  // Resolve details from the current catalog, and forget a withdrawn selection
+  // so a later re-publication cannot unexpectedly reopen the dialog.
+  if (selectedId && !selected) setSelectedId(null);
   const notice = loadError;
   const touchStart = useRef(0);
 

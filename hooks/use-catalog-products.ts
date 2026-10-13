@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { catalogSnapshotSchema, type CatalogSnapshot } from "../lib/catalog-snapshot";
+import type { CatalogSnapshot } from "../lib/catalog-snapshot";
+import { requestCatalogSnapshot } from "../lib/catalog-refresh";
 
 export function useCatalogProducts(initialCatalog: CatalogSnapshot) {
   const [catalog, setCatalog] = useState(initialCatalog);
@@ -14,9 +15,7 @@ export function useCatalogProducts(initialCatalog: CatalogSnapshot) {
       if (pending || document.hidden) return;
       pending = true;
       try {
-        const response = await fetch("/catalog-data", { cache: "no-store", signal: controller.signal });
-        if (!response.ok) throw new Error("No se pudo actualizar el catálogo.");
-        const next = catalogSnapshotSchema.parse(await response.json());
+        const next = await requestCatalogSnapshot(controller.signal);
         if (!controller.signal.aborted) {
           // A cold server may return the older seed during an outage. Never
           // replace newer data already displayed, including empty catalogs.

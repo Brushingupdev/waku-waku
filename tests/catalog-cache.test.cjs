@@ -6,6 +6,27 @@ const seed = require("../data/catalog-snapshot.json");
 const React = require("react");
 const { renderToStaticMarkup } = require("react-dom/server");
 const CatalogClient = require("../components/catalog-client.tsx").default;
+const { requestCatalogSnapshot } = require("../lib/catalog-refresh.ts");
+
+test("a stalled browser request expires and a later request can recover", async () => {
+  const signal = new AbortController().signal;
+  const stalled = async (_, options) => new Promise((resolve, reject) => {
+    options.signal.addEventListener("abort", () => reject(new DOMException("Timed out", "AbortError")), { once: true });
+  });
+  await assert.rejects(requestCatalogSnapshot(signal, stalled, 20), { name: "AbortError" });
+  const next = await requestCatalogSnapshot(signal, async () => Response.json(seed), 20);
+  assert.equal(next.products.length, 37);
+});
+
+test("leaving the page aborts its background request", async () => {
+  const controller = new AbortController();
+  const stalled = async (_, options) => new Promise((resolve, reject) => {
+    options.signal.addEventListener("abort", () => reject(new DOMException("Page closed", "AbortError")), { once: true });
+  });
+  const pending = requestCatalogSnapshot(controller.signal, stalled, 1000);
+  controller.abort();
+  await assert.rejects(pending, { name: "AbortError" });
+});
 
 test("snapshot collects validated public data together and hides inactive entries", async () => {
   const series = fixture.products[0].series;
