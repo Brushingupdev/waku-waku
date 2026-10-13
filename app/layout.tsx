@@ -18,6 +18,7 @@ import "./footer-night.css";
 import "./preventas-library.css";
 import "./how-to-buy.css";
 import "./series-gallery.css";
+import "./commerce-carousel.css";
 
 export const metadata: Metadata = {
   title: "Waku Waku · Catálogo de figuras",

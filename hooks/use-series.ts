@@ -8,6 +8,7 @@ export function useSeries() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    if (!process.env.NEXT_PUBLIC_COMMERCE_API_URL?.trim() && !process.env.NEXT_PUBLIC_API_URL?.trim()) return;
     const controller = new AbortController();
     getSeries(controller.signal)
       .then((items) => {

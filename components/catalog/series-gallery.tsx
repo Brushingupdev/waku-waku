@@ -13,7 +13,7 @@ export function SeriesGallery({ name, items, onOpen, onBack }: { name:string; it
       <button type="button" className="series-gallery-back" onClick={onBack}><ChevronLeft size={18}/>Volver al catálogo</button>
     </header>
     {items.length ? <div className={`series-gallery-grid ${items.length === 7 ? "seven-items" : ""}`}>
-      {items.map(product => <article className="series-gallery-card" key={product.id}>
+      {items.map(product => <article className="series-gallery-card" key={product.id} data-product-id={product.id}>
         <button type="button" className="series-gallery-photo" onClick={()=>onOpen(product)} aria-label={`Ver detalles de ${product.title}`}><CollectionPhoto product={product}/></button>
         <div className="series-gallery-caption">
           <h3>{product.title}</h3>

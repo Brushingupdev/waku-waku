@@ -1,0 +1,252 @@
+{
+  "products": [
+    {
+      "title": "Katsuki Bakugo",
+      "series_id": "fb4dfe89-0396-4a34-a61f-0a0d00a827c9",
+      "collection": "Ichiban Kuji",
+      "edition": "Premio B",
+      "height": "23 cm",
+      "price": 180.0,
+      "status": "por_confirmar",
+      "quantity": null,
+      "image": "http://127.0.0.1:8000/uploads/carousel/bakugo.png",
+      "gallery": [
+        {
+          "image": "http://127.0.0.1:8000/uploads/carousel/bakugo.png",
+          "label": "Frontal"
+        }
+      ],
+      "highlights": [
+        "Traje negro y naranja",
+        "Guanteletes de granada",
+        "Detalles de armadura"
+      ],
+      "visible": true,
+      "id": "e9392956-c405-48ce-ac6a-45e291e80cbe",
+      "series": {
+        "name": "My Hero Academia",
+        "slug": "my-hero-academia",
+        "logo_url": "http://127.0.0.1:8000/uploads/anime-marquee/hero.webp",
+        "order": 12,
+        "id": "fb4dfe89-0396-4a34-a61f-0a0d00a827c9"
+      }
+    },
+    {
+      "title": "Douma",
+      "series_id": "305b4cb2-5de3-4006-ab59-c093bebad6d3",
+      "collection": "Banpresto Grandista",
+      "edition": null,
+      "height": "25 cm",
+      "price": 90.0,
+      "status": "por_confirmar",
+      "quantity": null,
+      "image": "http://127.0.0.1:8000/uploads/carousel/douma.png",
+      "gallery": [
+        {
+          "image": "http://127.0.0.1:8000/uploads/carousel/douma.png",
+          "label": "Frontal"
+        }
+      ],
+      "highlights": [
+        "Dos abanicos dorados",
+        "Camisa roja y pantalon blanco",
+        "Cabello claro y expresion sonriente"
+      ],
+      "visible": true,
+      "id": "10b1a137-4df9-42db-8d84-c8111b625edc",
+      "series": {
+        "name": "Kimetsu no Yaiba",
+        "slug": "kimetsu-no-yaiba",
+        "logo_url": "http://127.0.0.1:8000/uploads/anime-marquee/demon.webp",
+        "order": 10,
+        "id": "305b4cb2-5de3-4006-ab59-c093bebad6d3"
+      }
+    },
+    {
+      "title": "Satoru Gojo",
+      "series_id": "af3f3165-d324-4e0a-8965-41f4bacbd080",
+      "collection": "SEGA Figurizm",
+      "edition": null,
+      "height": "36 cm",
+      "price": 80.0,
+      "status": "por_confirmar",
+      "quantity": null,
+      "image": "http://127.0.0.1:8000/uploads/carousel/gojo.png",
+      "gallery": [
+        {
+          "image": "http://127.0.0.1:8000/uploads/carousel/gojo.png",
+          "label": "Frontal"
+        }
+      ],
+      "highlights": [
+        "Figura de gran tamano",
+        "Detalle en los ojos",
+        "Pose caracteristica"
+      ],
+      "visible": true,
+      "id": "95b8d9d1-8dae-49a5-9ac8-9d1497cd7761",
+      "series": {
+        "name": "Jujutsu Kaisen",
+        "slug": "jujutsu-kaisen",
+        "logo_url": "http://127.0.0.1:8000/uploads/anime-marquee/jujutsu.webp",
+        "order": 9,
+        "id": "af3f3165-d324-4e0a-8965-41f4bacbd080"
+      }
+    },
+    {
+      "title": "Killua Zoldyck",
+      "series_id": "fe461d5b-dcbe-4245-9fcf-9d2869ea669c",
+      "collection": "Banpresto Grandista",
+      "edition": null,
+      "height": "25 cm",
+      "price": 75.0,
+      "status": "por_confirmar",
+      "quantity": null,
+      "image": "http://127.0.0.1:8000/uploads/carousel/killua.png",
+      "gallery": [
+        {
+          "image": "http://127.0.0.1:8000/uploads/carousel/killua.png",
+          "label": "Frontal"
+        }
+      ],
+      "highlights": [
+        "Cabello blanco en mechones puntiagudos",
+        "Mano adelantada",
+        "Camiseta clara y botas moradas"
+      ],
+      "visible": true,
+      "id": "ead9d117-12fe-4160-8b44-81278d081a90",
+      "series": {
+        "name": "Hunter x Hunter",
+        "slug": "hunter-x-hunter",
+        "logo_url": "http://127.0.0.1:8000/uploads/anime-marquee/hunter.webp",
+        "order": 8,
+        "id": "fe461d5b-dcbe-4245-9fcf-9d2869ea669c"
+      }
+    },
+    {
+      "title": "Trafalgar Law",
+      "series_id": "38288cf7-74d9-4213-a8da-d195918ddc58",
+      "collection": "Ichiban Kuji",
+      "edition": null,
+      "height": "25 cm",
+      "price": 160.0,
+      "status": "por_confirmar",
+      "quantity": null,
+      "image": "http://127.0.0.1:8000/uploads/carousel/law.png",
+      "gallery": [
+        {
+          "image": "http://127.0.0.1:8000/uploads/carousel/law.png",
+          "label": "Frontal"
+        }
+      ],
+      "highlights": [
+        "Espada desenvainada en diagonal",
+        "Abrigo azul largo",
+        "Sombrero moteado y tatuajes"
+      ],
+      "visible": true,
+      "id": "90f9e03c-83b1-41bc-a506-7fda36129264",
+      "series": {
+        "name": "One Piece",
+        "slug": "one-piece",
+        "logo_url": "http://127.0.0.1:8000/uploads/anime-marquee/piece.webp",
+        "order": 13,
+        "id": "38288cf7-74d9-4213-a8da-d195918ddc58"
+      }
+    },
+    {
+      "title": "Hatsune Miku",
+      "series_id": "7bb45f4a-2b1e-4884-aafe-1c7c56b15481",
+      "collection": "Taito AMP+",
+      "edition": null,
+      "height": "21 cm",
+      "price": 75.0,
+      "status": "por_confirmar",
+      "quantity": null,
+      "image": "http://127.0.0.1:8000/uploads/carousel/miku.png",
+      "gallery": [
+        {
+          "image": "http://127.0.0.1:8000/uploads/carousel/miku.png",
+          "label": "Frontal"
+        }
+      ],
+      "highlights": [
+        "Coletas largas",
+        "Vestido con detalles",
+        "Pose dinamica"
+      ],
+      "visible": true,
+      "id": "945d96e8-5411-4aa6-90e3-62c42be2fe43",
+      "series": {
+        "name": "Vocaloid",
+        "slug": "vocaloid",
+        "logo_url": "http://127.0.0.1:8000/uploads/anime-marquee/miku.webp",
+        "order": 16,
+        "id": "7bb45f4a-2b1e-4884-aafe-1c7c56b15481"
+      }
+    },
+    {
+      "title": "Rem",
+      "series_id": "359264ca-aa8f-47fc-b271-38a6a3343fa1",
+      "collection": "Taito AMP+",
+      "edition": null,
+      "height": "28 cm",
+      "price": 120.0,
+      "status": "por_confirmar",
+      "quantity": null,
+      "image": "http://127.0.0.1:8000/uploads/carousel/rem.png",
+      "gallery": [
+        {
+          "image": "http://127.0.0.1:8000/uploads/carousel/rem.png",
+          "label": "Frontal"
+        }
+      ],
+      "highlights": [
+        "Traje de sirvienta detallado",
+        "Cabello azul",
+        "Pose elegante"
+      ],
+      "visible": true,
+      "id": "2a5e8649-bd0b-46e7-8d6d-6e76a8b9fa1e",
+      "series": {
+        "name": "Re:Zero",
+        "slug": "re-zero",
+        "logo_url": "http://127.0.0.1:8000/uploads/anime-marquee/rezero.webp",
+        "order": 14,
+        "id": "359264ca-aa8f-47fc-b271-38a6a3343fa1"
+      }
+    },
+    {
+      "title": "Toga vs Uraraka",
+      "series_id": "fb4dfe89-0396-4a34-a61f-0a0d00a827c9",
+      "collection": "Ichiban Kuji",
+      "edition": "Last One",
+      "height": "18 cm",
+      "price": 380.0,
+      "status": "por_confirmar",
+      "quantity": null,
+      "image": "http://127.0.0.1:8000/uploads/carousel/toga.png",
+      "gallery": [
+        {
+          "image": "http://127.0.0.1:8000/uploads/carousel/toga.png",
+          "label": "Frontal"
+        }
+      ],
+      "highlights": [
+        "Dos personajes en una escena",
+        "Edicion Last One",
+        "Diorama detallado"
+      ],
+      "visible": true,
+      "id": "52b5480a-f8b5-4ee9-917e-e8a9697468d8",
+      "series": {
+        "name": "My Hero Academia",
+        "slug": "my-hero-academia",
+        "logo_url": "http://127.0.0.1:8000/uploads/anime-marquee/hero.webp",
+        "order": 12,
+        "id": "fb4dfe89-0396-4a34-a61f-0a0d00a827c9"
+      }
+    }
+  ]
+}

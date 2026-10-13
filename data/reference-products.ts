@@ -1,4 +1,4 @@
-import type { Product } from "../lib/product-model";
+import type { ReferenceProduct as Product } from "../lib/reference-product-model";
 
 function ig(id: string, slide: 1 | 2, title: string, detail: string, series: string, price: number, month = ""): Product {
   const folder = slide === 1 ? "portadas" : "diapositivas_02";

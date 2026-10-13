@@ -1,6 +1,6 @@
 import { z, type ZodTypeAny } from "zod";
 
-const BASE = process.env.NEXT_PUBLIC_API_URL?.trim() || "/api";
+const BASE = (process.env.NEXT_PUBLIC_COMMERCE_API_URL?.trim() || process.env.NEXT_PUBLIC_API_URL?.trim() || "/api").replace(/\/+$/, "");
 
 export class ApiError extends Error {
   readonly status: number;
