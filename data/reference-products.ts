@@ -12,7 +12,7 @@ function ig(id: string, slide: 1 | 2, title: string, detail: string, series: str
     status: "por_confirmar",
     quantity: null,
     month,
-    image: `/catalogo/instagram/${folder}/${id}.${extension}`,
+    image: `https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/catalogo/instagram/${folder}/${id}.${extension}`,
     source: `https://www.instagram.com/wakuwaku.pe/p/${id}/`,
     visible: true,
   };
@@ -28,7 +28,7 @@ function pdf(page: number, key: string, title: string, detail: string, series: s
     status: "por_confirmar",
     quantity: null,
     month: "Setiembre 2026",
-    image: `/catalogo/pdf/pagina-${String(page).padStart(2, "0")}.jpg`,
+    image: `https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/catalogo/pdf/pagina-${String(page).padStart(2, "0")}.jpg`,
     source: `PDF página ${page}`,
     visible: true,
   };
@@ -72,6 +72,6 @@ export const baseProducts: Product[] = [
   pdf(6, "ram-bicute", "Ram", "BiCute Bunnies", "Re:Zero", 75),
   pdf(7, "tamaki-set", "Tamaki Amajiki", "Set de cumpleaños", "My Hero Academia", 70),
   pdf(8, "kenma-badge", "Kenma Kozume", "Insignia de cumpleaños", "Haikyu!!", 30),
-  { id: "rezero-emilia", title: "Emilia", detail: "Ilustración de referencia · Precio por confirmar", series: "Re:Zero", price: null, status: "por_confirmar", quantity: null, month: "", image: "/illustrations/equal-gallery/emilia.webp", source: "Ilustración generada", visible: true },
+  { id: "rezero-emilia", title: "Emilia", detail: "Ilustración de referencia · Precio por confirmar", series: "Re:Zero", price: null, status: "por_confirmar", quantity: null, month: "", image: "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/equal-gallery/emilia.webp", source: "Ilustración generada", visible: true },
 ];
 

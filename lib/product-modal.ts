@@ -26,7 +26,7 @@ const views: Record<string, ModalPhoto[]> = additionalViews as Record<string, Mo
 const lettering: Record<string, string> = editionLettering;
 const nameArtwork: Record<string, string> = characterTitles;
 const featureArtwork: Record<string, string> = featureIcons;
-const iconRoot = "/illustrations/modal-products/";
+const iconRoot = "https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/illustrations/modal-products/";
 const bakugoPhotos: ModalPhoto[] = [
   { image:`${iconRoot}bakugo-front-horizontal.webp`, label:"Frontal · IA", provenance:"generated" },
   { image:`${iconRoot}bakugo-original-landscape.webp`, label:"Foto adaptada con IA", provenance:"adapted" },

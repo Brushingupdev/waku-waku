@@ -1,9 +1,11 @@
 import { baseProducts } from "../data/reference-products";
 import seriesUrls from "../data/series-supabase-url-updates.json";
+import migratedReferences from "../data/migrated-product-references.json";
 import type { Product } from "./models/product";
 import type { ReferenceProduct } from "./reference-product-model";
 
 export const commerceReferences: Record<string, { referenceId: string; file: string }> = {
+  ...migratedReferences,
   "e9392956-c405-48ce-ac6a-45e291e80cbe": { referenceId: "Da6q6QukYcK-1", file: "bakugo" },
   "10b1a137-4df9-42db-8d84-c8111b625edc": { referenceId: "DaGveDbnxoS-1", file: "douma" },
   "95b8d9d1-8dae-49a5-9ac8-9d1497cd7761": { referenceId: "DU6btvSARSm-1", file: "gojo" },

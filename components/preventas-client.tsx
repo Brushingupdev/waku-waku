@@ -8,7 +8,7 @@ import { pdfGroups } from "../data/preorder-catalogs";
 
 const monthCovers = ["setiembre", "octubre", "noviembre", "enero"];
 
-const image = (n: number) => `/catalogo/pdf/pagina-${String(n).padStart(2, "0")}.jpg`;
+const image = (n: number) => `https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/catalogo/pdf/pagina-${String(n).padStart(2, "0")}.jpg`;
 
 export default function PreventasClient() {
   const [groupIndex, setGroupIndex] = useState(0);
