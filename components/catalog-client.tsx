@@ -9,7 +9,7 @@ import { selectFeaturedProducts, selectHomeSeries } from "../lib/catalog-selecto
 import { usesReferencePoster } from "../lib/reference-artwork";
 import { wa, money } from "../lib/product-format";
 import { useCatalogProducts } from "../hooks/use-catalog-products";
-import { useSeries } from "../hooks/use-series";
+import { formatCatalogTimestamp, type CatalogSnapshot } from "../lib/catalog-snapshot";
 import StorefrontShell from "./storefront-shell";
 import CollectorCommunity from "./collector-community";
 import { WhatsAppIcon } from "./whatsapp-icon";
@@ -23,10 +23,9 @@ import { LoadingImage } from "./loading-image";
 import { LoadingSkeleton } from "./loading-skeleton";
 import { useScrollReveal } from "../hooks/use-scroll-reveal";
 
-export default function CatalogClient() {
-  const { products, error: loadError, loading } = useCatalogProducts();
+export default function CatalogClient({ initialCatalog }: { initialCatalog: CatalogSnapshot }) {
+  const { products, series: apiSeries, collectors, updatedAt, error: loadError, loading } = useCatalogProducts(initialCatalog);
   useScrollReveal(loading);
-  const { series: apiSeries, error: seriesError } = useSeries();
   const [query, setQuery] = useState("");
   useEffect(() => {
     const initialQuery = new URLSearchParams(window.location.search).get("q");
@@ -37,8 +36,13 @@ export default function CatalogClient() {
   const [status, setStatus] = useState<"todos" | ProductStatus>("todos");
   const [series, setSeries] = useState<string | null>(null);
   const [heroIndex, setHeroIndex] = useState(1);
-  const [selected, setSelected] = useState<Product | null>(null);
-  const notice = loadError ? "Mostramos el catálogo de referencia. Consulta las actualizaciones por WhatsApp." : seriesError ? "No pudimos actualizar las series. Mostramos las series de referencia." : "";
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const selected = products.find(product => product.id === selectedId && product.visible) ?? null;
+  const setSelected = (product: Product | null) => setSelectedId(product?.id ?? null);
+  // Resolve details from the current catalog, and forget a withdrawn selection
+  // so a later re-publication cannot unexpectedly reopen the dialog.
+  if (selectedId && !selected) setSelectedId(null);
+  const notice = loadError;
   const touchStart = useRef(0);
 
   const visible = useMemo(() => products.filter(p => p.visible), [products]);
@@ -72,18 +76,18 @@ export default function CatalogClient() {
     {loading ? <LoadingSkeleton/> : <>
     {!series && <section className="store-catalog-top">
       {featured.length > 1 && <div className="store-featured-wrap"><div className="store-featured" onTouchStart={e => { touchStart.current = e.touches[0].clientX; }} onTouchEnd={e => { const delta = e.changedTouches[0].clientX - touchStart.current; if (Math.abs(delta) > 50) moveHero(delta < 0 ? 1 : -1); }}>
-        {([-1,0,1] as const).map(offset => { const p = heroAt(offset); return <article key={`${p.id}-${offset}`} data-live-copy={offset === 0 && !usesReferencePoster(p)} data-product-id={p.id} style={{ "--manga-accent": showcaseArt[getReferenceId(p)]?.accent } as React.CSSProperties} className={`store-feature-card store-showcase-card ${offset === 0 ? "center" : "side"} showcase-theme-${(heroIndex + offset + featured.length) % featured.length % 4}`}><button type="button" className="store-feature-photo" onClick={() => setSelected(p)} aria-label={`Ver detalle de ${p.title}`}><LoadingImage src={showcaseImage(p, offset === 0)} alt={offset === 0 ? `${p.title}, ${money(p.price)}, ${statusLabels[p.status]}` : p.title}/></button><img className="store-showcase-brand" src="/illustrations/waku-logo.webp" alt="Waku Waku"/><div className="store-feature-copy">{offset !== 0 && sideCaptionImage(p) && <img className="store-side-lettering" src={sideCaptionImage(p)} alt="" aria-hidden="true" width={900} height={450}/ >}{offset === 0 && (p.series?.logo_url || seriesImages[p.series?.name || ""]) && <img className="store-feature-series-logo" src={p.series?.logo_url || `/illustrations/${seriesImages[p.series?.name || ""]}`} alt=""/>}<h2>{p.title}</h2><div className="store-feature-price"><strong>{p.price === null ? "Consultar" : <><span>S/</span> {p.price}</>}</strong><small className={`store-status status-${p.status}`}>{statusLabels[p.status]}</small></div>{offset === 0 && <><div className="store-feature-actions"><a href={wa(p)} aria-label={`Consultar por WhatsApp sobre ${p.title}`} target="_blank" rel="noreferrer"><WhatsAppIcon size={19}/>Consultar por WhatsApp<ArrowUpRight className="store-hero-cta-arrow" size={21}/></a></div><ProductSpecifications product={p}/></>}</div></article>; })}
+        {([-1,0,1] as const).map(offset => { const p = heroAt(offset); return <article key={`${p.id}-${offset}`} data-live-copy={offset === 0 && !usesReferencePoster(p)} data-product-id={p.id} style={{ "--manga-accent": showcaseArt[getReferenceId(p)]?.accent } as React.CSSProperties} className={`store-feature-card store-showcase-card ${offset === 0 ? "center" : "side"} showcase-theme-${(heroIndex + offset + featured.length) % featured.length % 4}`}><button type="button" className="store-feature-photo" onClick={() => setSelected(p)} aria-label={`Ver detalle de ${p.title}`}><LoadingImage src={showcaseImage(p, offset === 0)} loading="eager" fetchPriority={offset === 0 ? "high" : "low"} decoding="async" alt={offset === 0 ? `${p.title}, ${money(p.price)}, ${statusLabels[p.status]}` : p.title}/></button><img className="store-showcase-brand" src="/illustrations/waku-logo.webp" alt="Waku Waku"/><div className="store-feature-copy">{offset !== 0 && sideCaptionImage(p) && <img className="store-side-lettering" src={sideCaptionImage(p)} alt="" aria-hidden="true" width={900} height={450}/ >}{offset === 0 && (p.series?.logo_url || seriesImages[p.series?.name || ""]) && <img className="store-feature-series-logo" src={p.series?.logo_url || `/illustrations/${seriesImages[p.series?.name || ""]}`} alt=""/>}<h2>{p.title}</h2><div className="store-feature-price"><strong>{p.price === null ? "Consultar" : <><span>S/</span> {p.price}</>}</strong><small className={`store-status status-${p.status}`}>{statusLabels[p.status]}</small></div>{offset === 0 && <><div className="store-feature-actions"><a href={wa(p)} aria-label={`Consultar por WhatsApp sobre ${p.title}`} target="_blank" rel="noreferrer"><WhatsAppIcon size={19}/>Consultar por WhatsApp<ArrowUpRight className="store-hero-cta-arrow" size={21}/></a></div><ProductSpecifications product={p}/></>}</div></article>; })}
       </div><div className="store-feature-controls"><button type="button" onClick={() => moveHero(-1)} aria-label="Destacados anteriores"><ChevronLeft/></button><span>{featured.map((p,i) => <button type="button" key={p.id} className={heroIndex === i ? "active" : ""} onClick={() => setHeroIndex(i)} aria-label={`Ver destacado ${i+1}`} aria-pressed={heroIndex === i}/>)}</span><button type="button" onClick={() => moveHero(1)} aria-label="Destacados siguientes"><ChevronRight/></button></div></div>}
 
     </section>}
     {!series && <AnimeLogoMarquee series={orderedSidebarSeries} logos={marqueeLogos} selected={series} onSelect={selectSeries}/>}
     {series ? <SeriesGallery name={selectedSeries?.name || "Sin serie"} items={matches} onOpen={setSelected} onBack={clear}/> : filtered ? <section className="store-results"><div className="store-section-heading"><div><span className="store-kicker">EXPLORA WAKU WAKU</span><h1>{selectedSeries?.name || "Resultados"}</h1><p>{matches.length} {matches.length === 1 ? "figura" : "figuras"}</p></div><button type="button" onClick={clear}>Mostrar todo ×</button></div>{matches.length ? <div className="store-results-grid">{matches.map(p => <Figure key={p.id} product={p} onOpen={setSelected}/>)}</div> : <div className="store-no-results"><h2>No encontramos figuras</h2><p>Prueba con otra serie, personaje o estado.</p><button type="button" onClick={clear}>Ver todo el catálogo</button></div>}</section> : <div className="store-home-content">
       {homeSeries.map(item => <SeriesCarousel key={item.id} name={item.name} items={visible.filter(p => p.series_id === item.id)} onOpen={setSelected} onSeeAll={() => { setSeries(item.id); window.scrollTo({top:0,behavior:"smooth"}); }}/>) }
-      <CollectorCommunity whatsappIcon={<WhatsAppIcon size={29}/>}/>
+      <CollectorCommunity whatsappIcon={<WhatsAppIcon size={29}/>} initialCollectors={collectors}/>
     </div>}
     </>}
     </div>
     </div>
-    <p className="store-fineprint">Confirma precio y disponibilidad actual por WhatsApp antes de separar una figura.</p>
+    <p className="store-fineprint">Confirma precio y disponibilidad actual por WhatsApp antes de separar una figura.<br/>Catálogo actualizado: <time dateTime={updatedAt}>{formatCatalogTimestamp(updatedAt)}</time>.</p>
   </main>{selected && <ProductDetailModal key={selected.id} selected={selected} onClose={() => setSelected(null)}/>}</StorefrontShell>;
 }

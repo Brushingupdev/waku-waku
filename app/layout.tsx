@@ -40,6 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      <head><link rel="preconnect" href="https://tzhzafvmqyanagzrsqlz.supabase.co" crossOrigin="anonymous"/><link rel="dns-prefetch" href="https://tzhzafvmqyanagzrsqlz.supabase.co"/></head>
       <body className="antialiased">{children}</body>
     </html>
   );

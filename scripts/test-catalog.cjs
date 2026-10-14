@@ -14,3 +14,4 @@ for (const extension of [".ts", ".tsx"]) {
 
 require("../tests/catalog.test.cjs");
 require("../tests/collectors.test.cjs");
+require("../tests/catalog-cache.test.cjs");
