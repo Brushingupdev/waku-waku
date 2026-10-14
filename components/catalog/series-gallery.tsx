@@ -1,13 +1,13 @@
 import { ArrowUpRight, ChevronLeft } from "lucide-react";
 import { type Product, statusLabels } from "../../lib/product-model";
-import { seriesImages } from "../../lib/catalog-presentation";
+import { SeriesLogo } from "./series-logo";
 import { WhatsAppIcon } from "../whatsapp-icon";
 import { CollectionPhoto } from "./product-card";
 
-export function SeriesGallery({ name, items, onOpen, onBack }: { name:string; items:Product[]; onOpen:(product:Product)=>void; onBack:()=>void }) {
+export function SeriesGallery({ name, logoUrl, items, onOpen, onBack }: { name:string; logoUrl?:string; items:Product[]; onOpen:(product:Product)=>void; onBack:()=>void }) {
   return <section className="store-series-gallery" aria-label={`Toda la colección de ${name}`}>
     <header className="series-gallery-heading">
-      {seriesImages[name] ? <img className="series-gallery-logo" src={`/illustrations/${seriesImages[name]}`} alt={name}/> : <p className="series-gallery-name">{name}</p>}
+      <SeriesLogo className="series-gallery-logo" name={name} logoUrl={logoUrl}/>
       <h2><img src="/illustrations/series-gallery/collection-title.webp" alt="Toda la colección"/></h2>
       <p className="series-gallery-count"><strong>{String(items.length).padStart(2,"0")}</strong> figuras</p>
       <button type="button" className="series-gallery-back" onClick={onBack}><ChevronLeft size={18}/>Volver al catálogo</button>

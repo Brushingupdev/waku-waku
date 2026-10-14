@@ -13,7 +13,7 @@
 .seven-items .series-gallery-card { grid-column:span 3; }
 .seven-items .series-gallery-card:nth-child(n+5) { grid-column:span 4; }
 .series-gallery-card { min-width:0; overflow:hidden; border-radius:10px; background:#061a35; }
-.series-gallery-photo { display:block; width:100%; height:clamp(230px,27vw,430px); padding:0; border:0; background:#061a35; overflow:hidden; cursor:pointer; }
+.series-gallery-photo { position:relative; display:block; width:100%; height:clamp(230px,27vw,430px); padding:0; border:0; background:#061a35; overflow:hidden; cursor:pointer; }
 .series-gallery-photo img,.series-gallery-photo .store-collection-art { display:block; width:100%; height:100%; object-fit:cover; object-position:center top!important; }
 .series-gallery-photo .store-pdf-crop { display:block; width:100%; height:100%; }
 .seven-items .series-gallery-card:nth-child(n+5) .series-gallery-photo { height:clamp(210px,23vw,360px); }
