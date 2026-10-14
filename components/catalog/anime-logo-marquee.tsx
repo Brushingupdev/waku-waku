@@ -2,7 +2,7 @@
 
 import type { Series } from "../../lib/models/series";
 import { useEffect, useRef } from "react";
-import { animeFilterLogos } from "../../lib/catalog-presentation";
+import { SeriesLogo } from "./series-logo";
 
 export function AnimeLogoMarquee({ series, logos, selected, onSelect }: { series:Series[]; logos:Record<string,string>; selected:string|null; onSelect:(name:string|null)=>void }) {
   const track = useRef<HTMLDivElement>(null);
@@ -42,6 +42,6 @@ export function AnimeLogoMarquee({ series, logos, selected, onSelect }: { series
     onPointerMove={e=>{const d=drag.current;if(!d)return;const distance=e.clientX-d.x;if(Math.abs(distance)>6)d.moved=true;if(d.mouse&&d.moved){e.currentTarget.setPointerCapture(e.pointerId);e.currentTarget.scrollLeft=d.scroll-distance;}}}
     onPointerUp={finish} onPointerCancel={finish}
     onClickCapture={e=>{if(suppressClick.current){e.preventDefault();e.stopPropagation();suppressClick.current=false;}}}>
-    {[0,1,2].map(copy=><div className="store-anime-marquee-group" key={copy} aria-hidden={copy !== 1}>{series.map(item=><button type="button" key={item.id} data-series-id={item.id} tabIndex={copy===1?0:-1} aria-label={"Filtrar por "+item.name} aria-pressed={selected===item.id} onClick={()=>onSelect(selected===item.id?null:item.id)}>{(item.logo_url || logos[item.name]) ? <img src={item.logo_url || logos[item.name]} alt={item.name} loading="eager" draggable={false} onError={event => { const fallback = animeFilterLogos[item.name]; if (fallback && event.currentTarget.getAttribute("src") !== fallback) event.currentTarget.src = fallback; }}/> : <span>{item.name}</span>}</button>)}</div>)}
+    {[0,1,2].map(copy=><div className="store-anime-marquee-group" key={copy} aria-hidden={copy !== 1}>{series.map(item=><button type="button" key={item.id} data-series-id={item.id} tabIndex={copy===1?0:-1} aria-label={"Filtrar por "+item.name} aria-pressed={selected===item.id} onClick={()=>onSelect(selected===item.id?null:item.id)}><SeriesLogo name={item.name} logoUrl={item.logo_url || logos[item.name]}/></button>)}</div>)}
   </div></nav>;
 }

@@ -4,10 +4,11 @@ import { useState } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { getReferenceId } from "../../lib/product-presentation";
 import type { Product } from "../../lib/product-model";
-import { seriesImages, seriesSpotlights } from "../../lib/catalog-presentation";
+import { seriesSpotlights } from "../../lib/catalog-presentation";
 import { CollectionPhoto } from "./product-card";
+import { SeriesLogo } from "./series-logo";
 
-export function SeriesCarousel({ name, items, onOpen, onSeeAll, eager = false }: { eager?:boolean; name:string; items:Product[]; onOpen:(p:Product)=>void; onSeeAll:()=>void }) {
+export function SeriesCarousel({ name, logoUrl, items, onOpen, onSeeAll, eager = false }: { logoUrl?:string; eager?:boolean; name:string; items:Product[]; onOpen:(p:Product)=>void; onSeeAll:()=>void }) {
   const spotlight = seriesSpotlights[name];
   const priority = name==="My Hero Academia" ? [spotlight.id,"DaoZfSFn3XY-1","DaoZfSFn3XY-2","Da6q6QukYcK-1"] : name==="Vocaloid" ? [spotlight.id,"pdf-5-snow-miku","pdf-5-miku-fashion","pdf-5-miku-figurizm"] : spotlight ? [spotlight.id] : [];
   const ordered = [...priority.map(id=>items.find(p=>(getReferenceId(p))===id)).filter((p):p is Product=>!!p), ...items.filter(p=>!priority.includes(getReferenceId(p)))];
@@ -18,7 +19,7 @@ export function SeriesCarousel({ name, items, onOpen, onSeeAll, eager = false }:
   const move = (step:number) => setSlide(i=>(i+step+ordered.length)%ordered.length);
   if (!main) return null;
   return <section className="store-series-section store-collection-carousel" aria-label={`Carrusel de ${name}`} aria-roledescription="carrusel">
-    <div className="store-section-heading"><div>{seriesImages[name] ? <img className="store-series-logo" src={`/illustrations/${seriesImages[name]}`} alt=""/> : <p className="series-gallery-name">{name}</p>}<h2 className="sr-only">{name}</h2><p className="store-series-count"><strong>{String(items.length).padStart(2,"0")}</strong><span>figuras</span></p></div><button className="store-collection-see" type="button" onClick={onSeeAll}>Ver toda la serie <ArrowUpRight size={17}/></button></div>
+    <div className="store-section-heading"><div><SeriesLogo className="store-series-logo" name={name} logoUrl={logoUrl} decorative/><h2 className="sr-only">{name}</h2><p className="store-series-count"><strong>{String(items.length).padStart(2,"0")}</strong><span>figuras</span></p></div><button className="store-collection-see" type="button" onClick={onSeeAll}>Ver toda la serie <ArrowUpRight size={17}/></button></div>
     <div className="store-collection-stage">
       <article className="store-collection-featured"><button className="store-collection-photo" type="button" onClick={()=>onOpen(main)} aria-label={`Ver figura ${main.title}`}>
         <CollectionPhoto product={main} eager={eager}/>
