@@ -9,7 +9,7 @@ import { productModal } from "../../lib/product-modal";
 import { wa } from "../../lib/product-format";
 import { WhatsAppIcon } from "../whatsapp-icon";
 
-export function ProductDetailModal({ selected, onClose }: { selected: Product; onClose: () => void }) {
+export function ProductDetailModal({ selected, onClose, phone }: { phone?: string | null; selected: Product; onClose: () => void }) {
   const [photoIndex, setPhotoIndex] = useState(0);
   const [zoom, setZoom] = useState(false);
   const dialogRef = useRef<HTMLDivElement | null>(null);
@@ -66,7 +66,7 @@ export function ProductDetailModal({ selected, onClose }: { selected: Product; o
     </div><footer className="store-manga-footer">
       <div className={`store-manga-price${selected.price === null ? " store-manga-price-unconfirmed" : ""}`}><strong>{selected.price === null ? "Consultar" : <><small>S/</small> {selected.price}</>}</strong></div>
       <p className="store-manga-inquiry"><WhatsAppIcon size={23}/><span>Consulta el estado y qué incluye por WhatsApp.</span></p>
-      <a className="store-product-whatsapp" href={wa(selected)} target="_blank" rel="noreferrer"><WhatsAppIcon size={23}/><span>Consultar por WhatsApp</span><ArrowUpRight size={19}/></a>
+      <a className="store-product-whatsapp" href={wa(selected, phone)} target="_blank" rel="noreferrer"><WhatsAppIcon size={23}/><span>Consultar por WhatsApp</span><ArrowUpRight size={19}/></a>
     </footer>
   </div>{zoom && <div className="store-product-lightbox" onClick={e => e.stopPropagation()}><button type="button" onClick={() => setZoom(false)} aria-label="Cerrar imagen ampliada"><X/></button><img src={selectedPhoto.image} alt={`${selected.title} — ${selectedPhoto.label}, ampliado`}/>{modalData && <p className="store-product-lightbox-source"><span>{selectedPhoto.provenance ? "Referencia visual adaptada con IA" : "Foto original del catálogo"}</span><a href={modalData.originals[0].image} target="_blank" rel="noreferrer">Ver original sin editar<ArrowUpRight size={14}/></a></p>}</div>}</div>;
 }

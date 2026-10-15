@@ -1,10 +1,11 @@
+import { siteContact } from "../../lib/site-content";
 import { ArrowUpRight, ChevronLeft } from "lucide-react";
 import { type Product, statusLabels } from "../../lib/product-model";
 import { SeriesLogo } from "./series-logo";
 import { WhatsAppIcon } from "../whatsapp-icon";
 import { CollectionPhoto } from "./product-card";
 
-export function SeriesGallery({ name, logoUrl, items, onOpen, onBack }: { name:string; logoUrl?:string; items:Product[]; onOpen:(product:Product)=>void; onBack:()=>void }) {
+export function SeriesGallery({ name, logoUrl, items, onOpen, onBack, phone }: { phone?:string|null; name:string; logoUrl?:string; items:Product[]; onOpen:(product:Product)=>void; onBack:()=>void }) {
   return <section className="store-series-gallery" aria-label={`Toda la colección de ${name}`}>
     <header className="series-gallery-heading">
       <SeriesLogo className="series-gallery-logo" name={name} logoUrl={logoUrl}/>
@@ -22,6 +23,6 @@ export function SeriesGallery({ name, logoUrl, items, onOpen, onBack }: { name:s
         </div>
       </article>)}
     </div> : <div className="store-no-results"><h3>No encontramos figuras</h3><p>Prueba con otro personaje.</p></div>}
-    <a className="series-gallery-help" href={`https://wa.me/51937809466?text=${encodeURIComponent(`Hola, tengo una consulta sobre la colección de ${name}.`)}`} target="_blank" rel="noreferrer"><WhatsAppIcon size={38}/><strong>¿Tienes alguna consulta?</strong><span>Escríbenos por WhatsApp y te ayudamos</span><ArrowUpRight size={32}/></a>
+    <a className="series-gallery-help" href={`${siteContact(phone)}?text=${encodeURIComponent(`Hola, tengo una consulta sobre la colección de ${name}.`)}`} target="_blank" rel="noreferrer"><WhatsAppIcon size={38}/><strong>¿Tienes alguna consulta?</strong><span>Escríbenos por WhatsApp y te ayudamos</span><ArrowUpRight size={32}/></a>
   </section>;
 }

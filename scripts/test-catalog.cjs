@@ -17,3 +17,4 @@ require("../tests/collectors.test.cjs");
 require("../tests/catalog-cache.test.cjs");
 require("../tests/image-loading.test.cjs");
 require("../tests/series-logos.test.cjs");
+require("../tests/site-bundle.test.cjs");
