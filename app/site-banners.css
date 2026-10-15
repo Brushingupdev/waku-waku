@@ -1,0 +1,6 @@
+/* Keep editable banners inside the existing showcase geometry. */
+.store-catalog-layout .site-banner-carousel .store-showcase-card .store-feature-photo{position:absolute;inset:0;width:100%;height:100%;padding:0}
+.store-catalog-layout .site-banner-carousel .store-feature-photo img{object-fit:contain;object-position:center!important}
+.store-catalog-layout .site-banner-carousel .side .store-feature-photo img{object-fit:cover;object-position:28% center!important}
+.site-banner-carousel .store-featured:has(>.store-showcase-card:only-child){display:flex;justify-content:center}
+.site-banner-carousel .store-showcase-card:only-child{width:100%}

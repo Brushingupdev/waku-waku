@@ -1,32 +1,36 @@
 import Link from "next/link";
+import { siteContact, type SiteSettings } from "../lib/site-content";
 import { Search, ChevronRight } from "lucide-react";
 import { WhatsAppIcon } from "./whatsapp-icon";
 
 
-export default function StorefrontShell({ active, children, search }: { search?: React.ReactNode; active: "catalogo" | "preventas" | "comprar"; children: React.ReactNode }) {
+export default function StorefrontShell({ active, children, search, settings }: { settings?: SiteSettings; search?: React.ReactNode; active: "catalogo" | "preventas" | "comprar"; children: React.ReactNode }) {
+  const contact = siteContact(settings?.phone);
+  const name = settings?.site_name || "Waku Waku";
+  const logo = settings?.logo_url || "/illustrations/waku-logo.webp";
   return <div className="storefront">
     <header className="store-header">
-      <Link prefetch={false} className="store-brand" href="/" aria-label="Waku Waku Store, inicio"><span className="store-brand-symbol"><img className="store-brand-logo" src="/illustrations/waku-logo.webp" alt="" /></span><span className="store-brand-words">waku waku<small>STORE</small></span></Link>
+      <Link prefetch={false} className="store-brand" href="/" aria-label={`${name} Store, inicio`}><span className="store-brand-symbol"><img className="store-brand-logo" src={logo} alt="" /></span><span className="store-brand-words">{name}<small>STORE</small></span></Link>
       <nav className="store-nav" aria-label="Principal"><Link prefetch={false} className={active === "catalogo" ? "active" : ""} aria-current={active === "catalogo" ? "page" : undefined} href="/">Catálogo</Link><Link prefetch={false} className={active === "preventas" ? "active" : ""} aria-current={active === "preventas" ? "page" : undefined} href="/preventas">Preventas</Link><Link prefetch={false} className={active === "comprar" ? "active" : ""} aria-current={active === "comprar" ? "page" : undefined} href="/como-comprar">Cómo comprar</Link></nav>
-      <div className="store-header-actions">{search || <form className="store-catalog-search" action="/" method="get" role="search"><Search size={20} aria-hidden="true"/><input type="search" name="q" placeholder="Buscar personaje, serie o figura..." aria-label="Buscar figuras"/></form>}<a className="store-whatsapp-dark" href="https://wa.me/51937809466" target="_blank" rel="noreferrer"><WhatsAppIcon /> WhatsApp <span>›</span></a></div>
+      <div className="store-header-actions">{search || <form className="store-catalog-search" action="/" method="get" role="search"><Search size={20} aria-hidden="true"/><input type="search" name="q" placeholder="Buscar personaje, serie o figura..." aria-label="Buscar figuras"/></form>}<a className="store-whatsapp-dark" href={contact} target="_blank" rel="noreferrer"><WhatsAppIcon /> WhatsApp <span>›</span></a></div>
     </header>
     {children}
     <footer className="store-footer store-footer-manga">
       <div className="store-footer-main">
       <div className="store-footer-brand">
-        <Link prefetch={false} className="store-footer-brand-link" href="/" aria-label="Waku Waku Store, inicio">
-          <img src="/illustrations/waku-logo.webp" alt="" className="store-footer-logo" />
-          <strong>WAKU WAKU<br />STORE</strong>
+        <Link prefetch={false} className="store-footer-brand-link" href="/" aria-label={`${name} Store, inicio`}>
+          <img src={logo} alt="" className="store-footer-logo" />
+          <strong>{name}<br />STORE</strong>
         </Link>
         <p className="store-footer-tagline">Más que figuras, <span>es tu historia.</span></p>
-        <a className="store-footer-whatsapp" href="https://wa.me/51937809466" target="_blank" rel="noreferrer"><WhatsAppIcon />Consultar por WhatsApp<ChevronRight size={19} /></a>
+        <a className="store-footer-whatsapp" href={contact} target="_blank" rel="noreferrer"><WhatsAppIcon />Consultar por WhatsApp<ChevronRight size={19} /></a>
       </div>
       <div className="store-footer-links">
       <nav aria-label="Enlaces del footer">
         <Link prefetch={false} href="/">Catálogo</Link>
         <Link prefetch={false} href="/preventas">Preventas</Link>
         <Link prefetch={false} href="/como-comprar">Cómo comprar</Link>
-        <a href="https://wa.me/51937809466" target="_blank" rel="noreferrer">Contáctanos</a>
+        <a href={contact} target="_blank" rel="noreferrer">Contáctanos</a>
       </nav>
       <div className="store-footer-end">
         <div className="store-footer-socials">

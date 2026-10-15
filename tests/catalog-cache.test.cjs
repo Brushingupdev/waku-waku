@@ -30,11 +30,11 @@ test("leaving the page aborts its background request", async () => {
 
 test("snapshot collects validated public data together and hides inactive entries", async () => {
   const series = fixture.products[0].series;
-  const snapshot = await loadCatalogSnapshot("https://backend.example", async (url) => {
-    if (url.endsWith("/products")) return Response.json(fixture);
-    if (url.endsWith("/series")) return Response.json([series, { ...series, id: "inactive", is_active: false }]);
-    return Response.json([{ id: "hidden", name: "A", city: "Lima", figure: "A", quote: "A", slot: "feature", is_active: false }]);
-  });
+  const snapshot = await loadCatalogSnapshot("https://backend.example", async () => Response.json({
+    settings: {site_name:"Waku Waku"}, banners: [], products: fixture.products,
+    series: [series, { ...series, id: "inactive", is_active: false }],
+    collectors: [{ id: "hidden", name: "A", city: "Lima", figure: "A", quote: "A", slot: "feature", is_active: false }],
+  }));
   assert.equal(snapshot.products.length, fixture.products.filter(p => p.visible).length);
   assert.deepEqual(snapshot.series.map(s => s.id), [series.id]);
   assert.deepEqual(snapshot.collectors, []);
@@ -47,13 +47,13 @@ test("a failed or malformed refresh throws instead of caching an empty or fallba
 });
 
 test("successful empty catalog is valid so removed products cannot reappear from the seed", async () => {
-  const snapshot = await loadCatalogSnapshot("https://backend.example", async url => Response.json(url.endsWith("/products") ? { products: [] } : []));
+  const snapshot = await loadCatalogSnapshot("https://backend.example", async () => Response.json({settings:{site_name:"Waku Waku"},banners:[],products:[],series:[],collectors:[]}));
   assert.deepEqual(snapshot.products, []);
 });
 
 test("first server render includes product images and collectors without waiting for browser API calls", () => {
   const html = renderToStaticMarkup(React.createElement(CatalogClient, { initialCatalog: seed }));
-  assert.match(html, /data-product-id=/);
+  assert.match(html, /store-collection-carousel/);
   assert.match(html, /collector-story-feature/);
   assert.doesNotMatch(html, /Cargando catálogo|Cargando experiencias/);
   assert.match(html, /fetchPriority="high"/);

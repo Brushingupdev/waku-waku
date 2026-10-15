@@ -1,5 +1,6 @@
 import { z } from "zod";
-import { productSchema, productsResponseSchema } from "./models/product";
+import { productSchema } from "./models/product";
+import { siteSettingsSchema, siteBannerSchema } from "./site-content";
 import { seriesSchema } from "./models/series";
 import { collectorSchema } from "./models/collector";
 
@@ -7,6 +8,8 @@ export const catalogSnapshotSchema = z.object({
   products: z.array(productSchema),
   series: z.array(seriesSchema),
   collectors: z.array(collectorSchema),
+  settings: siteSettingsSchema.optional(),
+  banners: z.array(siteBannerSchema).default([]),
   updatedAt: z.string().datetime(),
 });
 export type CatalogSnapshot = z.infer<typeof catalogSnapshotSchema>;
@@ -30,12 +33,19 @@ export async function loadCatalogSnapshot(base: string, request: typeof fetch = 
     return response.json();
   };
   try {
-    const [products, series, collectors] = await Promise.all([read("products"), read("series"), read("collectors")]);
-    const activeSeries = z.array(seriesSchema.extend({ is_active: z.boolean().default(true) })).parse(series);
+    const bundle = z.object({
+      settings: siteSettingsSchema,
+      banners: z.array(siteBannerSchema),
+      products: z.array(productSchema),
+      series: z.array(seriesSchema.extend({ is_active: z.boolean().default(true) })),
+      collectors: z.array(collectorSchema),
+    }).parse(await read("site"));
     return {
-      products: productsResponseSchema.parse(products).products.filter(p => p.visible),
-      series: activeSeries.filter(s => s.is_active).sort((a, b) => a.order - b.order),
-      collectors: z.array(collectorSchema).parse(collectors).filter(c => c.is_active).sort((a, b) => a.order - b.order),
+      products: bundle.products.filter(p => p.visible),
+      series: bundle.series.filter(s => s.is_active).sort((a, b) => a.order - b.order),
+      collectors: bundle.collectors.filter(c => c.is_active).sort((a, b) => a.order - b.order),
+      settings: bundle.settings,
+      banners: bundle.banners.filter(b => b.is_active).sort((a,b) => a.order - b.order),
       updatedAt: new Date().toISOString(),
     };
   } finally {

@@ -1,5 +1,6 @@
 "use client";
 
+import { siteContact } from "../lib/site-content";
 import type { ReactNode } from "react";
 import { ChevronRight, Quote } from "lucide-react";
 import { useCollectors } from "../hooks/use-collectors";
@@ -7,9 +8,10 @@ import { LoadingSkeleton } from "./loading-skeleton";
 import { LoadingImage } from "./loading-image";
 import type { Collector } from "../lib/models/collector";
 
-const contact = (text: string) => `https://wa.me/51937809466?text=${encodeURIComponent(text)}`;
 
-export default function CollectorCommunity({ whatsappIcon, initialCollectors }: { whatsappIcon: ReactNode; initialCollectors?: Collector[] }) {
+
+export default function CollectorCommunity({ whatsappIcon, initialCollectors, phone }: { phone?:string|null; whatsappIcon: ReactNode; initialCollectors?: Collector[] }) {
+  const contact = (text: string) => `${siteContact(phone)}?text=${encodeURIComponent(text)}`;
   const { collectors, error, loading, retry } = useCollectors(initialCollectors);
 
   return <section className="collector-community" aria-labelledby="collector-community-title" id="coleccionistas">

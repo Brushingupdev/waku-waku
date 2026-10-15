@@ -6,7 +6,7 @@ export const catalogSeed = catalogSnapshotSchema.parse(seed);
 
 const readCachedCatalog = unstable_cache(
   async (base: string) => loadCatalogSnapshot(base),
-  ["public-catalog-snapshot-v1"],
+  ["public-catalog-snapshot-v2-site"],
   { revalidate: 60, tags: ["public-catalog"] },
 );
 

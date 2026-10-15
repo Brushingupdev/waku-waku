@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronRight, Download, ExternalLink, FileText, Maximize, Minus, Plus, X, ZoomIn } from "lucide-react";
+import { siteContact, type SiteSettings } from "../lib/site-content";
 import StorefrontShell from "./storefront-shell";
 import { WhatsAppIcon } from "./whatsapp-icon";
 import { pdfGroups } from "../data/preorder-catalogs";
@@ -10,7 +11,7 @@ const monthCovers = ["setiembre", "octubre", "noviembre", "enero"];
 
 const image = (n: number) => `https://tzhzafvmqyanagzrsqlz.supabase.co/storage/v1/object/public/catalog-images/presentation/729f468e1e7e38c0/catalogo/pdf/pagina-${String(n).padStart(2, "0")}.jpg`;
 
-export default function PreventasClient() {
+export default function PreventasClient({ settings }: { settings?: SiteSettings }) {
   const [groupIndex, setGroupIndex] = useState(0);
   const [pageIndex, setPageIndex] = useState(0);
   const [zoom, setZoom] = useState(false);
@@ -58,7 +59,7 @@ export default function PreventasClient() {
     return () => cancelAnimationFrame(frame);
   }, [zoom, centerZoom]);
 
-  return <StorefrontShell active="preventas">
+  return <StorefrontShell settings={settings} active="preventas">
     <main className="preorder-library">
       <section className="preorder-library-hero" aria-labelledby="preorder-library-title"><div className="preorder-library-hero-copy">
         <p className="preorder-library-eyebrow">PREVENTAS WAKU WAKU</p>
@@ -86,7 +87,7 @@ export default function PreventasClient() {
               <span><ZoomIn size={20} aria-hidden="true"/>Página {index+1}</span>
             </button>;
           })}</div>
-          <a className="preorder-month-gallery-whatsapp" href={`https://wa.me/51937809466?text=${encodeURIComponent(message)}`} target="_blank" rel="noreferrer"><WhatsAppIcon/><span>Consultar por WhatsApp</span><ChevronRight size={22} aria-hidden="true"/></a>
+          <a className="preorder-month-gallery-whatsapp" href={`${siteContact(settings?.phone)}?text=${encodeURIComponent(message)}`} target="_blank" rel="noreferrer"><WhatsAppIcon/><span>Consultar por WhatsApp</span><ChevronRight size={22} aria-hidden="true"/></a>
         </section>
       </div>
     </main>
